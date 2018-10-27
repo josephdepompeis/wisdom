@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Opponent } from '../shared/models/opponent.model';
 import { OpponentService } from '../services/opponent.service';
-// import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user.model';
 

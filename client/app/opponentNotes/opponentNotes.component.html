@@ -1,9 +1,5 @@
 <app-loading [condition]="isLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
-
-
-<app-opponent-notes></app-opponent-notes>
-
 <div class="card mb-3" *ngIf="!isLoading">
   <h4 class="card-header">Current opponents ({{opponents.length}})</h4>
   <div class="card-body">
@@ -37,6 +33,7 @@
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
+
           <td>
             <button class="btn btn-sm btn-secondary" (click)="enableEditing(opponent)">
               <i class="fa fa-pencil"></i> New
@@ -45,14 +42,10 @@
               <i class="fa fa-eye"></i> View
             </button>
           </td>
+
+
         </tr>
-
-
-        // should put logic that is similar to isEditing, then checks if the one being edited is the same as. if so add another row!!
       </tbody>
-
-
-
       <tbody *ngIf="isEditing">
         <tr>
           <td colspan="5">
