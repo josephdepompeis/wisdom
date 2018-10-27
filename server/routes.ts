@@ -1,20 +1,25 @@
 import * as express from 'express';
 
 import OpponentCtrl from './controllers/opponent';
+import OpponentNotesCtrl from './controllers/opponentNotes';
+
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
-import Cat from './models/cat';
-import User from './models/user';
+
+
+
+// import Cat from './models/cat';
+// import User from './models/user';
 
 export default function setRoutes(app) {
 
   const router = express.Router();
 
   const opponentCtrl = new OpponentCtrl();
+  const opponentNotesCtrl = new OpponentNotesCtrl();
+
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
-
-
 
   // Opponents
   router.route('/opponents/:id').get(opponentCtrl.getOpponentsByUserId);
@@ -25,6 +30,13 @@ export default function setRoutes(app) {
   router.route('/opponent/:id').delete(opponentCtrl.delete);
 
 
+  // OpponentNotes
+  router.route('/opponentNotes/:id').get(opponentNotesCtrl.getOpponentsByOpponentId);
+  // router.route('/opponents/count').get(opponentCtrl.count);
+  router.route('/opponentNotes').post(opponentNotesCtrl.insert);
+  // router.route('/opponent/:id').get(opponentCtrl.get);
+  router.route('/opponentNotes/:id').put(opponentCtrl.update);
+  router.route('/opponentNotes/:id').delete(opponentCtrl.delete);
 
   // Cats
   router.route('/cats').get(catCtrl.getAll);
