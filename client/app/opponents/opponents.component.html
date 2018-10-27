@@ -11,11 +11,12 @@
           <th scope="col">Weight</th>
           <th scope="col">UserId</th>
           <th scope="col">Actions</th>
+          <th scope="col">Notes</th>
         </tr>
       </thead>
       <tbody *ngIf="opponents.length === 0">
         <tr>
-          <td colspan="4">There are no opponents in the DB. Add a new opponent below.</td>
+          <td colspan="6">There are no opponents in the DB. Add a new opponent below.</td>
         </tr>
       </tbody>
       <tbody *ngIf="!isEditing">
@@ -24,7 +25,6 @@
           <td>{{opponent.age}}</td>
           <td>{{opponent.weight}}</td>
           <td>{{opponent.userId}}</td>
-
           <td>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(opponent)">
               <i class="fa fa-pencil"></i> Edit
@@ -33,11 +33,22 @@
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
+
+          <td>
+            <button class="btn btn-sm btn-secondary" (click)="enableEditing(opponent)">
+              <i class="fa fa-pencil"></i> New
+            </button>
+            <button class="btn btn-sm btn-success ml-1" (click)="deleteOpponent(opponent)">
+              <i class="fa fa-eye"></i> View
+            </button>
+          </td>
+
+
         </tr>
       </tbody>
       <tbody *ngIf="isEditing">
         <tr>
-          <td colspan="4">
+          <td colspan="5">
             <form class="form-inline" #form="ngForm" (ngSubmit)="editOpponent(opponent)">
               <input class="form-control mr-2" type="text" name="name"
                      [(ngModel)]="opponent.name" placeholder="Name" required>
@@ -45,6 +56,8 @@
                      [(ngModel)]="opponent.age" placeholder="Age" min="0" required>
               <input class="form-control mr-2" type="number" name="weight"
                      [(ngModel)]="opponent.weight" placeholder="Weight" step="any" min="0" required>
+             <input class="form-control mr-2" type="string" name="userId"
+                    [(ngModel)]="opponent.userId" placeholder="userId" step="any" min="0" [disabled]="true">
               <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
                 <i class="fa fa-floppy-o"></i> Save
               </button>
