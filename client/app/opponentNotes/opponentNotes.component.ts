@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { OpponentNote } from '../shared/models/opponentNote.model';
-// import { OpponentService } from '../services/opponent.service';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user.model';
+import { OpponentNoteService } from '../services/opponentNote.service';
+import { Opponent } from '../shared/models/opponent.model';
 
 @Component({
   selector: 'app-opponent-notes',
@@ -12,7 +13,7 @@ import { User } from '../shared/models/user.model';
   styleUrls: ['./opponentNotes.component.css']
 })
 export class OpponentNotesComponent implements OnInit {
-
+    @Input() opponent: Opponent;
     opponentNote = new OpponentNote();
     opponentNotes: OpponentNote[] = [];
     isLoading = true;
@@ -25,24 +26,20 @@ export class OpponentNotesComponent implements OnInit {
     // weight = new FormControl('', Validators.required);
 
     constructor(
-                // private opponentService: OpponentService,
+                private opponentNoteService: OpponentNoteService,
                 private formBuilder: FormBuilder,
                 public toast: ToastComponent,
-                private auth: AuthService,
+                // private auth: AuthService,
 
                 ) { }
 
   ngOnInit() {
-      // console.log("this.auth.currentUser", this.auth.currentUser);
+    console.log("opponent", this.opponent);
+    console.log("opponent", this.body);
 
-    this.getOpponentNotes();
     this.addOpponentNoteForm = this.formBuilder.group({
-      name: this.body,
-      // age: this.age,
-      // weight: this.weight,
-
-
-      // opponentId: th,
+      body: this.body,
+      opponentId: this.opponent._id,
     });
   }
 
@@ -54,16 +51,16 @@ export class OpponentNotesComponent implements OnInit {
     // );
   }
 
-  // addOpponent() {
-  //   this.opponentService.addOpponent(this.addOpponentForm.value).subscribe(
-  //     res => {
-  //       this.opponents.push(res);
-  //       this.addOpponentForm.reset();
-  //       this.toast.setMessage('item added successfully.', 'success');
-  //     },
-  //     error => console.log(error)
-  //   );
-  // }
+  addOpponentNote() {
+    this.opponentNoteService.addOpponentNote(this.addOpponentNoteForm.value).subscribe(
+      res => {
+        // this.opponents.push(res);
+        this.addOpponentNoteForm.reset();
+        this.toast.setMessage('item added successfully.', 'success');
+      },
+      error => console.log(error)
+    );
+  }
   //
   // enableEditing(opponent: Opponent) {
   //   this.isEditing = true;

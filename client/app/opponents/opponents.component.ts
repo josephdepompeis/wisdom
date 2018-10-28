@@ -4,7 +4,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { Opponent } from '../shared/models/opponent.model';
 import { OpponentService } from '../services/opponent.service';
 import { AuthService } from '../services/auth.service';
-import { User } from '../shared/models/user.model';
+// import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-opponents',
@@ -17,18 +17,21 @@ export class OpponentsComponent implements OnInit {
     opponents: Opponent[] = [];
     isLoading = true;
     isEditing = false;
-    user: User;
+    opponentNoteFlag = false;
+    targetOpponentForNote;
+    // oppenentNote =
+    // user: User;
 
     addOpponentForm: FormGroup;
     name = new FormControl('', Validators.required);
     age = new FormControl('', Validators.required);
     weight = new FormControl('', Validators.required);
 
-    constructor(private opponentService: OpponentService,
+    constructor(
+                private opponentService: OpponentService,
                 private formBuilder: FormBuilder,
                 public toast: ToastComponent,
                 private auth: AuthService,
-
                 ) { }
 
   ngOnInit() {
@@ -66,6 +69,13 @@ export class OpponentsComponent implements OnInit {
     this.isEditing = true;
     this.opponent = opponent;
   }
+
+  newOpponentNote(opponent: Opponent) {
+    this.opponentNoteFlag = true;
+    this.targetOpponentForNote = opponent;
+    // this.opponent = opponent;
+  }
+
 
   cancelEditing() {
     this.isEditing = false;

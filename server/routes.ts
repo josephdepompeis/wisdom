@@ -33,7 +33,7 @@ export default function setRoutes(app) {
   // OpponentNotes
   router.route('/opponentNotes/:id').get(opponentNotesCtrl.getOpponentsByOpponentId);
   // router.route('/opponents/count').get(opponentCtrl.count);
-  router.route('/opponentNotes').post(opponentNotesCtrl.insert);
+  router.route('/opponentNote').post(opponentNotesCtrl.insert);
   // router.route('/opponent/:id').get(opponentCtrl.get);
   router.route('/opponentNotes/:id').put(opponentCtrl.update);
   router.route('/opponentNotes/:id').delete(opponentCtrl.delete);
