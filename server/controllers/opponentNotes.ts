@@ -6,7 +6,6 @@ export default class OpponentNotesCtrl extends BaseCtrl {
 
   getOpponentsByOpponentId = (req, res) => {
     console.log("req", req.params);
-    
     this.model.find({opponentId: req.params.id}, (err, docs) => {
       if (err) { return console.error(err); }
       res.status(200).json(docs);

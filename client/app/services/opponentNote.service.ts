@@ -10,8 +10,8 @@ export class OpponentNoteService {
 
   constructor(private http: HttpClient) { }
 
-  getOpponentNotes(opponent: Opponent): Observable<Opponent[]> {
-    return this.http.get<Opponent[]>(`/api/opponents/${opponent._id}`);
+  getOpponentNotes(opponent: Opponent): Observable<OpponentNote[]> {
+    return this.http.get<OpponentNote[]>(`/api/opponentNotes/${opponent._id}`);
   }
   //
   // countOpponents(): Observable<number> {

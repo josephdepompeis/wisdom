@@ -16,7 +16,7 @@ export class OpponentNotesComponent implements OnInit {
     @Input() opponent: Opponent;
     opponentNote = new OpponentNote();
     opponentNotes: OpponentNote[] = [];
-    isLoading = true;
+    isopponentNotesLoading = true;
     isEditing = false;
     user: User;
 
@@ -30,14 +30,17 @@ export class OpponentNotesComponent implements OnInit {
                 private formBuilder: FormBuilder,
                 public toast: ToastComponent,
                 // private auth: AuthService,
-
                 ) { }
+
+  ngOnChanges(opponent: Opponent) {
+    console.log("change has occurered");
+    this.getOpponentNotes();
+  }
 
   ngOnInit() {
     console.log("opponent", this.opponent);
     console.log("opponent", this.body);
 
-    
     this.addOpponentNoteForm = this.formBuilder.group({
       body: this.body,
       opponentId: this.opponent._id,
@@ -47,17 +50,26 @@ export class OpponentNotesComponent implements OnInit {
   }
 
   getOpponentNotes() {
-    // this.opponentService.getOpponents(this.auth.currentUser).subscribe(
-    //   data => this.opponents = data,
-    //   error => console.log(error),
-    //   () => this.isLoading = false
-    // );
+    this.isopponentNotesLoading = true;
+    this.opponentNoteService.getOpponentNotes(this.opponent).subscribe(
+      res => {
+        console.log("res", res);
+        this.isopponentNotesLoading = false;
+        this.opponentNotes = res
+      },
+      error => {
+        this.isopponentNotesLoading = false;
+        console.log(error);
+      }
+    );
   }
 
   addOpponentNote() {
     this.opponentNoteService.addOpponentNote(this.addOpponentNoteForm.value).subscribe(
       res => {
-        // this.opponents.push(res);
+        // this is shortcut, we could call the get notes list again. not sure which is better atm.
+        this.opponentNotes.push(res);
+
         this.addOpponentNoteForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
