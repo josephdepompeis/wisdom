@@ -22,7 +22,7 @@ export class OpponentNotesComponent implements OnInit {
 
     addOpponentNoteForm: FormGroup;
     body = new FormControl('', Validators.required);
-
+ 
     constructor(
                 private opponentNoteService: OpponentNoteService,
                 private formBuilder: FormBuilder,
