@@ -17,6 +17,8 @@ export class OpponentsComponent implements OnInit {
     opponents: Opponent[] = [];
     isLoading = true;
     isEditing = false;
+    isSelected = false;
+    selectedOpponent;
     opponentNoteFlag = false;
     targetOpponentForNote;
     // oppenentNote =
@@ -71,10 +73,29 @@ export class OpponentsComponent implements OnInit {
   }
 
   newOpponentNote(opponent: Opponent) {
-    this.opponentNoteFlag = true;
-    this.targetOpponentForNote = opponent;
+    // this.opponentNoteFlag = true;
+    // this.targetOpponentForNote = opponent;
     // this.opponent = opponent;
   }
+
+  selectOpponent(opponent: Opponent) {
+
+    // isSelected = true;
+    this.selectedOpponent = opponent;
+    console.log("this.selectedOpponent", this.selectedOpponent);
+    //
+    // this.opponentService.getOpponents(this.auth.currentUser).subscribe(
+    //   data => this.opponents = data,
+    //   error => console.log(error),
+    //   () => this.isLoading = false
+    // );
+  }
+
+  deselectOpponent(opponent: Opponent) {
+    this.selectedOpponent = null;
+    console.log("this.selectedOpponent", this.selectedOpponent);
+  }
+
 
 
   cancelEditing() {

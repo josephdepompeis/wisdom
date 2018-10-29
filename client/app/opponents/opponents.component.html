@@ -27,7 +27,13 @@
           <td>{{opponent.weight}}</td>
           <td>{{opponent.userId}}</td>
           <td>
-            <button class="btn btn-sm btn-primary" (click)="enableEditing(opponent)">
+            <button  *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
+              <i class="fa fa-pencil"></i> Select
+            </button>
+            <button  *ngIf="selectedOpponent === opponent" class="btn btn-sm btn-secondary ml-1" (click)="deselectOpponent(opponent)">
+              <i class="fa fa-pencil"></i> Deselect
+            </button>
+            <button class="btn btn-sm btn-primary ml-1" (click)="enableEditing(opponent)">
               <i class="fa fa-pencil"></i> Edit
             </button>
             <button class="btn btn-sm btn-danger ml-1" (click)="deleteOpponent(opponent)">
@@ -35,7 +41,7 @@
             </button>
           </td>
           <td>
-            <button class="btn btn-sm btn-secondary" (click)="newOpponentNote(opponent)">
+            <button class="btn btn-sm btn-secondary ml-1" (click)="newOpponentNote(opponent)">
               <i class="fa fa-pencil"></i> New
             </button>
             <button class="btn btn-sm btn-success ml-1" (click)="deleteOpponent(opponent)">
@@ -44,8 +50,6 @@
           </td>
         </tr>
       </tbody>
-
-
 
       <tbody *ngIf="isEditing">
         <tr>
@@ -75,10 +79,12 @@
 // should put logic that is similar to isEditing, then checks if the one being edited is the same as. if so add another row!!
 
 
-<div *ngIf="opponentNoteFlag">
-  <app-opponent-notes [opponent]="targetOpponentForNote"></app-opponent-notes>
-</div>
 
+
+
+<div *ngIf="selectedOpponent">
+  <app-opponent-notes [opponent]="selectedOpponent"></app-opponent-notes>
+</div>
 
 
 

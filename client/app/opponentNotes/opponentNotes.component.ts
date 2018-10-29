@@ -37,10 +37,13 @@ export class OpponentNotesComponent implements OnInit {
     console.log("opponent", this.opponent);
     console.log("opponent", this.body);
 
+    
     this.addOpponentNoteForm = this.formBuilder.group({
       body: this.body,
       opponentId: this.opponent._id,
     });
+
+    this.getOpponentNotes();
   }
 
   getOpponentNotes() {
