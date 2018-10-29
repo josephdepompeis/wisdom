@@ -4,7 +4,6 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { Opponent } from '../shared/models/opponent.model';
 import { OpponentService } from '../services/opponent.service';
 import { AuthService } from '../services/auth.service';
-// import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-opponents',
@@ -15,30 +14,26 @@ export class OpponentsComponent implements OnInit {
 
     opponent = new Opponent();
     opponents: Opponent[] = [];
-    isLoading = true;
-    isEditing = false;
-    isSelected = false;
-    selectedOpponent;
-    opponentNoteFlag = false;
-    targetOpponentForNote;
-    // oppenentNote =
-    // user: User;
-
+    isLoading: boolean = true;
+    isEditing: boolean = false;
+    isSelected: boolean = false;
+    selectedOpponent: Opponent;
+    opponentNoteFlag: boolean;
     addOpponentForm: FormGroup;
+    displayOpponentForm:boolean;
+
     name = new FormControl('', Validators.required);
     age = new FormControl('', Validators.required);
     weight = new FormControl('', Validators.required);
 
     constructor(
-                private opponentService: OpponentService,
-                private formBuilder: FormBuilder,
-                public toast: ToastComponent,
-                private auth: AuthService,
-                ) { }
-
+      private opponentService: OpponentService,
+      private formBuilder: FormBuilder,
+      public toast: ToastComponent,
+      private auth: AuthService,
+  ) { }
+  
   ngOnInit() {
-      console.log("this.auth.currentUser", this.auth.currentUser);
-
     this.getOpponents();
     this.addOpponentForm = this.formBuilder.group({
       name: this.name,
@@ -73,22 +68,12 @@ export class OpponentsComponent implements OnInit {
   }
 
   newOpponentNote(opponent: Opponent) {
-    // this.opponentNoteFlag = true;
-    // this.targetOpponentForNote = opponent;
-    // this.opponent = opponent;
+    this.selectOpponent(opponent);
+    //this is redundent and probably will be re-thought.
   }
 
   selectOpponent(opponent: Opponent) {
-
-    // isSelected = true;
     this.selectedOpponent = opponent;
-    console.log("this.selectedOpponent", this.selectedOpponent);
-    //
-    // this.opponentService.getOpponents(this.auth.currentUser).subscribe(
-    //   data => this.opponents = data,
-    //   error => console.log(error),
-    //   () => this.isLoading = false
-    // );
   }
 
   deselectOpponent(opponent: Opponent) {
@@ -96,7 +81,14 @@ export class OpponentsComponent implements OnInit {
     console.log("this.selectedOpponent", this.selectedOpponent);
   }
 
+  displayAddNewOpponentForm() {
+    this.displayOpponentForm = true;
+  }
 
+  hideAddNewOpponentForm() {
+    this.displayOpponentForm = false;
+    this.addOpponentForm.reset();
+  }
 
   cancelEditing() {
     this.isEditing = false;

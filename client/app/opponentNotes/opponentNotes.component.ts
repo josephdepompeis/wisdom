@@ -22,8 +22,6 @@ export class OpponentNotesComponent implements OnInit {
 
     addOpponentNoteForm: FormGroup;
     body = new FormControl('', Validators.required);
-    // age = new FormControl('', Validators.required);
-    // weight = new FormControl('', Validators.required);
 
     constructor(
                 private opponentNoteService: OpponentNoteService,

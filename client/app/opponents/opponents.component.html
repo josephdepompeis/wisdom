@@ -1,8 +1,8 @@
 <app-loading [condition]="isLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
-
 <div class="card mb-3" *ngIf="!isLoading">
-  <h4 class="card-header">Current opponents ({{opponents.length}})</h4>
+  <h4 class="card-header">Current opponents ({{opponents.length}})
+  </h4>
   <div class="card-body">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -74,21 +74,16 @@
         </tr>
       </tbody>
     </table>
+    <button *ngIf="!displayOpponentForm" class="btn btn-sm btn-primary ml-1" (click)="displayAddNewOpponentForm()">
+      <i class="fa fa-plus"></i> Add New
+    </button>
+    <button  *ngIf="displayOpponentForm" class="btn btn-sm btn-primary ml-1" (click)="hideAddNewOpponentForm()">
+      <i class="fa fa-minus"></i> Hide Form
+    </button>
+
   </div>
 </div>
-// should put logic that is similar to isEditing, then checks if the one being edited is the same as. if so add another row!!
-
-
-
-
-
-<div *ngIf="selectedOpponent">
-  <app-opponent-notes [opponent]="selectedOpponent"></app-opponent-notes>
-</div>
-
-
-
-<div class="card" *ngIf="!isEditing">
+<div class="card" *ngIf="displayOpponentForm">
   <h4 class="card-header">Add new opponent</h4>
   <div class="card-body">
     <form class="form-inline" [formGroup]="addOpponentForm" (ngSubmit)="addOpponent()">
@@ -103,4 +98,7 @@
       </button>
     </form>
   </div>
+</div>
+<div *ngIf="selectedOpponent" (ngModelChange)="doSomething($event)">
+  <app-opponent-notes [opponent]="selectedOpponent"></app-opponent-notes>
 </div>

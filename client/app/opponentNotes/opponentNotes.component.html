@@ -1,12 +1,7 @@
 <app-loading [condition]="isLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
-
-
-
-
-
-<div class="card mb-3" *ngIf="!isLoading">
-  <h4 class="card-header">Current opponents ({{opponentNotes.length}})</h4>
+<div class="card mb-3" *ngIf="!isopponentNotesLoading">
+  <h4 class="card-header">{{opponent.name}}'s Notes ({{opponentNotes.length}})</h4>
   <div class="card-body">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -24,57 +19,17 @@
         <tr *ngFor="let opponentNote of opponentNotes">
           <td>{{opponentNote.body}}</td>
           <td>{{opponentNote.opponentId}}</td>
-          <!-- <td>
-            <button  *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
-              <i class="fa fa-pencil"></i> Select
-            </button>
-            <button  *ngIf="selectedOpponent === opponent" class="btn btn-sm btn-secondary ml-1" (click)="deselectOpponent(opponent)">
-              <i class="fa fa-pencil"></i> Deselect
-            </button>
-            <button class="btn btn-sm btn-primary ml-1" (click)="enableEditing(opponent)">
-              <i class="fa fa-pencil"></i> Edit
-            </button>
-            <button class="btn btn-sm btn-danger ml-1" (click)="deleteOpponent(opponent)">
-              <i class="fa fa-trash"></i> Delete
-            </button>
-          </td>
-          <td>
-            <button class="btn btn-sm btn-secondary ml-1" (click)="newOpponentNote(opponent)">
-              <i class="fa fa-pencil"></i> New
-            </button>
-            <button class="btn btn-sm btn-success ml-1" (click)="deleteOpponent(opponent)">
-              <i class="fa fa-eye"></i> View
-            </button>
-          </td> -->
         </tr>
       </tbody>
-
-
-
-
-
-<div class="card">
-  <h4 class="card-header">{{opponent.name}}'s notes</h4>
-  <div class="card-body">
-
-
-
+    </table>
   </div>
 </div>
-
-
-
 
 <div class="card">
   <h4 class="card-header">Add New Opponent Note For {{opponent.name}}</h4>
   <div class="card-body">
     <form class="form-inline" [formGroup]="addOpponentNoteForm" (ngSubmit)="addOpponentNote()">
-      <input class="form-control mr-2" type="text" name="body"
-             formControlName="body" placeholder="Body">
-      <!-- <input class="form-control mr-2" type="number" name="age"
-             formControlName="age" placeholder="Age" min="0">
-      <input class="form-control mr-2" type="number" name="weight"
-             formControlName="weight" placeholder="Weight" step="any" min="0"> -->
+      <input class="form-control mr-2" type="text" name="body" formControlName="body" placeholder="Body">
       <button class="btn btn-primary" type="submit" [disabled]="!addOpponentNoteForm.valid">
         <i class="fa fa-plus"></i> Add
       </button>
