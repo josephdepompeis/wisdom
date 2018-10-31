@@ -22,10 +22,16 @@
       </tbody>
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let opponent of opponents">
+
+
+
           <td>{{opponent.name}}</td>
           <td>{{opponent.age}}</td>
           <td>{{opponent.weight}}</td>
           <td>{{opponent.userId}}</td>
+
+
+
           <td>
             <button  *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
               <i class="fa fa-pencil"></i> Select
@@ -40,20 +46,27 @@
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
+
+
           <td>
             <button class="btn btn-sm btn-secondary ml-1" (click)="newOpponentNote(opponent)">
               <i class="fa fa-pencil"></i> New
             </button>
-            <button class="btn btn-sm btn-success ml-1" (click)="deleteOpponent(opponent)">
+            <!-- <button class="btn btn-sm btn-success ml-1" (click)="deleteOpponent(opponent)">
               <i class="fa fa-eye"></i> View
-            </button>
+            </button> -->
           </td>
+
+
+
+
+
         </tr>
       </tbody>
 
       <tbody *ngIf="isEditing">
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             <form class="form-inline" #form="ngForm" (ngSubmit)="editOpponent(opponent)">
               <input class="form-control mr-2" type="text" name="name"
                      [(ngModel)]="opponent.name" placeholder="Name" required>

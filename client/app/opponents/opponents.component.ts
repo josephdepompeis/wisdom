@@ -32,9 +32,14 @@ export class OpponentsComponent implements OnInit {
       public toast: ToastComponent,
       private auth: AuthService,
   ) { }
-  
+
   ngOnInit() {
     this.getOpponents();
+    this.setFormDefualts();
+  }
+
+
+  setFormDefualts() {
     this.addOpponentForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
@@ -56,6 +61,7 @@ export class OpponentsComponent implements OnInit {
       res => {
         this.opponents.push(res);
         this.addOpponentForm.reset();
+        this.setFormDefualts();
         this.toast.setMessage('item added successfully.', 'success');
       },
       error => console.log(error)
@@ -88,6 +94,8 @@ export class OpponentsComponent implements OnInit {
   hideAddNewOpponentForm() {
     this.displayOpponentForm = false;
     this.addOpponentForm.reset();
+    this.setFormDefualts();
+
   }
 
   cancelEditing() {

@@ -42,7 +42,6 @@ export class OpponentNotesComponent implements OnInit {
     this.setFormDefualts();
   }
 
-
   setFormDefualts() {
     this.addOpponentNoteForm = this.formBuilder.group({
       body: this.body,
