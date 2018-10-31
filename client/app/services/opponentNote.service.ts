@@ -18,9 +18,14 @@ export class OpponentNoteService {
   //   return this.http.get<number>('/api/opponents/count');
   // }
 
-  addOpponentNote(oppenentNote: OpponentNote): Observable<OpponentNote> {
-    return this.http.post<OpponentNote>('/api/opponentNote', oppenentNote);
+  addOpponentNote(opponentNote: OpponentNote): Observable<OpponentNote> {
+    return this.http.post<OpponentNote>('/api/opponentNote', opponentNote);
   }
+
+  deleteOpponentNote(opponentNote: OpponentNote): Observable<any> {
+    return this.http.delete(`/api/opponentNote/${opponentNote._id}`, { responseType: 'text' });
+  }
+
   //
   // getOpponent(opponent: Opponent): Observable<Opponent> {
   //   return this.http.get<Opponent>(`/api/opponent/${opponent._id}`);

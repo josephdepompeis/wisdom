@@ -22,7 +22,7 @@ export class OpponentNotesComponent implements OnInit {
 
     addOpponentNoteForm: FormGroup;
     body = new FormControl('', Validators.required);
- 
+
     constructor(
                 private opponentNoteService: OpponentNoteService,
                 private formBuilder: FormBuilder,
@@ -38,13 +38,16 @@ export class OpponentNotesComponent implements OnInit {
   ngOnInit() {
     console.log("opponent", this.opponent);
     console.log("opponent", this.body);
+    this.getOpponentNotes();
+    this.setFormDefualts();
+  }
 
+
+  setFormDefualts() {
     this.addOpponentNoteForm = this.formBuilder.group({
       body: this.body,
       opponentId: this.opponent._id,
     });
-
-    this.getOpponentNotes();
   }
 
   getOpponentNotes() {
@@ -65,15 +68,30 @@ export class OpponentNotesComponent implements OnInit {
   addOpponentNote() {
     this.opponentNoteService.addOpponentNote(this.addOpponentNoteForm.value).subscribe(
       res => {
-        // this is shortcut, we could call the get notes list again. not sure which is better atm.
-        this.opponentNotes.push(res);
+        this.getOpponentNotes();
+
+        // // this is shortcut, we could call the get notes list again. not sure which is better atm.
+        // this.opponentNotes.push(res);
 
         this.addOpponentNoteForm.reset();
+        this.setFormDefualts();
         this.toast.setMessage('item added successfully.', 'success');
       },
       error => console.log(error)
     );
   }
+
+  deleteOpponentNote(opponentNote: OpponentNote) {
+    this.opponentNoteService.deleteOpponentNote(opponentNote).subscribe(
+      res => {
+        this.getOpponentNotes();
+        this.toast.setMessage('item deleted successfully.', 'success');
+      },
+      error => console.log(error)
+    );
+  }
+
+
   //
   // enableEditing(opponent: Opponent) {
   //   this.isEditing = true;

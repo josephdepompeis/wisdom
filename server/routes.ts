@@ -35,8 +35,8 @@ export default function setRoutes(app) {
   // router.route('/opponents/count').get(opponentCtrl.count);
   router.route('/opponentNote').post(opponentNotesCtrl.insert);
   // router.route('/opponent/:id').get(opponentCtrl.get);
-  router.route('/opponentNotes/:id').put(opponentCtrl.update);
-  router.route('/opponentNotes/:id').delete(opponentCtrl.delete);
+  // router.route('/opponentNote/:id').put(opponentCtrl.update);
+  router.route('/opponentNote/:id').delete(opponentNotesCtrl.delete);
 
   // Cats
   router.route('/cats').get(catCtrl.getAll);

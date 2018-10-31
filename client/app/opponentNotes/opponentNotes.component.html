@@ -8,6 +8,7 @@
         <tr>
           <th scope="col">body</th>
           <th scope="col">opponentId</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody *ngIf="opponentNotes.length === 0">
@@ -19,6 +20,11 @@
         <tr *ngFor="let opponentNote of opponentNotes">
           <td>{{opponentNote.body}}</td>
           <td>{{opponentNote.opponentId}}</td>
+          <td>
+            <button class="btn btn-danger" type="Delete" (click)="deleteOpponentNote(opponentNote)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
