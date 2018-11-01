@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges,  SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { OpponentNote } from '../shared/models/opponentNote.model';
@@ -12,7 +12,7 @@ import { Opponent } from '../shared/models/opponent.model';
   templateUrl: './opponentNotes.component.html',
   styleUrls: ['./opponentNotes.component.css']
 })
-export class OpponentNotesComponent implements OnInit {
+export class OpponentNotesComponent implements OnInit, OnChanges {
     @Input() opponent: Opponent;
     opponentNote = new OpponentNote();
     opponentNotes: OpponentNote[] = [];
@@ -30,7 +30,7 @@ export class OpponentNotesComponent implements OnInit {
                 // private auth: AuthService,
                 ) { }
 
-  ngOnChanges(opponent: Opponent) {
+  ngOnChanges(opponent:  SimpleChanges) {
     console.log(opponent);
     console.log("change has occurered");
     this.setFormDefualts();

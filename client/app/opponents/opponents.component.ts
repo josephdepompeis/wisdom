@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Angular } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Opponent } from '../shared/models/opponent.model';
 import { OpponentService } from '../services/opponent.service';
 import { AuthService } from '../services/auth.service';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-opponents',
@@ -15,9 +16,7 @@ export class OpponentsComponent implements OnInit {
     opponent = new Opponent();
     opponents: Opponent[] = [];
     isLoading: boolean = true;
-    // isEditing: boolean = false;
     opponentBeingEdited: Opponent;
-    isSelected: boolean = false;
     selectedOpponent: Opponent;
     opponentNoteFlag: boolean;
     addOpponentForm: FormGroup;
@@ -69,10 +68,30 @@ export class OpponentsComponent implements OnInit {
     );
   }
 
+  isOpponentBeingEdited(opponent: Opponent):boolean {
+    if (this.opponentBeingEdited) {
+      if (this.opponentBeingEdited._id === opponent._id) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  isOpponentSelected(opponent: Opponent):boolean {
+    if (this.selectedOpponent) {
+      if (this.selectedOpponent._id === opponent._id) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
+
+
   enableEditing(opponent: Opponent) {
-    // this.isEditing = true;
-    // this.opponent = opponent;
-    this.opponentBeingEdited = opponent;
+    this.opponentBeingEdited = _.clone(opponent);
   }
 
   newOpponentNote(opponent: Opponent) {
@@ -101,21 +120,20 @@ export class OpponentsComponent implements OnInit {
   }
 
   cancelEditing() {
-    // this.isEditing = false;
     this.opponentBeingEdited = null;
-    // this.opponent = new Opponent();
     this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the opponents to reset the editing
     this.getOpponents();
   }
 
   editOpponent(opponent: Opponent) {
     this.opponentService.editOpponent(opponent).subscribe(
       () => {
-        // this.isEditing = false;
         this.opponentBeingEdited = null;
-        // this.opponent = opponent;
+        if (this.isOpponentSelected(opponent)) {
+          this.selectedOpponent = opponent;
+        }
         this.toast.setMessage('item eddddited successfully.', 'success');
+        this.getOpponents();
       },
       error => console.log(error)
     );
