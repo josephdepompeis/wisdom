@@ -31,7 +31,10 @@ export class OpponentNotesComponent implements OnInit {
                 ) { }
 
   ngOnChanges(opponent: Opponent) {
+    console.log(opponent);
     console.log("change has occurered");
+    this.setFormDefualts();
+
     this.getOpponentNotes();
   }
 

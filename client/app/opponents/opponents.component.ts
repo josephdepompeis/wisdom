@@ -15,7 +15,8 @@ export class OpponentsComponent implements OnInit {
     opponent = new Opponent();
     opponents: Opponent[] = [];
     isLoading: boolean = true;
-    isEditing: boolean = false;
+    // isEditing: boolean = false;
+    opponentBeingEdited: Opponent;
     isSelected: boolean = false;
     selectedOpponent: Opponent;
     opponentNoteFlag: boolean;
@@ -69,8 +70,9 @@ export class OpponentsComponent implements OnInit {
   }
 
   enableEditing(opponent: Opponent) {
-    this.isEditing = true;
-    this.opponent = opponent;
+    // this.isEditing = true;
+    // this.opponent = opponent;
+    this.opponentBeingEdited = opponent;
   }
 
   newOpponentNote(opponent: Opponent) {
@@ -99,8 +101,9 @@ export class OpponentsComponent implements OnInit {
   }
 
   cancelEditing() {
-    this.isEditing = false;
-    this.opponent = new Opponent();
+    // this.isEditing = false;
+    this.opponentBeingEdited = null;
+    // this.opponent = new Opponent();
     this.toast.setMessage('item editing cancelled.', 'warning');
     // reload the opponents to reset the editing
     this.getOpponents();
@@ -109,9 +112,10 @@ export class OpponentsComponent implements OnInit {
   editOpponent(opponent: Opponent) {
     this.opponentService.editOpponent(opponent).subscribe(
       () => {
-        this.isEditing = false;
-        this.opponent = opponent;
-        this.toast.setMessage('item edited successfully.', 'success');
+        // this.isEditing = false;
+        this.opponentBeingEdited = null;
+        // this.opponent = opponent;
+        this.toast.setMessage('item eddddited successfully.', 'success');
       },
       error => console.log(error)
     );
@@ -121,8 +125,16 @@ export class OpponentsComponent implements OnInit {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.opponentService.deleteOpponent(opponent).subscribe(
         () => {
-          const pos = this.opponents.map(elem => elem._id).indexOf(opponent._id);
-          this.opponents.splice(pos, 1);
+          this.getOpponents();
+          // const pos = this.opponents.map(elem => elem._id).indexOf(opponent._id);
+          // this.opponents.splice(pos, 1);
+
+          if (this.selectedOpponent === opponent) {
+            this.selectedOpponent = null;
+          }
+
+
+
           this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error)
