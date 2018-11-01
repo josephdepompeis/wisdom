@@ -3,52 +3,55 @@
 <div class="card mb-3" *ngIf="!isLoading">
 	<h4 class="card-header">Current opponents ({{opponents.length}})
 	</h4>
-	<div class="card-body">
-		<div *ngFor="let opponent of opponents" class="card" style="width: 18rem;">
-			<!-- <div class="card-body"> -->
-			<div *ngIf="!isOpponentBeingEdited(opponent)">
-				<h5 class="card-title">{{opponent.name}}</h5>
-				<p class="card-text">{{opponent.age}}</p>
-				<p class="card-text">{{opponent.weight}}</p>
-				<p class="card-text">{{opponent.userId}}</p>
-				<p class="card-text">{{opponent.userId}}</p>
 
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<button *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
-						<i class="fa fa-pencil"></i> Select
-					</button>
-					<button *ngIf="selectedOpponent === opponent" class="btn btn-sm btn-secondary ml-1" (click)="deselectOpponent(opponent)">
-						<i class="fa fa-pencil"></i> Deselect
-					</button>
-					<button class="btn btn-sm btn-primary ml-1" (click)="enableEditing(opponent)">
-						<i class="fa fa-pencil"></i> Edit
-					</button>
-					<button class="btn btn-sm btn-danger ml-1" (click)="deleteOpponent(opponent)">
-						<i class="fa fa-trash"></i> Delete
-					</button>
-				</div>
-			</div>
-			<div *ngIf="isOpponentBeingEdited(opponent)">
-				<form class="form-inline" #form="ngForm" (ngSubmit)="editOpponent(opponentBeingEdited)">
-					<h5 class="card-title">Name:
-						<input class="form-control mr-2" type="text" name="name" [(ngModel)]="opponentBeingEdited.name" placeholder="Name" required>
-					</h5>
-					<p class="card-text">Age:<input class="form-control mr-2" type="number" name="age" [(ngModel)]="opponentBeingEdited.age" placeholder="Age" min="0" required></p>
-					<p class="card-text">Weight:<input class="form-control mr-2" type="number" name="weight" [(ngModel)]="opponentBeingEdited.weight" placeholder="Weight" step="any" min="0" required></p>
-					<p class="card-text">UserId:<input class="form-control mr-2" type="string" name="userId" [(ngModel)]="opponentBeingEdited.userId" placeholder="userId" step="any" min="0" [disabled]="true"></p>
+	<div class="card-body">
+		<div class="card-deck">
+			<div *ngFor="let opponent of opponents" class="card" style="width: 18rem;">
+				<div *ngIf="!isOpponentBeingEdited(opponent)">
+					<h5 class="card-title">{{opponent.name}}</h5>
+					<p class="card-text">{{opponent.age}}</p>
+					<p class="card-text">{{opponent.weight}}</p>
+					<p class="card-text">{{opponent.userId}}</p>
+					<p class="card-text">{{opponent.userId}}</p>
+
 					<div class="btn-group" role="group" aria-label="Basic example">
-						<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
-							<i class="fa fa-floppy-o"></i> Save
+						<button *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
+							<i class="fa fa-pencil"></i> Select
 						</button>
-						<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
-							<i class="fa fa-times"></i> Cancel
+						<button *ngIf="selectedOpponent === opponent" class="btn btn-sm btn-secondary ml-1" (click)="deselectOpponent(opponent)">
+							<i class="fa fa-pencil"></i> Deselect
+						</button>
+						<button class="btn btn-sm btn-primary ml-1" (click)="enableEditing(opponent)">
+							<i class="fa fa-pencil"></i> Edit
+						</button>
+						<button class="btn btn-sm btn-danger ml-1" (click)="deleteOpponent(opponent)">
+							<i class="fa fa-trash"></i> Delete
 						</button>
 					</div>
-				</form>
+				</div>
+				<!-- this is the edit state -->
+				<div *ngIf="isOpponentBeingEdited(opponent)">
+					<form class="form-inline" #form="ngForm" (ngSubmit)="editOpponent(opponentBeingEdited)">
+						<h5 class="card-title">Name:
+							<input class="form-control mr-2" type="text" name="name" [(ngModel)]="opponentBeingEdited.name" placeholder="Name" required>
+						</h5>
+						<p class="card-text">Age:<input class="form-control mr-2" type="number" name="age" [(ngModel)]="opponentBeingEdited.age" placeholder="Age" min="0" required></p>
+						<p class="card-text">Weight:<input class="form-control mr-2" type="number" name="weight" [(ngModel)]="opponentBeingEdited.weight" placeholder="Weight" step="any" min="0" required></p>
+						<p class="card-text">UserId:<input class="form-control mr-2" type="string" name="userId" [(ngModel)]="opponentBeingEdited.userId" placeholder="userId" step="any" min="0" [disabled]="true"></p>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+								<i class="fa fa-floppy-o"></i> Save
+							</button>
+							<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
+								<i class="fa fa-times"></i> Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+				<br>
 			</div>
 		</div>
-	</div>
-
+</div>
 
 
 	<button *ngIf="!displayOpponentForm" class="btn btn-sm btn-primary ml-1" (click)="displayAddNewOpponentForm()">

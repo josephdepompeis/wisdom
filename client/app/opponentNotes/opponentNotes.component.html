@@ -1,6 +1,6 @@
-<app-loading [condition]="isLoading"></app-loading>
+<app-loading [condition]="isOpponentNotesLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
-<div class="card mb-3" *ngIf="!isopponentNotesLoading">
+<div class="card mb-3" *ngIf="!isOpponentNotesLoading">
   <h4 class="card-header">{{opponent.name}}'s Notes ({{opponentNotes.length}})</h4>
   <div class="card-body">
     <table class="table table-bordered">

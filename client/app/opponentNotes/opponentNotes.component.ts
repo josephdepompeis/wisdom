@@ -16,7 +16,7 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
     @Input() opponent: Opponent;
     opponentNote = new OpponentNote();
     opponentNotes: OpponentNote[] = [];
-    isopponentNotesLoading = true;
+    isOpponentNotesLoading = true;
     isEditing = false;
     user: User;
 
@@ -31,10 +31,7 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
                 ) { }
 
   ngOnChanges(opponent:  SimpleChanges) {
-    console.log(opponent);
-    console.log("change has occurered");
     this.setFormDefualts();
-
     this.getOpponentNotes();
   }
 
@@ -53,23 +50,25 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
   }
 
   getOpponentNotes() {
-    this.isopponentNotesLoading = true;
+    this.isOpponentNotesLoading = true;
     this.opponentNoteService.getOpponentNotes(this.opponent).subscribe(
       res => {
         console.log("res", res);
-        this.isopponentNotesLoading = false;
+        this.isOpponentNotesLoading = false;
         this.opponentNotes = res
       },
       error => {
-        this.isopponentNotesLoading = false;
+        this.isOpponentNotesLoading = false;
         console.log(error);
       }
     );
   }
 
   addOpponentNote() {
+    this.isOpponentNotesLoading = true;
     this.opponentNoteService.addOpponentNote(this.addOpponentNoteForm.value).subscribe(
       res => {
+
         this.getOpponentNotes();
 
         // // this is shortcut, we could call the get notes list again. not sure which is better atm.
@@ -79,17 +78,24 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
         this.setFormDefualts();
         this.toast.setMessage('item added successfully.', 'success');
       },
-      error => console.log(error)
+      error => {
+        this.isOpponentNotesLoading = true;
+        console.log(error)
+      }
     );
   }
 
   deleteOpponentNote(opponentNote: OpponentNote) {
+    this.isOpponentNotesLoading = true;
     this.opponentNoteService.deleteOpponentNote(opponentNote).subscribe(
       res => {
         this.getOpponentNotes();
         this.toast.setMessage('item deleted successfully.', 'success');
       },
-      error => console.log(error)
+      error => {
+        this.isOpponentNotesLoading = true;
+        console.log(error)
+      }
     );
   }
 
