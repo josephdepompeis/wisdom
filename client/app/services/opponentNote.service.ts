@@ -8,35 +8,21 @@ import { OpponentNote } from '../shared/models/opponentNote.model';
 @Injectable()
 export class OpponentNoteService {
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-  getOpponentNotes(opponent: Opponent): Observable<OpponentNote[]> {
-    return this.http.get<OpponentNote[]>(`/api/opponentNotes/${opponent._id}`);
-  }
-  //
-  // countOpponents(): Observable<number> {
-  //   return this.http.get<number>('/api/opponents/count');
-  // }
+	getOpponentNotes(opponent: Opponent): Observable<OpponentNote[]> {
+		return this.http.get<OpponentNote[]>(`/api/opponentNotes/${opponent._id}`);
+	}
 
-  addOpponentNote(opponentNote: OpponentNote): Observable<OpponentNote> {
-    return this.http.post<OpponentNote>('/api/opponentNote', opponentNote);
-  }
+	addOpponentNote(opponentNote: OpponentNote): Observable<OpponentNote> {
+		return this.http.post<OpponentNote>('/api/opponentNote', opponentNote);
+	}
 
-  deleteOpponentNote(opponentNote: OpponentNote): Observable<any> {
-    return this.http.delete(`/api/opponentNote/${opponentNote._id}`, { responseType: 'text' });
-  }
+	deleteOpponentNote(opponentNote: OpponentNote): Observable<any> {
+		return this.http.delete(`/api/opponentNote/${opponentNote._id}`, { responseType: 'text' });
+	}
 
-  //
-  // getOpponent(opponent: Opponent): Observable<Opponent> {
-  //   return this.http.get<Opponent>(`/api/opponent/${opponent._id}`);
-  // }
-  //
-  // editOpponent(opponent: Opponent): Observable<any> {
-  //   return this.http.put(`/api/opponent/${opponent._id}`, opponent, { responseType: 'text' });
-  // }
-  //
-  // deleteOpponent(opponent: Opponent): Observable<any> {
-  //   return this.http.delete(`/api/opponent/${opponent._id}`, { responseType: 'text' });
-  // }
-
+	editOpponentNote(opponentNote: OpponentNote): Observable<any> {
+		return this.http.put(`/api/opponentNote/${opponentNote._id}`, opponentNote, { responseType: 'text' });
+	}
 }

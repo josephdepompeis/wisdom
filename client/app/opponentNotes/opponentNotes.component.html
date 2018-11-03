@@ -1,115 +1,51 @@
 <app-loading [condition]="isOpponentNotesLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
 <div class="card mb-3" *ngIf="!isOpponentNotesLoading">
-  <h4 class="card-header">{{opponent.name}}'s Notes ({{opponentNotes.length}})</h4>
-  <div class="card-body">
-
-    <!-- <div class="card-body"> -->
-  		<div class="card-deck">
-
-  			<div *ngFor="let opponentNote of opponentNotes" class="card" style="width: 18rem;">
-  				<div *ngIf="!isOpponentNoteBeingEdited(opponentNote)">
-  					<h5 class="card-title">{{opponentNote.body}}</h5>
-  					<p class="card-text">{{opponentNote.opponentId}}</p>
-  					<div class="btn-group" role="group">
-              <button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="enableEditing(opponentNote)">
-                <i class="fa fa-trash"></i> Edit
-              </button>
-              <button class="btn btn-sm btn-danger ml-1" type="Delete" (click)="deleteOpponentNote(opponentNote)">
-                <i class="fa fa-trash"></i> Delete
-              </button>
-  					</div>
-  				</div>
-  				<!-- this is the edit state -->
-  				<div *ngIf="isOpponentNoteBeingEdited(opponentNote)">
-  					<form class="form-inline" #form="ngForm" (ngSubmit)="editOpponentNote(opponentNoteBeingEdited)">
-  						<h5 class="card-title">Body:
-  							<input class="form-control mr-2" type="text" name="body" [(ngModel)]="opponentNoteBeingEdited.body" placeholder="Body" required>
-  						</h5>
-  						<div class="btn-group" role="group" aria-label="Basic example">
-  							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
-  								<i class="fa fa-floppy-o"></i> Save
-  							</button>
-  							<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
-  								<i class="fa fa-times"></i> Cancel
-  							</button>
-  						</div>
-  					</form>
-  				</div>
-  				<br>
-  			</div>
-  		</div>
-  	<!-- </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">body</th>
-          <th scope="col">opponentId</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody *ngIf="opponentNotes.length === 0">
-        <tr>
-          <td colspan="6">There are no opponent Notes in the DB. Add a new note below.</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr *ngFor="let opponentNote of opponentNotes">
-          <td>{{opponentNote.body}}</td>
-          <td>{{opponentNote.opponentId}}</td>
-          <td class="btn-group" role="group">
-            <button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="editOpponentNote(opponentNote)">
-              <i class="fa fa-trash"></i> Edit
-            </button>
-            <button class="btn btn-sm btn-danger ml-1" type="Delete" (click)="deleteOpponentNote(opponentNote)">
-              <i class="fa fa-trash"></i> Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+	<h4 class="card-header">{{opponent.name}}'s Notes ({{opponentNotes.length}})</h4>
+	<div class="card-body">
+		<div class="card-deck">
+			<div *ngFor="let opponentNote of opponentNotes" class="card" style="width: 18rem;">
+				<div *ngIf="!isOpponentNoteBeingEdited(opponentNote)">
+					<h5 class="card-title">{{opponentNote.body}}</h5>
+					<p class="card-text">{{opponentNote.opponentId}}</p>
+					<div class="btn-group" role="group">
+						<button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="enableEditing(opponentNote)">
+							<i class="fa fa-trash"></i> Edit
+						</button>
+						<button class="btn btn-sm btn-danger ml-1" type="Delete" (click)="deleteOpponentNote(opponentNote)">
+							<i class="fa fa-trash"></i> Delete
+						</button>
+					</div>
+				</div>
+				<!-- this is the edit state -->
+				<div *ngIf="isOpponentNoteBeingEdited(opponentNote)">
+					<form class="form-inline" #form="ngForm" (ngSubmit)="editOpponentNote(opponentNoteBeingEdited)">
+						<h5 class="card-title">Body:
+							<input class="form-control mr-2" type="text" name="body" [(ngModel)]="opponentNoteBeingEdited.body" placeholder="Body" required>
+						</h5>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+								<i class="fa fa-floppy-o"></i> Save
+							</button>
+							<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
+								<i class="fa fa-times"></i> Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
 </div>
-
 <div class="card">
-  <h4 class="card-header">Add New Opponent Note For {{opponent.name}}</h4>
-  <div class="card-body">
-    <form class="form-inline" [formGroup]="addOpponentNoteForm" (ngSubmit)="addOpponentNote()">
-      <input class="form-control mr-2" type="text" name="body" formControlName="body" placeholder="Body">
-      <button class="btn btn-primary" type="submit" [disabled]="!addOpponentNoteForm.valid">
-        <i class="fa fa-plus"></i> Add
-      </button>
-    </form>
-  </div>
+	<h4 class="card-header">Add New Opponent Note For {{opponent.name}}</h4>
+	<div class="card-body">
+		<form class="form-inline" [formGroup]="addOpponentNoteForm" (ngSubmit)="addOpponentNote()">
+			<input class="form-control mr-2" type="text" name="body" formControlName="body" placeholder="Body">
+			<button class="btn btn-primary" type="submit" [disabled]="!addOpponentNoteForm.valid">
+				<i class="fa fa-plus"></i> Add
+			</button>
+		</form>
+	</div>
 </div>
