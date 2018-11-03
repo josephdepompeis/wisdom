@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { CharacterService } from '../services/cat.service';
+import { CharacterService } from '../services/character.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Character } from '../shared/models/character.model';
 
 @Component({
-  selector: 'app-cats',
-  templateUrl: './cats.component.html',
-  styleUrls: ['./cats.component.scss']
+  selector: 'app-characters',
+  templateUrl: './characters.component.html',
+  styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
 
@@ -18,6 +18,7 @@ export class CharactersComponent implements OnInit {
   isEditing = false;
 
   addCharacterForm: FormGroup;
+
   name = new FormControl('', Validators.required);
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);

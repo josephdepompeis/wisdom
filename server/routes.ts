@@ -3,13 +3,8 @@ import * as express from 'express';
 import OpponentCtrl from './controllers/opponent';
 import OpponentNotesCtrl from './controllers/opponentNotes';
 
-import CatCtrl from './controllers/cat';
+import CharacterCtrl from './controllers/character';
 import UserCtrl from './controllers/user';
-
-
-
-// import Cat from './models/cat';
-// import User from './models/user';
 
 export default function setRoutes(app) {
 
@@ -18,7 +13,7 @@ export default function setRoutes(app) {
   const opponentCtrl = new OpponentCtrl();
   const opponentNotesCtrl = new OpponentNotesCtrl();
 
-  const catCtrl = new CatCtrl();
+  const characterCtrl = new CharacterCtrl();
   const userCtrl = new UserCtrl();
 
   // Opponents
@@ -38,13 +33,12 @@ export default function setRoutes(app) {
   router.route('/opponentNote/:id').put(opponentNotesCtrl.update);
   router.route('/opponentNote/:id').delete(opponentNotesCtrl.delete);
 
-  // Cats
-  router.route('/cats').get(catCtrl.getAll);
-  router.route('/cats/count').get(catCtrl.count);
-  router.route('/cat').post(catCtrl.insert);
-  router.route('/cat/:id').get(catCtrl.get);
-  router.route('/cat/:id').put(catCtrl.update);
-  router.route('/cat/:id').delete(catCtrl.delete);
+  // characters
+  router.route('/characters').get(characterCtrl.getAll);
+  router.route('/character').post(characterCtrl.insert);
+  router.route('/character/:id').get(characterCtrl.get);
+  router.route('/character/:id').put(characterCtrl.update);
+  router.route('/character/:id').delete(characterCtrl.delete);
 
   // Users
   router.route('/login').post(userCtrl.login);
