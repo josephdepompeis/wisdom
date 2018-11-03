@@ -1,9 +1,9 @@
-<app-loading [condition]="isLoading"></app-loading>
+character<app-loading [condition]="isLoading"></app-loading>
 
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card mb-3" *ngIf="!isLoading">
-  <h4 class="card-header">Current cats ({{cats.length}})</h4>
+  <h4 class="card-header">Current characters ({{characters.length}})</h4>
   <div class="card-body">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -14,36 +14,36 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody *ngIf="cats.length === 0">
+      <tbody *ngIf="characters.length === 0">
         <tr>
-          <td colspan="4">There are no cats in the DB. Add a new cat below.</td>
-        </tr>  
+          <td colspan="4">There are no characters in the DB. Add a new character below.</td>
+        </tr>
       </tbody>
       <tbody *ngIf="!isEditing">
-        <tr *ngFor="let cat of cats">
-          <td>{{cat.name}}</td>
-          <td>{{cat.age}}</td>
-          <td>{{cat.weight}}</td>
+        <tr *ngFor="let character of characters">
+          <td>{{character.name}}</td>
+          <td>{{character.age}}</td>
+          <td>{{character.weight}}</td>
           <td>
-            <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)">
+            <button class="btn btn-sm btn-primary" (click)="enableEditing(character)">
               <i class="fa fa-pencil"></i> Edit
-            </button> 
-            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(cat)">
+            </button>
+            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(character)">
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
-        </tr>  
+        </tr>
       </tbody>
       <tbody *ngIf="isEditing">
         <tr>
           <td colspan="4">
-            <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)">
+            <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(character)">
               <input class="form-control mr-2" type="text" name="name"
-                     [(ngModel)]="cat.name" placeholder="Name" required>
+                     [(ngModel)]="character.name" placeholder="Name" required>
               <input class="form-control mr-2" type="number" name="age"
-                     [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+                     [(ngModel)]="character.age" placeholder="Age" min="0" required>
               <input class="form-control mr-2" type="number" name="weight"
-                     [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
+                     [(ngModel)]="character.weight" placeholder="Weight" step="any" min="0" required>
               <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
                 <i class="fa fa-floppy-o"></i> Save
               </button>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="card" *ngIf="!isEditing">
-  <h4 class="card-header">Add new cat</h4>
+  <h4 class="card-header">Add new character</h4>
   <div class="card-body">
     <form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()">
       <input class="form-control mr-2" type="text" name="name"

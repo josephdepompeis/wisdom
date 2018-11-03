@@ -1,89 +1,89 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { CatService } from '../services/cat.service';
+import { CharacterService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-import { Cat } from '../shared/models/cat.model';
+import { Character } from '../shared/models/character.model';
 
 @Component({
   selector: 'app-cats',
   templateUrl: './cats.component.html',
   styleUrls: ['./cats.component.scss']
 })
-export class CatsComponent implements OnInit {
+export class CharactersComponent implements OnInit {
 
-  cat = new Cat();
-  cats: Cat[] = [];
+  character = new Character();
+  characters: Character[] = [];
   isLoading = true;
   isEditing = false;
 
-  addCatForm: FormGroup;
+  addCharacterForm: FormGroup;
   name = new FormControl('', Validators.required);
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
 
-  constructor(private catService: CatService,
+  constructor(private characterService: CharacterService,
               private formBuilder: FormBuilder,
               public toast: ToastComponent) { }
 
   ngOnInit() {
-    this.getCats();
-    this.addCatForm = this.formBuilder.group({
+    this.getCharacters();
+    this.addCharacterForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
       weight: this.weight
     });
   }
 
-  getCats() {
-    this.catService.getCats().subscribe(
-      data => this.cats = data,
+  getCharacters() {
+    this.characterService.getCharacters().subscribe(
+      data => this.characters = data,
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
-  addCat() {
-    this.catService.addCat(this.addCatForm.value).subscribe(
+  addCharacter() {
+    this.characterService.addCharacter(this.addCharacterForm.value).subscribe(
       res => {
-        this.cats.push(res);
-        this.addCatForm.reset();
+        this.characters.push(res);
+        this.addCharacterForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
-  enableEditing(cat: Cat) {
+  enableEditing(character: Character) {
     this.isEditing = true;
-    this.cat = cat;
+    this.character = character;
   }
 
   cancelEditing() {
     this.isEditing = false;
-    this.cat = new Cat();
+    this.character = new Character();
     this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the cats to reset the editing
-    this.getCats();
+    // reload the characters to reset the editing
+    this.getCharacters();
   }
 
-  editCat(cat: Cat) {
-    this.catService.editCat(cat).subscribe(
+  editCharacter(character: Character) {
+    this.characterService.editCharacter(character).subscribe(
       () => {
         this.isEditing = false;
-        this.cat = cat;
+        this.character = character;
         this.toast.setMessage('item edited successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
-  deleteCat(cat: Cat) {
+  deleteCharacter(character: Character) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe(
+      this.characterService.deleteCharacter(character).subscribe(
         () => {
-          const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
-          this.cats.splice(pos, 1);
+          const pos = this.characters.map(elem => elem._id).indexOf(character._id);
+          this.characters.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error)

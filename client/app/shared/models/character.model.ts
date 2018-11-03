@@ -1,4 +1,4 @@
-export class Cat {
+export class Character {
   _id?: string;
   name?: string;
   weight?: number;

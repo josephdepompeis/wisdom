@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { Cat } from '../shared/models/cat.model';
+import { Character } from '../shared/models/character.model';
 
 @Injectable()
-export class CatService {
+export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCats(): Observable<Cat[]> {
-    return this.http.get<Cat[]>('/api/cats');
+  getCharacters(): Observable<Character[]> {
+    return this.http.get<Character[]>('/api/cats');
   }
 
-  countCats(): Observable<number> {
+  countCharacters(): Observable<number> {
     return this.http.get<number>('/api/cats/count');
   }
 
-  addCat(cat: Cat): Observable<Cat> {
-    return this.http.post<Cat>('/api/cat', cat);
+  addCharacter(cat: Character): Observable<Character> {
+    return this.http.post<Character>('/api/cat', cat);
   }
 
-  getCat(cat: Cat): Observable<Cat> {
-    return this.http.get<Cat>(`/api/cat/${cat._id}`);
+  getCharacter(cat: Character): Observable<Character> {
+    return this.http.get<Character>(`/api/cat/${cat._id}`);
   }
 
-  editCat(cat: Cat): Observable<any> {
+  editCharacter(cat: Character): Observable<any> {
     return this.http.put(`/api/cat/${cat._id}`, cat, { responseType: 'text' });
   }
 
-  deleteCat(cat: Cat): Observable<any> {
+  deleteCharacter(cat: Character): Observable<any> {
     return this.http.delete(`/api/cat/${cat._id}`, { responseType: 'text' });
   }
 
