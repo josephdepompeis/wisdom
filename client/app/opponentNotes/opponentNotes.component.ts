@@ -15,12 +15,13 @@ import { Opponent } from '../shared/models/opponent.model';
 export class OpponentNotesComponent implements OnInit, OnChanges {
     @Input() opponent: Opponent;
     opponentNote = new OpponentNote();
+    opponentNoteBeingEdited: OpponentNote;
     opponentNotes: OpponentNote[] = [];
     isOpponentNotesLoading = true;
     isEditing = false;
     user: User;
-
     addOpponentNoteForm: FormGroup;
+
     body = new FormControl('', Validators.required);
 
     constructor(
@@ -31,6 +32,10 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
                 ) { }
 
   ngOnChanges(opponent:  SimpleChanges) {
+
+    console.log(" on changes opponent", opponent);
+
+    console.log(" on changes opponent");
     this.setFormDefualts();
     this.getOpponentNotes();
   }
@@ -99,12 +104,40 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
     );
   }
 
+  // editOpponentNote(opponentNote: OpponentNote) {
+  //   this.isOpponentNotesLoading = true;
+  //
+  //
+  //
+  //
+  //   this.opponentNoteService.deleteOpponentNote(opponentNote).subscribe(
+  //     res => {
+  //       this.getOpponentNotes();
+  //       this.toast.setMessage('item deleted successfully.', 'success');
+  //     },
+  //     error => {
+  //       this.isOpponentNotesLoading = true;
+  //       console.log(error)
+  //     }
+  //   );
+  // }
 
   //
-  // enableEditing(opponent: Opponent) {
-  //   this.isEditing = true;
-  //   this.opponent = opponent;
-  // }
+  enableEditing(opponentNote: OpponentNote) {
+    // this.isEditing = true;
+    this.opponentNoteBeingEdited = opponentNote;
+  }
+
+  isOpponentNoteBeingEdited(opponentNote: OpponentNote) {
+    if (this.opponentNoteBeingEdited) {
+      if (this.opponentNoteBeingEdited._id === opponentNote._id) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
   //
   // cancelEditing() {
   //   this.isEditing = false;

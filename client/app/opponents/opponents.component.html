@@ -14,7 +14,7 @@
 					<p class="card-text">{{opponent.userId}}</p>
 					<p class="card-text">{{opponent.userId}}</p>
 
-					<div class="btn-group" role="group" aria-label="Basic example">
+					<div class="btn-group" role="group">
 						<button *ngIf="selectedOpponent != opponent" class="btn btn-sm btn-primary ml-1" (click)="selectOpponent(opponent)">
 							<i class="fa fa-pencil"></i> Select
 						</button>
@@ -51,7 +51,7 @@
 				<br>
 			</div>
 		</div>
-</div>
+	</div>
 
 
 	<button *ngIf="!displayOpponentForm" class="btn btn-sm btn-primary ml-1" (click)="displayAddNewOpponentForm()">

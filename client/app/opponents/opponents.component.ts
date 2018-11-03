@@ -1,4 +1,4 @@
-import { Component, OnInit, Angular } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Opponent } from '../shared/models/opponent.model';
