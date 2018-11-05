@@ -1,0 +1,81 @@
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="card mb-3" *ngIf="!isLoading">
+	<h4 class="card-header">Current matchs ({{matches.length}})
+	</h4>
+
+	<div class="card-body">
+		<div class="card-deck">
+			<div *ngFor="let match of matches" class="card" style="width: 18rem;">
+				<div *ngIf="!isMatchBeingEdited(match)">
+					<h5 class="card-title">{{match.name}}</h5>
+					<p class="card-text">{{match.age}}</p>
+					<p class="card-text">{{match.weight}}</p>
+					<p class="card-text">{{match.userId}}</p>
+					<p class="card-text">{{match.userId}}</p>
+
+					<div class="btn-group" role="group">
+						<button *ngIf="selectedMatch != match" class="btn btn-sm btn-primary ml-1" (click)="selectMatch(match)">
+							<i class="fa fa-pencil"></i> Select
+						</button>
+						<button *ngIf="selectedMatch === match" class="btn btn-sm btn-secondary ml-1" (click)="deselectMatch(match)">
+							<i class="fa fa-pencil"></i> Deselect
+						</button>
+						<button class="btn btn-sm btn-primary ml-1" (click)="enableEditing(match)">
+							<i class="fa fa-pencil"></i> Edit
+						</button>
+						<button class="btn btn-sm btn-danger ml-1" (click)="deleteMatch(match)">
+							<i class="fa fa-trash"></i> Delete
+						</button>
+					</div>
+				</div>
+				<!-- this is the edit state -->
+				<div *ngIf="isOpponentBeingEdited(opponent)">
+					<form class="form-inline" #form="ngForm" (ngSubmit)="editMatch(matchBeingEdited)">
+						<h5 class="card-title">Name:
+							<input class="form-control mr-2" type="text" name="name" [(ngModel)]="matchBeingEdited.name" placeholder="Name" required>
+						</h5>
+						<p class="card-text">Age:<input class="form-control mr-2" type="number" name="age" [(ngModel)]="matchBeingEdited.age" placeholder="Age" min="0" required></p>
+						<p class="card-text">Weight:<input class="form-control mr-2" type="number" name="weight" [(ngModel)]="matchBeingEdited.weight" placeholder="Weight" step="any" min="0" required></p>
+						<p class="card-text">UserId:<input class="form-control mr-2" type="string" name="userId" [(ngModel)]="matchBeingEdited.userId" placeholder="userId" step="any" min="0" [disabled]="true"></p>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+								<i class="fa fa-floppy-o"></i> Save
+							</button>
+							<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
+								<i class="fa fa-times"></i> Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+	<button *ngIf="!displayMatchForm" class="btn btn-sm btn-primary ml-1" (click)="displayAddNewMatchForm()">
+		<i class="fa fa-plus"></i> Add New
+	</button>
+	<button *ngIf="displayMatchForm" class="btn btn-sm btn-primary ml-1" (click)="hideAddNewMatchForm()">
+		<i class="fa fa-minus"></i> Hide Form
+	</button>
+
+	<div class="card" *ngIf="displayMatchForm">
+		<h4 class="card-header">Add new match</h4>
+		<div class="card-body">
+			<form class="form-inline" [formGroup]="addMatchForm" (ngSubmit)="addMatch()">
+				<input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
+				<input class="form-control mr-2" type="number" name="age" formControlName="age" placeholder="Age" min="0">
+				<input class="form-control mr-2" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
+				<button class="btn btn-primary" type="submit" [disabled]="!addMatchForm.valid">
+					<i class="fa fa-plus"></i> Add
+				</button>
+			</form>
+		</div>
+	</div>
+	<div *ngIf="selectedMatch">
+		<!-- <app-match-notes [match]="selectedOpponent"></app-match-notes> -->
+	</div>
+	<br>
+	<br>

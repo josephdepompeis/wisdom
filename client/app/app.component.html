@@ -17,6 +17,12 @@
             <i class="fa fa-hand-rock-o"></i> Opponents
           </a>
         </li>
+
+        <li class="nav-item">
+          <a routerLink="/matches" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+            <i class="fa fa-hand-lizard-o"></i> Matches
+          </a>
+        </li>
         <li class="nav-item">
           <a routerLink="/characters" class="nav-link" routerLinkActive="active">
             <i class="fa fa-list"></i> Characters

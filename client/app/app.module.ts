@@ -19,6 +19,9 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OpponentsComponent } from './opponents/opponents.component';
 import { OpponentService } from './services/opponent.service';
+import { MatchService } from './services/match.service';
+import { MatchesComponent } from './matches/matches.component';
+
 import { OpponentNotesComponent } from './opponentNotes/opponentNotes.component';
 import { OpponentNoteService } from './services/opponentNote.service';
 
@@ -39,6 +42,8 @@ export function tokenGetter() {
     NotFoundComponent,
     OpponentsComponent,
     OpponentNotesComponent,
+    MatchesComponent,
+
   ],
   imports: [
     RoutingModule,
@@ -58,6 +63,7 @@ export function tokenGetter() {
     UserService,
     OpponentService,
     OpponentNoteService,
+    MatchService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
