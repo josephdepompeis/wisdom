@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<!-- this is the edit state -->
-				<div *ngIf="isOpponentBeingEdited(opponent)">
+				<div *ngIf="isMatchBeingEdited(match)">
 					<form class="form-inline" #form="ngForm" (ngSubmit)="editMatch(matchBeingEdited)">
 						<h5 class="card-title">Name:
 							<input class="form-control mr-2" type="text" name="name" [(ngModel)]="matchBeingEdited.name" placeholder="Name" required>

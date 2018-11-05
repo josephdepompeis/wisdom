@@ -11,6 +11,7 @@ export class MatchService {
   constructor(private http: HttpClient) { }
 
   getMatches(user: User): Observable<Match[]> {
+    console.log(user);
     return this.http.get<Match[]>(`/api/matches/${user._id}`);
   }
 
