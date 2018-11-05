@@ -9,9 +9,10 @@
 			<div *ngFor="let match of matches" class="card" style="width: 18rem;">
 				<div *ngIf="!isMatchBeingEdited(match)">
 					<h5 class="card-title">{{match.name}}</h5>
-					<p class="card-text">{{match.playingAs}}</p>
-					<p class="card-text">{{match.playingAgainst}}</p>
-					<p class="card-text">{{match.userId}}</p>
+
+					s<p class="card-text">Playing As: {{displayCharacterName(match.playingAs)}}</p>
+					<p class="card-text">Playing Against: {{displayCharacterName(match.playingAgainst)}}</p>
+					<p class="card-text">UserId: {{match.userId}}</p>
 
 					<div class="btn-group" role="group">
 						<button *ngIf="selectedMatch != match" class="btn btn-sm btn-primary ml-1" (click)="selectMatch(match)">
@@ -62,8 +63,14 @@
 		<div class="card-body">
 			<form class="form-inline" [formGroup]="addMatchForm" (ngSubmit)="addMatch()">
 				<input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
-				<input class="form-control mr-2" type="text" name="playingAs" formControlName="playingAs" placeholder="playingAs" min="0">
-				<input class="form-control mr-2" type="text" name="playingAgainst" formControlName="playingAgainst" placeholder="playingAgainst" step="any" min="0">
+				Playing As:
+		    <select formControlName="playingAs">
+		        <option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
+		    </select>
+				Playing Against:
+				<select formControlName="playingAgainst">
+						<option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
+				</select>
 				<button class="btn btn-primary" type="submit" [disabled]="!addMatchForm.valid">
 					<i class="fa fa-plus"></i> Add
 				</button>

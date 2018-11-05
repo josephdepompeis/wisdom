@@ -5,6 +5,9 @@ import { Match } from '../shared/models/match.model';
 import { MatchService } from '../services/match.service';
 import { AuthService } from '../services/auth.service';
 import * as _ from 'underscore';
+import { CharacterService } from '../services/character.service';
+import { Character } from '../shared/models/character.model';
+
 
 @Component({
 	selector: 'app-matches',
@@ -14,6 +17,7 @@ import * as _ from 'underscore';
 export class MatchesComponent implements OnInit {
 	match = new Match();
 	matches: Match[] = [];
+	characters: Character[];
 	isLoading: boolean = true;
 	matchBeingEdited: Match;
 	selectedMatch: Match;
@@ -30,10 +34,12 @@ export class MatchesComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		public toast: ToastComponent,
 		private auth: AuthService,
+		private characterService: CharacterService,
 	) { }
 
 	ngOnInit() {
 		this.getMatches();
+		this.getCharacters();
 		this.setFormDefualts();
 	}
 
@@ -42,8 +48,6 @@ export class MatchesComponent implements OnInit {
 			name: this.name,
 			playingAs: null,
 			playingAgainst: null,
-			// age: this.age,
-			// weight: this.weight,
 			userId: this.auth.currentUser._id,
 		});
 	}
@@ -56,8 +60,26 @@ export class MatchesComponent implements OnInit {
 		);
 	}
 
+	getCharacters() {
+		this.characterService.getCharacters().subscribe(
+			data =>{
+				this.characters = data
+				console.log(this.characters);
+			},
+			error => console.log(error),
+			() => this.isLoading = false
+		);
+	}
+
+	displayCharacterName(characterId: string) {
+		//TODO this should be a filter, i believe.
+		let matchingCharacterToId = _.find(this.characters, function(character){ return character._id === characterId });
+		if (matchingCharacterToId) {
+			return matchingCharacterToId.name;
+		}
+	}
+
 	addMatch() {
-		console.log("this.addMatchForm.value", this.addMatchForm.value);
 		this.matchService.addMatch(this.addMatchForm.value).subscribe(
 			res => {
 

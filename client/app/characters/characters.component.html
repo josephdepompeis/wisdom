@@ -10,6 +10,7 @@
           <th scope="col">Name</th>
           <th scope="col">Age</th>
           <th scope="col">Weight</th>
+          <th scope="col">_id</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -23,6 +24,8 @@
           <td>{{character.name}}</td>
           <td>{{character.age}}</td>
           <td>{{character.weight}}</td>
+          <td>{{character._id}}</td>
+
           <td>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(character)">
               <i class="fa fa-pencil"></i> Edit
