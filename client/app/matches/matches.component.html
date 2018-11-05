@@ -1,16 +1,15 @@
 <app-loading [condition]="isLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
 <div class="card mb-3" *ngIf="!isLoading">
-	<h4 class="card-header">Current matchs ({{matches.length}})
+	<h4 class="card-header">Current matches ({{matches.length}})
 	</h4>
-
 	<div class="card-body">
 		<div class="card-deck">
 			<div *ngFor="let match of matches" class="card" style="width: 18rem;">
 				<div *ngIf="!isMatchBeingEdited(match)">
 					<h5 class="card-title">{{match.name}}</h5>
 
-					s<p class="card-text">Playing As: {{displayCharacterName(match.playingAs)}}</p>
+					<p class="card-text">Playing As: {{displayCharacterName(match.playingAs)}}</p>
 					<p class="card-text">Playing Against: {{displayCharacterName(match.playingAgainst)}}</p>
 					<p class="card-text">UserId: {{match.userId}}</p>
 
@@ -35,8 +34,15 @@
 						<h5 class="card-title">Name:
 							<input class="form-control mr-2" type="text" name="name" [(ngModel)]="matchBeingEdited.name" placeholder="Name" required>
 						</h5>
-						<p class="card-text">playingAs:<input class="form-control mr-2" type="text" name="playingAs" [(ngModel)]="matchBeingEdited.playingAs" placeholder="playingAs" step="any" min="0" required></p>
-						<p class="card-text">playingAgainst:<input class="form-control mr-2" type="text" name="playingAgainst" [(ngModel)]="matchBeingEdited.playingAgainst" placeholder="playingAgainst" step="any" min="0"></p>
+
+						Playing As:
+				    <select name="playingAs" [(ngModel)]="matchBeingEdited.playingAs">
+				        <option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
+				    </select>
+						Playing Against:
+						<select name="playingAgainst" [(ngModel)]="matchBeingEdited.playingAgainst">
+								<option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
+						</select>
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
 								<i class="fa fa-floppy-o"></i> Save

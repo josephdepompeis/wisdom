@@ -23,6 +23,7 @@ export class MatchesComponent implements OnInit {
 	selectedMatch: Match;
 	matchNoteFlag: boolean;
 	addMatchForm: FormGroup;
+	editMatchForm: FormGroup;
 	displayMatchForm:boolean;
 
 	name = new FormControl('', Validators.required);
@@ -51,6 +52,7 @@ export class MatchesComponent implements OnInit {
 			userId: this.auth.currentUser._id,
 		});
 	}
+
 
 	getMatches() {
 		this.matchService.getMatches(this.auth.currentUser).subscribe(
@@ -149,6 +151,7 @@ export class MatchesComponent implements OnInit {
 	}
 
 	editMatch(match: Match) {
+		console.log(match);
 		this.matchService.editMatch(match).subscribe(
 			() => {
 				this.matchBeingEdited = null;
