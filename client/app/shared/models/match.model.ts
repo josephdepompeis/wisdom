@@ -1,7 +1,7 @@
 export class Match {
   _id?: string;
-  name?: string;
-  weight?: number;
-  age?: number;
+  //these are characterIds
+  playingAs?: string;
+  playingAgainst?: string;
   userId: string;
 }

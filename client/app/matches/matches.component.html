@@ -9,9 +9,8 @@
 			<div *ngFor="let match of matches" class="card" style="width: 18rem;">
 				<div *ngIf="!isMatchBeingEdited(match)">
 					<h5 class="card-title">{{match.name}}</h5>
-					<p class="card-text">{{match.age}}</p>
-					<p class="card-text">{{match.weight}}</p>
-					<p class="card-text">{{match.userId}}</p>
+					<p class="card-text">{{match.playingAs}}</p>
+					<p class="card-text">{{match.playingAgainst}}</p>
 					<p class="card-text">{{match.userId}}</p>
 
 					<div class="btn-group" role="group">
@@ -35,9 +34,8 @@
 						<h5 class="card-title">Name:
 							<input class="form-control mr-2" type="text" name="name" [(ngModel)]="matchBeingEdited.name" placeholder="Name" required>
 						</h5>
-						<p class="card-text">Age:<input class="form-control mr-2" type="number" name="age" [(ngModel)]="matchBeingEdited.age" placeholder="Age" min="0" required></p>
-						<p class="card-text">Weight:<input class="form-control mr-2" type="number" name="weight" [(ngModel)]="matchBeingEdited.weight" placeholder="Weight" step="any" min="0" required></p>
-						<p class="card-text">UserId:<input class="form-control mr-2" type="string" name="userId" [(ngModel)]="matchBeingEdited.userId" placeholder="userId" step="any" min="0" [disabled]="true"></p>
+						<p class="card-text">playingAs:<input class="form-control mr-2" type="text" name="playingAs" [(ngModel)]="matchBeingEdited.playingAs" placeholder="playingAs" step="any" min="0" required></p>
+						<p class="card-text">playingAgainst:<input class="form-control mr-2" type="text" name="playingAgainst" [(ngModel)]="matchBeingEdited.playingAgainst" placeholder="playingAgainst" step="any" min="0"></p>
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
 								<i class="fa fa-floppy-o"></i> Save
@@ -66,8 +64,8 @@
 		<div class="card-body">
 			<form class="form-inline" [formGroup]="addMatchForm" (ngSubmit)="addMatch()">
 				<input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
-				<input class="form-control mr-2" type="number" name="age" formControlName="age" placeholder="Age" min="0">
-				<input class="form-control mr-2" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
+				<input class="form-control mr-2" type="text" name="playingAs" formControlName="playingAs" placeholder="playingAs" min="0">
+				<input class="form-control mr-2" type="text" name="playingAgainst" formControlName="playingAgainst" placeholder="playingAgainst" step="any" min="0">
 				<button class="btn btn-primary" type="submit" [disabled]="!addMatchForm.valid">
 					<i class="fa fa-plus"></i> Add
 				</button>

@@ -17,13 +17,13 @@ export class MatchesComponent implements OnInit {
 	isLoading: boolean = true;
 	matchBeingEdited: Match;
 	selectedMatch: Match;
-	opponentNoteFlag: boolean;
+	matchNoteFlag: boolean;
 	addMatchForm: FormGroup;
 	displayMatchForm:boolean;
 
 	name = new FormControl('', Validators.required);
-	age = new FormControl('', Validators.required);
-	weight = new FormControl('', Validators.required);
+	playingAs = new FormControl('', Validators.required);
+	playingAgainst = new FormControl('', Validators.required);
 
 	constructor(
 		private matchService: MatchService,
@@ -40,8 +40,10 @@ export class MatchesComponent implements OnInit {
 	setFormDefualts() {
 		this.addMatchForm = this.formBuilder.group({
 			name: this.name,
-			age: this.age,
-			weight: this.weight,
+			playingAs: null,
+			playingAgainst: null,
+			// age: this.age,
+			// weight: this.weight,
 			userId: this.auth.currentUser._id,
 		});
 	}
@@ -55,6 +57,7 @@ export class MatchesComponent implements OnInit {
 	}
 
 	addMatch() {
+		console.log("this.addMatchForm.value", this.addMatchForm.value);
 		this.matchService.addMatch(this.addMatchForm.value).subscribe(
 			res => {
 

@@ -44,10 +44,6 @@ export default function setRoutes(app) {
 	router.route('/match/:id').delete(matchCtrl.delete);
 
 
-
-
-
-
 	// characters
 	router.route('/characters').get(characterCtrl.getAll);
 	router.route('/character').post(characterCtrl.insert);
