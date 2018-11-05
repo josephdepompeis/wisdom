@@ -32,7 +32,7 @@ export class MatchService {
   }
 
   deleteMatch(match: Match): Observable<any> {
-    return this.http.delete(`/api/opponent/${match._id}`, { responseType: 'text' });
+    return this.http.delete(`/api/match/${match._id}`, { responseType: 'text' });
   }
 
 }

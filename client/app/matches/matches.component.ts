@@ -142,8 +142,11 @@ export class MatchesComponent implements OnInit {
 
 	deleteMatch(match: Match) {
 		if (window.confirm('Are you sure you want to permanently delete this item?')) {
+
+			console.log("match", match);
 			this.matchService.deleteMatch(match).subscribe(
-				() => {
+				(whatever) => {
+					console.log(whatever);
 					this.getMatches();
 					if (this.selectedMatch === match) {
 						this.selectedMatch = null;
