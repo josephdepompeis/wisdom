@@ -21,9 +21,10 @@ import { OpponentsComponent } from './opponents/opponents.component';
 import { OpponentService } from './services/opponent.service';
 import { MatchService } from './services/match.service';
 import { MatchesComponent } from './matches/matches.component';
-
 import { OpponentNotesComponent } from './opponentNotes/opponentNotes.component';
 import { OpponentNoteService } from './services/opponentNote.service';
+import { MatchNotesComponent } from './matchNotes/matchNotes.component';
+import { MatchNoteService } from './services/matchNote.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -43,6 +44,8 @@ export function tokenGetter() {
     OpponentsComponent,
     OpponentNotesComponent,
     MatchesComponent,
+    MatchNotesComponent,
+
 
   ],
   imports: [
@@ -64,6 +67,7 @@ export function tokenGetter() {
     OpponentService,
     OpponentNoteService,
     MatchService,
+    MatchNoteService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

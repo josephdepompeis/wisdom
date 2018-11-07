@@ -3,6 +3,7 @@ import * as express from 'express';
 import OpponentCtrl from './controllers/opponent';
 import OpponentNotesCtrl from './controllers/opponentNotes';
 import MatchCtrl from './controllers/match';
+import MatchNotesCtrl from './controllers/matchNotes';
 
 import CharacterCtrl from './controllers/character';
 import UserCtrl from './controllers/user';
@@ -16,6 +17,7 @@ export default function setRoutes(app) {
 	const matchCtrl = new MatchCtrl();
 	const characterCtrl = new CharacterCtrl();
 	const userCtrl = new UserCtrl();
+	const matchNotesCtrl = new MatchNotesCtrl();
 
 	// Opponents
 	router.route('/opponents/:id').get(opponentCtrl.getOpponentsByUserId);
@@ -26,7 +28,7 @@ export default function setRoutes(app) {
 	router.route('/opponent/:id').delete(opponentCtrl.delete);
 
 	// OpponentNotes
-	router.route('/opponentNotes/:id').get(opponentNotesCtrl.getOpponentsByOpponentId);
+	router.route('/opponentNotes/:id').get(opponentNotesCtrl.getOpponentNotesByOpponentId);
 	// router.route('/opponents/count').get(opponentCtrl.count);
 	router.route('/opponentNote').post(opponentNotesCtrl.insert);
 	// router.route('/opponent/:id').get(opponentCtrl.get);
@@ -34,15 +36,17 @@ export default function setRoutes(app) {
 	router.route('/opponentNote/:id').delete(opponentNotesCtrl.delete);
 
 	// matches
-	// router.route('/opponentNotes/:id').get(opponentNotesCtrl.getOpponentsByOpponentId);
 	router.route('/matches/:id').get(matchCtrl.getMatchesByUserId);
-
-	// router.route('/matches').get(matchCtrl.getMatchesByUserId);
 	router.route('/match').post(matchCtrl.insert);
 	router.route('/match/:id').get(matchCtrl.get);
 	router.route('/match/:id').put(matchCtrl.update);
 	router.route('/match/:id').delete(matchCtrl.delete);
 
+	// MatchNotes
+	router.route('/matchNotes/:id').get(matchNotesCtrl.getMatchNotesByOpponentId);
+	router.route('/matchNote').post(matchNotesCtrl.insert);
+	router.route('/matchNote/:id').put(matchNotesCtrl.update);
+	router.route('/matchNote/:id').delete(matchNotesCtrl.delete);
 
 	// characters
 	router.route('/characters').get(characterCtrl.getAll);

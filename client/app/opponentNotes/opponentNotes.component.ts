@@ -2,7 +2,6 @@ import { Component, OnInit, Input, OnChanges,  SimpleChanges } from '@angular/co
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { OpponentNote } from '../shared/models/opponentNote.model';
-import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user.model';
 import { OpponentNoteService } from '../services/opponentNote.service';
 import { Opponent } from '../shared/models/opponent.model';
@@ -31,7 +30,7 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
 	) { }
 
 	ngOnChanges(opponent:  SimpleChanges) {
-		//this log hits a ts lint error. not sure wut do yet.
+		//this log prevents a ts lint error. not sure wut do yet.
 		// can check object 'opponent' for change before and after tho!
 		console.log(" on changes opponent", opponent);
 		this.setFormDefualts();

@@ -1,0 +1,51 @@
+<app-loading [condition]="isMatchNotesLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="card mb-3" *ngIf="!isMatchNotesLoading">
+	<h4 class="card-header">{{match.name}}'s Notes ({{matchNotes.length}})</h4>
+	<div class="card-body">
+		<div class="card-deck">
+			<div *ngFor="let matchNote of matchNotes" class="card" style="width: 18rem;">
+				<div *ngIf="!isMatchNoteBeingEdited(matchNote)">
+					<h5 class="card-title">{{matchNote.body}}</h5>
+					<p class="card-text">{{matchNote.matchId}}</p>
+					<div class="btn-group" role="group">
+						<button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="enableEditing(matchNote)">
+							<i class="fa fa-trash"></i> Edit
+						</button>
+						<button class="btn btn-sm btn-danger ml-1" type="Delete" (click)="deleteMatchNote(matchNote)">
+							<i class="fa fa-trash"></i> Delete
+						</button>
+					</div>
+				</div>
+				<!-- this is the edit state -->
+				<div *ngIf="isMatchNoteBeingEdited(matchNote)">
+					<form class="form-inline" #form="ngForm" (ngSubmit)="editMatchNote(matchNoteBeingEdited)">
+						<h5 class="card-title">Body:
+							<input class="form-control mr-2" type="text" name="body" [(ngModel)]="matchNoteBeingEdited.body" placeholder="Body" required>
+						</h5>
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+								<i class="fa fa-floppy-o"></i> Save
+							</button>
+							<button class="btn btn-sm btn-warning" type="button" (click)="cancelEditing()">
+								<i class="fa fa-times"></i> Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="card">
+	<h4 class="card-header">Add New Match Note For {{match.name}}</h4>
+	<div class="card-body">
+		<form class="form-inline" [formGroup]="addMatchNoteForm" (ngSubmit)="addMatchNote()">
+			<input class="form-control mr-2" type="text" name="body" formControlName="body" placeholder="Body">
+			<button class="btn btn-primary" type="submit" [disabled]="!addMatchNoteForm.valid">
+				<i class="fa fa-plus"></i> Add
+			</button>
+		</form>
+	</div>
+</div>
