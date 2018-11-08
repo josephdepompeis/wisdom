@@ -28,7 +28,7 @@
 						</button>
 					</div>
 				</div>
-				<!-- this is the edit state -->
+
 				<div *ngIf="isMatchBeingEdited(match)">
 					<form class="form-inline" #form="ngForm" (ngSubmit)="editMatch(matchBeingEdited)">
 						<h5 class="card-title">Name:
@@ -67,17 +67,17 @@
 	<div class="card" *ngIf="displayMatchForm">
 		<h4 class="card-header">Add new match</h4>
 		<div class="card-body">
-			<form class="form-inline" [formGroup]="addMatchForm" (ngSubmit)="addMatch()">
+			<form class="form-inline" [formGroup]="findMatchForm" (ngSubmit)="addMatch()" ngNativeValidate>
 				<input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
 				Playing As:
-		    <select formControlName="playingAs">
+		    <select formControlName="playingAs" required>
 		        <option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
 		    </select>
 				Playing Against:
-				<select formControlName="playingAgainst">
+				<select formControlName="playingAgainst" required>
 						<option *ngFor="let character of characters" [ngValue]="character._id">{{ character.name }}</option>
 				</select>
-				<button class="btn btn-primary" type="submit" [disabled]="!addMatchForm.valid">
+				<button class="btn btn-primary" type="submit" [disabled]="findMatchForm.invalid">
 					<i class="fa fa-plus"></i> Add
 				</button>
 			</form>

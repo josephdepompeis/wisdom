@@ -8,7 +8,6 @@ import * as _ from 'underscore';
 import { CharacterService } from '../services/character.service';
 import { Character } from '../shared/models/character.model';
 
-
 @Component({
 	selector: 'app-matches',
 	templateUrl: './matches.component.html',
@@ -22,11 +21,11 @@ export class MatchesComponent implements OnInit {
 	matchBeingEdited: Match;
 	selectedMatch: Match;
 	matchNoteFlag: boolean;
-	addMatchForm: FormGroup;
+	findMatchForm: FormGroup;
 	editMatchForm: FormGroup;
 	displayMatchForm:boolean;
 
-	name = new FormControl('', Validators.required);
+	name = new FormControl('',);
 	playingAs = new FormControl('', Validators.required);
 	playingAgainst = new FormControl('', Validators.required);
 
@@ -44,8 +43,21 @@ export class MatchesComponent implements OnInit {
 		this.setFormDefualts();
 	}
 
+	disableIfNull(){
+		console.log("hello");
+		console.log("this.playingAs", this.playingAs.status);
+		console.log("this.playingAgainst", this.playingAgainst.status);
+
+		if (this.playingAs.status === "INVALID" || this.playingAs.status === "INVALID") {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	setFormDefualts() {
-		this.addMatchForm = this.formBuilder.group({
+		this.findMatchForm = this.formBuilder.group({
 			name: this.name,
 			playingAs: null,
 			playingAgainst: null,
@@ -82,12 +94,12 @@ export class MatchesComponent implements OnInit {
 	}
 
 	addMatch() {
-		this.matchService.addMatch(this.addMatchForm.value).subscribe(
+		this.matchService.addMatch(this.findMatchForm.value).subscribe(
 			res => {
 
 				//should update this
 				this.matches.push(res);
-				this.addMatchForm.reset();
+				this.findMatchForm.reset();
 				this.setFormDefualts();
 				this.toast.setMessage('item added successfully.', 'success');
 			},
@@ -140,7 +152,7 @@ export class MatchesComponent implements OnInit {
 
 	hideAddNewMatchForm() {
 		this.displayMatchForm = false;
-		this.addMatchForm.reset();
+		this.findMatchForm.reset();
 		this.setFormDefualts();
 
 	}
