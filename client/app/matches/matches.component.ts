@@ -44,10 +44,6 @@ export class MatchesComponent implements OnInit {
 	}
 
 	disableIfNull(){
-		console.log("hello");
-		console.log("this.playingAs", this.playingAs.status);
-		console.log("this.playingAgainst", this.playingAgainst.status);
-
 		if (this.playingAs.status === "INVALID" || this.playingAs.status === "INVALID") {
 			return true;
 		}
@@ -93,19 +89,36 @@ export class MatchesComponent implements OnInit {
 		}
 	}
 
-	addMatch() {
-		this.matchService.addMatch(this.findMatchForm.value).subscribe(
+	findMatch() {
+		this.matchService.findMatch(this.findMatchForm.value).subscribe(
 			res => {
+				console.log("res", res);
+				console.log("resplayingAs", res.playingAs);
+				console.log("resplayingAgainst", res.playingAgainst);
 
+				this.selectMatch(res);
 				//should update this
-				this.matches.push(res);
+				// this.matches.push(res);
 				this.findMatchForm.reset();
 				this.setFormDefualts();
-				this.toast.setMessage('item added successfully.', 'success');
+				// this.toast.setMessage('item added successfully.', 'success');
 			},
 			error => console.log(error)
 		);
 	}
+
+		addMatch() {
+			this.matchService.addMatch(this.findMatchForm.value).subscribe(
+				res => {
+					//should update this
+					this.matches.push(res);
+					this.findMatchForm.reset();
+					this.setFormDefualts();
+					this.toast.setMessage('item added successfully.', 'success');
+				},
+				error => console.log(error)
+			);
+		}
 
 	isMatchBeingEdited(match: Match):boolean {
 		if (this.matchBeingEdited) {
@@ -143,7 +156,6 @@ export class MatchesComponent implements OnInit {
 	deselectMatch(match: Match) {
 		//get rid of match here
 		this.selectedMatch = null;
-		console.log("this.selectedMatch", this.selectedMatch);
 	}
 
 	displayAddNewMatchForm() {

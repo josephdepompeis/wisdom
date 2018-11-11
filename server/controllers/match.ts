@@ -10,5 +10,14 @@ export default class MatchCtrl extends BaseCtrl {
 			res.status(200).json(docs);
 		});
 	}
+	findMatch = (req, res) => {
+		this.model.findOne({
+			playingAs: req.params.playingAs,
+			playingAgainst: req.params.playingAgainst
+		}, (err, docs) => {
+			if (err) { return console.error(err); }
+			res.status(200).json(docs);
+		});
+	}
 
 }

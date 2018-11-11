@@ -15,12 +15,9 @@ export class MatchService {
     return this.http.get<Match[]>(`/api/matches/${user._id}`);
   }
 
-  getMatchesBasedOnCharacterStrings (playingAs: string, playingAgainst: string) {
-    // return this.http.get<Match>(`/api/matchesByCharacters/${user._id}`);
-// not done/
+  findMatch (match: Match): Observable<Match> {
+    return this.http.get<Match>(`/api/findMatch/${match.playingAs}/${match.playingAgainst}`);
   }
-
-
 
   countMatches(): Observable<number> {
     return this.http.get<number>('/api/matches/count');

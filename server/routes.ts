@@ -37,6 +37,8 @@ export default function setRoutes(app) {
 
 	// matches
 	router.route('/matches/:id').get(matchCtrl.getMatchesByUserId);
+	router.route('/findMatch/:playingAs/:playingAgainst').get(matchCtrl.findMatch);
+
 	router.route('/match').post(matchCtrl.insert);
 	router.route('/match/:id').get(matchCtrl.get);
 	router.route('/match/:id').put(matchCtrl.update);
