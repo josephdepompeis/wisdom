@@ -25,7 +25,6 @@ export class MatchesComponent implements OnInit {
 	editMatchForm: FormGroup;
 	displayMatchForm:boolean;
 
-	name = new FormControl('',);
 	playingAs = new FormControl('', Validators.required);
 	playingAgainst = new FormControl('', Validators.required);
 
@@ -92,16 +91,15 @@ export class MatchesComponent implements OnInit {
 	findMatch() {
 		this.matchService.findMatch(this.findMatchForm.value).subscribe(
 			res => {
-				console.log("res", res);
-				console.log("resplayingAs", res.playingAs);
-				console.log("resplayingAgainst", res.playingAgainst);
+				if (res === null) {
+					this.addMatch();
+				}
+				else {
+					this.selectMatch(res);
+					this.findMatchForm.reset();
+					this.setFormDefualts();
 
-				this.selectMatch(res);
-				//should update this
-				// this.matches.push(res);
-				this.findMatchForm.reset();
-				this.setFormDefualts();
-				// this.toast.setMessage('item added successfully.', 'success');
+				}
 			},
 			error => console.log(error)
 		);
@@ -114,6 +112,7 @@ export class MatchesComponent implements OnInit {
 					this.matches.push(res);
 					this.findMatchForm.reset();
 					this.setFormDefualts();
+					this.selectMatch(res);
 					this.toast.setMessage('item added successfully.', 'success');
 				},
 				error => console.log(error)

@@ -11,6 +11,7 @@ export default class MatchCtrl extends BaseCtrl {
 		});
 	}
 	findMatch = (req, res) => {
+
 		this.model.findOne({
 			playingAs: req.params.playingAs,
 			playingAgainst: req.params.playingAgainst
