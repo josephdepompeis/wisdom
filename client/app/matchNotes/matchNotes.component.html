@@ -7,7 +7,7 @@
 			<div *ngFor="let matchNote of matchNotes" class="card" style="width: 18rem;">
 				<div *ngIf="!isMatchNoteBeingEdited(matchNote)">
 					<h5 class="card-title">{{matchNote.body}}</h5>
-					<p class="card-text">{{matchNote.matchId}}</p>
+					<!-- <p class="card-text">{{matchNote.matchId}}</p> -->
 					<div class="btn-group" role="group">
 						<button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="enableEditing(matchNote)">
 							<i class="fa fa-trash"></i> Edit

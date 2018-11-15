@@ -1,7 +1,9 @@
 <app-loading [condition]="isLoading"></app-loading>
 <app-toast [message]="toast.message"></app-toast>
 <div class="card mb-3" *ngIf="!isLoading">
-	<h4 class="card-header">Current matches ({{matches.length}})
+
+	<!-- <TODO THIS PART SHOULD BE MOVED SOMEWHERE ELSE-->
+	<!-- <h4 class="card-header">Current matches ({{matches.length}})
 	</h4>
 	<div class="card-body">
 		<div class="card-deck">
@@ -56,16 +58,16 @@
 				<br>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<button *ngIf="!displayMatchForm" class="btn btn-sm btn-primary ml-1" (click)="displayAddNewMatchForm()">
-		<i class="fa fa-plus"></i> Add New
+		<i class="fa fa-plus"></i> SELECT MATCH
 	</button>
 	<button *ngIf="displayMatchForm" class="btn btn-sm btn-primary ml-1" (click)="hideAddNewMatchForm()">
 		<i class="fa fa-minus"></i> Hide Form
 	</button>
 
 	<div class="card" *ngIf="displayMatchForm">
-		<h4 class="card-header">Add new match</h4>
+		<h4 class="card-header">SELECT MATCH</h4>
 		<div class="card-body">
 			<form class="form-inline" [formGroup]="findMatchForm" (ngSubmit)="findMatch()" ngNativeValidate>
 				Playing As:

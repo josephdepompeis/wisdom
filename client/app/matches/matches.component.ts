@@ -53,7 +53,7 @@ export class MatchesComponent implements OnInit {
 
 	setFormDefualts() {
 		this.findMatchForm = this.formBuilder.group({
-			name: this.name,
+			// name: this.name,
 			playingAs: null,
 			playingAgainst: null,
 			userId: this.auth.currentUser._id,
@@ -81,7 +81,7 @@ export class MatchesComponent implements OnInit {
 	}
 
 	displayCharacterName(characterId: string) {
-		//TODO this should be a filter, i believe.
+		//TODO this should be a filter,  OR PIPE i believe.
 		let matchingCharacterToId = _.find(this.characters, function(character){ return character._id === characterId });
 		if (matchingCharacterToId) {
 			return matchingCharacterToId.name;
@@ -98,7 +98,7 @@ export class MatchesComponent implements OnInit {
 					this.selectMatch(res);
 					this.findMatchForm.reset();
 					this.setFormDefualts();
-
+					this.hideAddNewMatchForm();
 				}
 			},
 			error => console.log(error)
