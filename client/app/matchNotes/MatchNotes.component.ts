@@ -23,9 +23,15 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	user: User;
 	addMatchNoteForm: FormGroup;
 	characters: Character[];
+	sectionList = [
+		{'title': "playingAs",
+			'value': "playingAs"},
+		{'title': "playingAgainst",
+			'value': "playingAgainst"}
+	];
 
 	body = new FormControl('', Validators.required);
-	section = new FormControl('', );
+	section = new FormControl('', Validators.required);
 
 
 	constructor(
@@ -66,9 +72,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		}
 	}
 
-
-
-
 	ngOnInit() {
 		this.getMatchNotes();
 		this.setFormDefualts();
@@ -78,6 +81,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		this.addMatchNoteForm = this.formBuilder.group({
 			body: this.body,
 			matchId: this.match._id,
+			section: this.section,
 		});
 	}
 
