@@ -5,6 +5,7 @@ const matchSchema = new mongoose.Schema({
   playingAs: String,
   playingAgainst: String,
   userId: String,
+  section: String,
 });
 
 const Match = mongoose.model('Match', matchSchema);

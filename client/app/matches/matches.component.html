@@ -67,7 +67,8 @@
 	</button>
 
 	<div class="card" *ngIf="displayMatchForm">
-		<h4 class="card-header">SELECT MATCH</h4>
+		<h4 class="card-header">SELECT MATCH
+		</h4>
 		<div class="card-body">
 			<form class="form-inline" [formGroup]="findMatchForm" (ngSubmit)="findMatch()" ngNativeValidate>
 				Playing As:
@@ -89,3 +90,4 @@
 	</div>
 	<br>
 	<br>
+</div>

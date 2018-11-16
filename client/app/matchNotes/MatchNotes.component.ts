@@ -6,6 +6,8 @@ import { User } from '../shared/models/user.model';
 import { MatchNoteService } from '../services/matchNote.service';
 import { Match } from '../shared/models/match.model';
 import * as _ from 'underscore';
+import { CharacterService } from '../services/character.service';
+import { Character } from '../shared/models/character.model';
 
 @Component({
 	selector: 'app-match-notes',
@@ -20,13 +22,18 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	isMatchNotesLoading = true;
 	user: User;
 	addMatchNoteForm: FormGroup;
+	characters: Character[];
 
 	body = new FormControl('', Validators.required);
+	section = new FormControl('', );
+
 
 	constructor(
 		private matchNoteService: MatchNoteService,
 		private formBuilder: FormBuilder,
 		public toast: ToastComponent,
+		private characterService: CharacterService,
+
 	) { }
 
 	ngOnChanges(match:  SimpleChanges) {
@@ -35,7 +42,32 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		console.log(" on changes match", match);
 		this.setFormDefualts();
 		this.getMatchNotes();
+		this.getCharacters();
 	}
+
+
+	getCharacters() {
+		this.characterService.getCharacters().subscribe(
+			data =>{
+				this.characters = data
+				console.log(this.characters);
+			},
+			error => console.log(error),
+			// () => this.isLoading = false
+		);
+	}
+
+
+	displayCharacterName(characterId: string) {
+		//TODO this should be a filter,  OR PIPE i believe.
+		let matchingCharacterToId = _.find(this.characters, function(character){ return character._id === characterId });
+		if (matchingCharacterToId) {
+			return matchingCharacterToId.name;
+		}
+	}
+
+
+
 
 	ngOnInit() {
 		this.getMatchNotes();

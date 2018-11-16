@@ -3,5 +3,6 @@ export class Match {
   name: string;
   playingAs?: string;
   playingAgainst?: string;
+  section?: string;
   userId: string;
 }
