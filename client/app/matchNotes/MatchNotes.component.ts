@@ -101,6 +101,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	}
 
 	addMatchNote() {
+		console.log("idk");
 		this.isMatchNotesLoading = true;
 		this.matchNoteService.addMatchNote(this.addMatchNoteForm.value).subscribe(
 			res => {

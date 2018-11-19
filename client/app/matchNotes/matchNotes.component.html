@@ -8,8 +8,6 @@
 				<div *ngIf="!isMatchNoteBeingEdited(matchNote)">
 					<h5 class="card-title">{{matchNote.body}}</h5>
 					<h5 class="card-title">{{matchNote.section}}</h5>
-
-					<!-- <p class="card-text">{{matchNote.matchId}}</p> -->
 					<div class="btn-group" role="group">
 						<button class="btn btn-sm btn-primary ml-1" type="Edit" (click)="enableEditing(matchNote)">
 							<i class="fa fa-trash"></i> Edit
@@ -29,12 +27,6 @@
 							<select name="playingAs" [(ngModel)]="matchNoteBeingEdited.section">
 					        <option *ngFor="let section of sectionList" [ngValue]="section.value">{{ section.title }}</option>
 					    </select>						</h5>
-
-
-
-
-
-
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
 								<i class="fa fa-floppy-o"></i> Save
