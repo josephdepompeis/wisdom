@@ -32,6 +32,7 @@ export class CharactersComponent implements OnInit {
 
 	ngOnInit() {
 		this.getCharacters();
+		console.log("this.char from charactsfs", this.characters)
 		this.addCharacterForm = this.formBuilder.group({
 			name: this.name,
 			age: this.age,
@@ -41,7 +42,9 @@ export class CharactersComponent implements OnInit {
 
 	getCharacters() {
 		this.characterService.getCharacters().subscribe(
-			data => this.characters = data,
+			data => {this.characters = data
+			console.log("this.char from charactsfs", this.characters)
+},
 			error => console.log(error),
 			() => this.isLoading = false
 		);

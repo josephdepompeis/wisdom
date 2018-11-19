@@ -25,6 +25,11 @@ import { OpponentNotesComponent } from './opponentNotes/opponentNotes.component'
 import { OpponentNoteService } from './services/opponentNote.service';
 import { MatchNotesComponent } from './matchNotes/matchNotes.component';
 import { MatchNoteService } from './services/matchNote.service';
+import { TierListComponent } from './tier-list/tier-list.component';
+
+
+
+// UI componenotes
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 
@@ -47,6 +52,7 @@ export function tokenGetter() {
     OpponentNotesComponent,
     MatchesComponent,
     MatchNotesComponent,
+    TierListComponent,
   ],
   imports: [
     RoutingModule,
