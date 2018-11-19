@@ -1,20 +1,29 @@
-<p>
-  tier-list works!
-</p>
-<tbody *ngIf="!isEditing">
-  <tr *ngFor="let character of characters">
-    <td>{{character.name}}</td>
-    <td>{{character.age}}</td>
-    <td>{{character.weight}}</td>
-    <td>{{character._id}}</td>
-
-    <td>
-      <button class="btn btn-sm btn-primary" (click)="enableEditing(character)">
-        <i class="fa fa-pencil"></i> Edit
-      </button>
-      <button class="btn btn-sm btn-danger ml-1" (click)="deleteCharacter(character)">
-        <i class="fa fa-trash"></i> Delete
-      </button>
-    </td>
-  </tr>
-</tbody>
+<h3>Drag and Drop to Table</h3>
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
+        <ul style="margin:0;padding:0">
+            <li *ngFor="let character of availableCharacters" class="ui-helper-clearfix" pDraggable="character"
+                (onDragStart)="dragStart($event,character)" (onDragEnd)="dragEnd($event)">
+                <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
+                <div style="margin:8px 0 0 8px;float:left">{{character.name}} - {{character._id}}</div>
+            </li>
+        </ul>
+    </div>
+    <div class="ui-g-12 ui-md-6 drop-column" pDroppable="character"
+        (onDrop)="drop($event)" [ngClass]="{'ui-highlight-character':draggedCharacter}">
+        <p-table [value]="selectedCharacters">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>name</th>
+                    <th>_id</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-character>
+                <tr>
+                    <td>{{character.name}}</td>
+                    <td>{{character._id}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

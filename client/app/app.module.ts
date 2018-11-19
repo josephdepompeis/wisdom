@@ -32,6 +32,12 @@ import { TierListComponent } from './tier-list/tier-list.component';
 // UI componenotes
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import {DragDropModule} from 'primeng/dragdrop';
+import {PanelModule} from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+BrowserAnimationsModule
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -58,8 +64,12 @@ export function tokenGetter() {
     RoutingModule,
     SharedModule,
 
+    //ui components
     TableModule,
     ButtonModule,
+    DragDropModule,
+    PanelModule,
+    BrowserAnimationsModule,
 
     JwtModule.forRoot({
       config: {
