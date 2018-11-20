@@ -25,7 +25,7 @@
 <div class="ui-g">
     <div class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
         <ul style="margin:0;padding:0">
-            <li *ngFor="let character of availableCharacters" class="ui-helper-clearfix" pDraggable="character"
+            <li *ngFor="let character of allCharacters" class="ui-helper-clearfix" pDraggable="character"
                 (onDragStart)="dragStart($event,character)" (onDragEnd)="dragEnd($event)">
                 <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
                 <div style="margin:8px 0 0 8px;float:left">{{character.name}} - {{character._id}}</div>

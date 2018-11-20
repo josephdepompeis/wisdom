@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../shared/models/character.model';
+import * as _ from 'underscore';
 
 @Component({
 	selector: 'app-tier-list',
@@ -10,8 +11,13 @@ export class TierListComponent implements OnInit {
 	@Input() characters: Character[];
 
 	availableCharacters: Character[];
+
 	selectedCharacters: Character[] = [];
 	draggedCharacter: Character;
+
+
+
+	allCharacters: Character[] = [];
 	tierSections = [
 		{
 			title: "title1",
@@ -39,6 +45,7 @@ export class TierListComponent implements OnInit {
 	}
 	ngOnChanges(characters: SimpleChanges) {
 		this.availableCharacters = this.characters;
+		this.allCharacters = this.characters
 	}
 
 	dragStart(event, character: Character) {
@@ -60,10 +67,8 @@ export class TierListComponent implements OnInit {
 		console.log("help",event);
 		console.log("section", section);
 		if (this.draggedCharacter) {
-			section.characters.push(this.draggedCharacter)
-			// let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
-			// section = [...this.selectedCharacters, this.draggedCharacter];
-			// this.availableCharacters = this.availableCharacters.filter((val, i) => i != draggedCharacterIndex);
+			section.characters.push(this.draggedCharacter);
+			this.allCharacters = _.without(this.allCharacters, this.draggedCharacter);
 			this.draggedCharacter = null;
 		}
 	}
@@ -75,8 +80,8 @@ export class TierListComponent implements OnInit {
 	findIndex(character: Character) {
 		let index = -1;
 		//TODO REPLACE WITH underscore
-		for (let i = 0; i < this.availableCharacters.length; i++) {
-			if (character._id === this.availableCharacters[i]._id) {
+		for (let i = 0; i < this.allCharacters.length; i++) {
+			if (character._id === this.allCharacters[i]._id) {
 				index = i;
 				break;
 			}
