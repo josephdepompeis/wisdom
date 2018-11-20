@@ -12,7 +12,7 @@ export class TierListComponent implements OnInit {
   availableCharacters: Character[];
   selectedCharacters: Character[] = [];
   draggedCharacter: Character;
-
+  tierSections = ['one', 'two', 'three']
   constructor() { }
 
   //most of this code taken from https://www.primefaces.org/primeng/#/dragdrop
@@ -27,16 +27,31 @@ export class TierListComponent implements OnInit {
 
   dragStart(event, character : Character) {
       this.draggedCharacter = character;
+
   }
 
   drop(event) {
+    console.log("help");
       if(this.draggedCharacter) {
-          let draggedCharacterndex = this.findIndex(this.draggedCharacter);
+          let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
           this.selectedCharacters = [...this.selectedCharacters, this.draggedCharacter];
-          this.availableCharacters = this.availableCharacters.filter((val,i) => i!=draggedCharacterndex);
+          this.availableCharacters = this.availableCharacters.filter((val,i) => i!=draggedCharacterIndex);
           this.draggedCharacter = null;
       }
   }
+
+  dropInSection(event, section) {
+    console.log("help");
+    console.log("section", section);
+      if(this.draggedCharacter) {
+          let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
+          this.selectedCharacters = [...this.selectedCharacters, this.draggedCharacter];
+          this.availableCharacters = this.availableCharacters.filter((val,i) => i!=draggedCharacterIndex);
+          this.draggedCharacter = null;
+      }
+  }
+
+
 
   dragEnd(event) {
       this.draggedCharacter = null;
