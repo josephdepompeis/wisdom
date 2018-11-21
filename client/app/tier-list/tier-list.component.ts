@@ -18,19 +18,24 @@ export class TierListComponent implements OnInit {
 
 
 	allCharacters: Character[] = [];
-	tierSections = [
+	tierSections: {}[] = [
 		{
 			title: "title1",
+			subtext: "subtext",
 			characters: [],
 		},
 		{
 			title: "title2",
+			subtext: "subtext",
+
 			characters: [],
 		}, {
 			title: "title3",
+			subtext: "subtext",
 			characters: [],
 		}, {
 			title: "title4",
+			subtext: "subtext",
 			characters: [],
 		}
 
@@ -38,19 +43,30 @@ export class TierListComponent implements OnInit {
 	constructor() { }
 
 	//most of this code taken from https://www.primefaces.org/primeng/#/dragdrop
+	addSection(){
+		this.tierSections.push(
+			{
+				title: "titlex",
+				characters: [],
+				subtext:"whatever",
+			}
+		);
+	}
 
 	ngOnInit() {
 		console.log(this.characters);
 		// this.availableCharacters = this.characters;
 	}
+
 	ngOnChanges(characters: SimpleChanges) {
 		this.availableCharacters = this.characters;
-		this.allCharacters = this.characters
+		this.allCharacters = this.characters;
+		console.log(this.characters);
+
 	}
 
 	dragStart(event, character: Character) {
 		this.draggedCharacter = character;
-
 	}
 
 	drop(event) {

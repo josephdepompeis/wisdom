@@ -10,7 +10,7 @@ import { Character } from '../shared/models/character.model';
 	styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
-
+	selectedCharacter: Character;
 	character = new Character();
 	characters: Character[] = [];
 	isLoading = true;
@@ -28,11 +28,10 @@ export class CharactersComponent implements OnInit {
 		public toast: ToastComponent
 	) { }
 
-	//TODO this screen should be only available to admins, or else it would be optimized a bit more.
 
 	ngOnInit() {
 		this.getCharacters();
-		console.log("this.char from charactsfs", this.characters)
+		// console.log("this.char from charactsfs", this.characters)
 		this.addCharacterForm = this.formBuilder.group({
 			name: this.name,
 			age: this.age,
@@ -43,7 +42,7 @@ export class CharactersComponent implements OnInit {
 	getCharacters() {
 		this.characterService.getCharacters().subscribe(
 			data => {this.characters = data
-			console.log("this.char from charactsfs", this.characters)
+			// console.log("this.char from charactsfs", this.characters)
 },
 			error => console.log(error),
 			() => this.isLoading = false
@@ -84,6 +83,12 @@ export class CharactersComponent implements OnInit {
 			error => console.log(error)
 		);
 	}
+
+	selectCharacter(character: Character) {
+		this.selectedCharacter = character;
+	}
+
+
 
 	deleteCharacter(character: Character) {
 		if (window.confirm('Are you sure you want to permanently delete this item?')) {

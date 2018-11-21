@@ -1,8 +1,39 @@
 <h3>Drag and Drop to Table</h3>
 
 <div *ngFor="let section of tierSections"  pDroppable="character" (onDrop)="dropInSection($event, section)">
-  <p-table [value]="section.characters">
 
+  <div class="card text-white bg-primary mb-3">
+    <div class="card-header">{{section.title}}
+      <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">{{section.subtext}}</p>
+
+          <div *ngFor="let characterSlot of section.characters"  pDroppable="character" (onDrop)="dropInSection($event, section, chacterSlot)" class="card text-white bg-secondary mb-3">
+            hello
+            <div>
+              <div class="card-header">{{characterSlot.name}}
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">{{characterSlot.name}}</p>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <p-table [value]="section.characters">
     <ng-template pTemplate="header">
         <tr>
             <th>name</th>
@@ -18,10 +49,9 @@
   </p-table>
   <div>drop here!</div>
 </div>
-
-
-
-
+<button class="btn btn-sm btn-primary ml-1" (click)="addSection()">
+  <i class="fa fa-trash"></i> Delete
+</button>
 <div class="ui-g">
     <div class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
         <ul style="margin:0;padding:0">

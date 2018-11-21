@@ -27,6 +27,9 @@
           <td>{{character._id}}</td>
 
           <td>
+            <button class="btn btn-sm btn-primary" (click)="selectCharacter(character)">
+              <i class="fa fa-pencil"></i> Select
+            </button>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(character)">
               <i class="fa fa-pencil"></i> Edit
             </button>
@@ -80,5 +83,5 @@
 
 
 
-<app-tier-list [characters]="characters">
+<app-tier-list [characters]="characters" [selectedCharacter]="selectedCharacter">
 </app-tier-list>
