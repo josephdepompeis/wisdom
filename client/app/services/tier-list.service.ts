@@ -15,17 +15,12 @@ export class TierListService {
 	// 	return this.http.get<TierList>(`/api/character/tierList/${character._id}`);
 	// }
 
+
+	// this will not work. 
 	getCharacterTierList(character: Character): Observable<TierList> {
 		console.log("character");
 		return this.http.get<TierList>(`/api/character/tierList/${character._id}`);
 	}
-
-
-	getTierListSectionsByTierId(tierList: TierList): Observable<TierListSection[]> {
-		return this.http.get<TierListSection[]>(`/api/tierListSections/${tierList._id}`);
-	}
-
-
 
 	addTierList(tierList: TierList): Observable<TierList> {
 		return this.http.post<TierList>('/api/tierList', tierList);
@@ -38,4 +33,14 @@ export class TierListService {
 	editTierList(tierList: TierList): Observable<any> {
 		return this.http.put(`/api/tierList/${tierList._id}`, tierList, { responseType: 'text' });
 	}
+
+	getTierListSectionsByTierId(tierList: TierList): Observable<TierListSection[]> {
+		return this.http.get<TierListSection[]>(`/api/tierListSections/${tierList._id}`);
+	}
+
+	addTierListSection(tierListSection: TierListSection): Observable<TierListSection> {
+		return this.http.post<TierListSection>('/api/tierListSection', tierListSection);
+	}
+
+
 }

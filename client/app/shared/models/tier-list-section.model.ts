@@ -4,7 +4,7 @@ export class TierListSection {
   _id?: string;
   title?: String;
   subtext?: String;
-  sortOrder?: String;
+  sortOrder?: number;
   tierListId: String;
   characters?: Character[];
 }

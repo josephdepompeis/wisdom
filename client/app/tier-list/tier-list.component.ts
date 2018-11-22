@@ -23,9 +23,7 @@ export class TierListComponent implements OnInit {
 	allCharacters: Character[] = [];
 
 	tierList: TierList;
-	tierListSections: TierListSection[];
-
-
+	tierListSections: TierListSection[] = [];
 
 	tierSections: {}[] = [
 		{
@@ -113,6 +111,7 @@ export class TierListComponent implements OnInit {
 			res => {
 				console.log("res", res);
 				this.tierList = res;
+				this.addTierListSection();
 			},
 			error => {
 				console.log(error);
@@ -120,21 +119,41 @@ export class TierListComponent implements OnInit {
 		);
 	}
 
+	addTierListSection() {
+		let localTierSection = {
+			title: "Default Local Tier List",
+			subtext: "Defualt subtext",
+			sortOrder: 0,
+			tierListId: this.tierList._id,
+			characters: [],
+		}
+
+		this.tierListService.addTierListSection(localTierSection).subscribe(
+			res => {
+				console.log("res ccc", res);
+				this.tierListSections.push(res);
+			},
+			error => {
+				console.log(error);
+			}
+		);
+	}
+
+
+
+
+
+
+
 	getCharacterTierList(character:Character) {
 		this.tierListService.getCharacterTierList(character).subscribe(
 			res => {
-				console.log("res from get", res);
-				// this.isMatchNotesLoading = false;
-				// this.matchNotes = res
+				console.log("res from get fff", res);
 				if (!res._id) {
 					this.addTierList();
 				}
 				else {
 					this.getTierListSectionsByTierId(res);
-					// this.selectMatch(res);
-					// this.findMatchForm.reset();
-					// this.setFormDefaults();
-					// this.hideAddNewMatchForm();
 				}
 			},
 

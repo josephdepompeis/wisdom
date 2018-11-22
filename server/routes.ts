@@ -57,14 +57,14 @@ export default function setRoutes(app) {
 	router.route('/matchNote/:id').delete(matchNotesCtrl.delete);
 
 	// tierLists
-	router.route('/character/tierList/:id').get(tierListsCtrl.getTierListByCharacter); //might change this url route.
-	// router.route('/matches/:id').get(matchCtrl.getMatchesByUserId);
+	router.route('/character/tierList/:id').get(tierListsCtrl.getTierListByCharacter);  // this idea will not work! model after findMatch
 	router.route('/tierList').post(tierListsCtrl.insert);
-	router.route('/tierList/:id').put(tierListsCtrl.update);
-	router.route('/tierList/:id').delete(tierListsCtrl.delete);
+	// router.route('/tierList/:id').put(tierListsCtrl.update);
+	// router.route('/tierList/:id').delete(tierListsCtrl.delete);
 
 	//tier List Sections
 	router.route('/tierListSections/:id').get(tierListSectionCtrl.getTierListSectionsByTierId);
+	router.route('/tierListSection').post(tierListSectionCtrl.insert);
 
 	// characters
 	router.route('/characters').get(characterCtrl.getAll);
