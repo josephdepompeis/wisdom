@@ -39,7 +39,7 @@ export class MatchesComponent implements OnInit {
 	ngOnInit() {
 		this.getMatches();
 		this.getCharacters();
-		this.setFormDefualts();
+		this.setFormDefaults();
 	}
 
 	disableIfNull(){
@@ -51,7 +51,7 @@ export class MatchesComponent implements OnInit {
 		}
 	}
 
-	setFormDefualts() {
+	setFormDefaults() {
 		this.findMatchForm = this.formBuilder.group({
 			// name: this.name,
 			playingAs: null,
@@ -97,7 +97,7 @@ export class MatchesComponent implements OnInit {
 				else {
 					this.selectMatch(res);
 					this.findMatchForm.reset();
-					this.setFormDefualts();
+					this.setFormDefaults();
 					this.hideAddNewMatchForm();
 				}
 			},
@@ -111,7 +111,7 @@ export class MatchesComponent implements OnInit {
 					//should update this
 					this.matches.push(res);
 					this.findMatchForm.reset();
-					this.setFormDefualts();
+					this.setFormDefaults();
 					this.selectMatch(res);
 					this.toast.setMessage('item added successfully.', 'success');
 				},
@@ -164,7 +164,7 @@ export class MatchesComponent implements OnInit {
 	hideAddNewMatchForm() {
 		this.displayMatchForm = false;
 		this.findMatchForm.reset();
-		this.setFormDefualts();
+		this.setFormDefaults();
 
 	}
 

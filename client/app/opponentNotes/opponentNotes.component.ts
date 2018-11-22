@@ -33,16 +33,16 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
 		//this log prevents a ts lint error. not sure wut do yet.
 		// can check object 'opponent' for change before and after tho!
 		console.log(" on changes opponent", opponent);
-		this.setFormDefualts();
+		this.setFormDefaults();
 		this.getOpponentNotes();
 	}
 
 	ngOnInit() {
 		this.getOpponentNotes();
-		this.setFormDefualts();
+		this.setFormDefaults();
 	}
 
-	setFormDefualts() {
+	setFormDefaults() {
 		this.addOpponentNoteForm = this.formBuilder.group({
 			body: this.body,
 			opponentId: this.opponent._id,
@@ -70,7 +70,7 @@ export class OpponentNotesComponent implements OnInit, OnChanges {
 			res => {
 				this.getOpponentNotes();
 				this.addOpponentNoteForm.reset();
-				this.setFormDefualts();
+				this.setFormDefaults();
 				this.toast.setMessage('item added successfully.', 'success');
 			},
 			error => {

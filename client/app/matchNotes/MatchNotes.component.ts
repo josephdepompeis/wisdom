@@ -46,7 +46,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		//this log prevents a ts lint error. not sure wut do yet.
 		// can check object 'match' for change before and after tho!
 		console.log(" on changes match", match);
-		this.setFormDefualts();
+		this.setFormDefaults();
 		this.getMatchNotes();
 		this.getCharacters();
 	}
@@ -74,10 +74,10 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 
 	ngOnInit() {
 		this.getMatchNotes();
-		this.setFormDefualts();
+		this.setFormDefaults();
 	}
 
-	setFormDefualts() {
+	setFormDefaults() {
 		this.addMatchNoteForm = this.formBuilder.group({
 			body: this.body,
 			matchId: this.match._id,
@@ -107,7 +107,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 			res => {
 				this.getMatchNotes();
 				this.addMatchNoteForm.reset();
-				this.setFormDefualts();
+				this.setFormDefaults();
 				this.toast.setMessage('item added successfully.', 'success');
 			},
 			error => {

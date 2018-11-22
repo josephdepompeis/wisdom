@@ -34,10 +34,10 @@ export class OpponentsComponent implements OnInit {
 
 	ngOnInit() {
 		this.getOpponents();
-		this.setFormDefualts();
+		this.setFormDefaults();
 	}
 
-	setFormDefualts() {
+	setFormDefaults() {
 		this.addOpponentForm = this.formBuilder.group({
 			name: this.name,
 			age: this.age,
@@ -59,7 +59,7 @@ export class OpponentsComponent implements OnInit {
 			res => {
 				this.opponents.push(res);
 				this.addOpponentForm.reset();
-				this.setFormDefualts();
+				this.setFormDefaults();
 				this.toast.setMessage('item added successfully.', 'success');
 			},
 			error => console.log(error)
@@ -113,7 +113,7 @@ export class OpponentsComponent implements OnInit {
 	hideAddNewOpponentForm() {
 		this.displayOpponentForm = false;
 		this.addOpponentForm.reset();
-		this.setFormDefualts();
+		this.setFormDefaults();
 
 	}
 
