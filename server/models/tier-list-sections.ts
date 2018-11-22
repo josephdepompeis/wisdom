@@ -4,8 +4,9 @@ const tierListSectionSchema = new mongoose.Schema({
   title: String,
   subtext: String,
   type: String,
-  typeId: String,
+  tierListId: String,
   userId: String,
+  characters: [],
 });
 
 const TierListSections = mongoose.model('TierListSections', tierListSectionSchema);

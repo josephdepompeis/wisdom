@@ -12,9 +12,13 @@ export default class TierListsCtrl extends BaseCtrl {
 	// 	});
 	// }
 
-	getTierListByCharacter = (req, res) => {
+	getTierListByTypeId = (req, res) => {
 		console.log("req  heloo", req.params);
-		this.model.find({_id: req.params.id}, (err, docs) => {
+
+		this.model.findOne({
+			userId: req.params.userId,
+			typeId: req.params.typeId,
+		}, (err, docs) => {
 			if (err) { return console.error(err); }
 			res.status(200).json(docs);
 		});

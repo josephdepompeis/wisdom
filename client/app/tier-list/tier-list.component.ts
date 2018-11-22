@@ -69,8 +69,6 @@ export class TierListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log("TierListService", TierListService);
-		console.log(this.characters);
 		// this.availableCharacters = this.characters;
 	}
 
@@ -109,9 +107,9 @@ export class TierListComponent implements OnInit {
 		}
 		this.tierListService.addTierList(localTierList).subscribe(
 			res => {
-				console.log("res", res);
+				console.log("res from add tier list", res);
 				this.tierList = res;
-				this.addTierListSection();
+				this.addTierListSection(res);
 			},
 			error => {
 				console.log(error);
@@ -119,18 +117,20 @@ export class TierListComponent implements OnInit {
 		);
 	}
 
-	addTierListSection() {
+	addTierListSection(tierList:TierList) {
+
+		console.log("new tier list section", tierList);
 		let localTierSection = {
 			title: "Default Local Tier List",
 			subtext: "Defualt subtext",
 			sortOrder: 0,
-			tierListId: this.tierList._id,
+			tierListId: tierList._id,
 			characters: [],
 		}
 
 		this.tierListService.addTierListSection(localTierSection).subscribe(
 			res => {
-				console.log("res ccc", res);
+				console.log("res from add tier list section", res);
 				this.tierListSections.push(res);
 			},
 			error => {
@@ -146,10 +146,10 @@ export class TierListComponent implements OnInit {
 
 
 	getCharacterTierList(character:Character) {
-		this.tierListService.getCharacterTierList(character).subscribe(
+		this.tierListService.getCharacterTierList(this.auth.currentUser, character).subscribe(
 			res => {
 				console.log("res from get fff", res);
-				if (!res._id) {
+				if (res === null) {
 					this.addTierList();
 				}
 				else {

@@ -1,12 +1,13 @@
-import TierLists from '../models/tier-lists';
+import TierListSections from '../models/tier-list-sections';
 import BaseCtrl from './base';
 
 export default class TierListsCtrl extends BaseCtrl {
-	model = TierLists;
+	model = TierListSections;
 
 	getTierListSectionsByTierId = (req, res) => {
 		console.log("req  heloo", req.params);
-		this.model.find({tierId: req.params.tierId}, (err, docs) => {
+
+		this.model.find({tierListId: req.params.tierListId}, (err, docs) => {
 			if (err) { return console.error(err); }
 			res.status(200).json(docs);
 		});
