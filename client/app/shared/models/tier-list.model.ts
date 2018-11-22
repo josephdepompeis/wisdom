@@ -4,8 +4,7 @@ export class TierList {
   _id?: string;
   title: String;
   subtext: String;
-  characters: Character[]; //array of character-like items
-  sortOrder: Number;
-  // matchId: String;
-  // body: String;
+  type: String;
+  typeId: String;
+  userId: String;
 }

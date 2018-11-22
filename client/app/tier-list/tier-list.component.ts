@@ -2,6 +2,8 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import * as _ from 'underscore';
 import { TierListService } from '../services/tier-list.service';
+import { TierList } from '../shared/models/tier-list.model';
+import { TierListSection } from '../shared/models/tier-list-section.model';
 
 @Component({
 	selector: 'app-tier-list',
@@ -18,6 +20,12 @@ export class TierListComponent implements OnInit {
 	draggedCharacter: Character;
 
 	allCharacters: Character[] = [];
+
+	tierList: TierList;
+	tierListSections: TierListSection[]
+
+
+	;
 	tierSections: {}[] = [
 		{
 			title: "title1",
@@ -42,7 +50,6 @@ export class TierListComponent implements OnInit {
 			subtext: "subtext",
 			characters: [],
 			sortOrder: 4,
-
 		}
 
 	]
@@ -61,20 +68,6 @@ export class TierListComponent implements OnInit {
 		);
 	}
 
-	getCharacterTierList(character:Character) {
-		this.tierListService.getCharacterTierList(character).subscribe(
-			res => {
-				console.log("res", res);
-				// this.isMatchNotesLoading = false;
-				// this.matchNotes = res
-			},
-			error => {
-				// this.isMatchNotesLoading = false;
-				console.log(error);
-			}
-		);
-	}
-
 	ngOnInit() {
 		console.log("TierListService", TierListService);
 		console.log(this.characters);
@@ -86,16 +79,67 @@ export class TierListComponent implements OnInit {
 		this.allCharacters = this.characters;
 		// this.selectedCharacter = selectedCharacter;
 		if (this.selectedCharacter) {
-			this.getCharacterTierList(this.selectedCharacter);		
+			this.getCharacterTierList(this.selectedCharacter);
 		}
+
 		// console.log(this.selectedCharacter);
 	}
 
-	// ngOnChanges(selectedCharacter: SimpleChanges) {
-	// 	this.availableCharacters = this.characters;
-	// 	this.selectedCharacter = selectedCharacter;
-	// 	console.log(this.characters);
-	// }
+	saveTierListSection(){
+		// this.tierListService.addTierList(character).subscribe(
+		// 	res => {
+		// 		console.log("res", res);
+		// 		// this.isMatchNotesLoading = false;
+		// 		// this.matchNotes = res
+		// 	},
+		// 	error => {
+		// 		// this.isMatchNotesLoading = false;
+		// 		console.log(error);
+		// 	}
+		// );
+	}
+
+
+	getCharacterTierList(character:Character) {
+		this.tierListService.getCharacterTierList(character).subscribe(
+			res => {
+				console.log("res", res);
+				this.getTierListSectionsByTierId(res);
+				// this.isMatchNotesLoading = false;
+				// this.matchNotes = res
+			},
+			error => {
+				// this.isMatchNotesLoading = false;
+				console.log(error);
+			}
+		);
+	}
+
+	getTierListSectionsByTierId(tierList:TierList) {
+		this.tierListService.getTierListSectionsByTierId(tierList).subscribe(
+			res => {
+				console.log("res list", res);
+
+				// this.isMatchNotesLoading = false;
+				// this.matchNotes = res
+			},
+			error => {
+				// this.isMatchNotesLoading = false;
+				console.log(error);
+			}
+		);
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 	dragStart(event, character: Character) {
 		this.draggedCharacter = character;

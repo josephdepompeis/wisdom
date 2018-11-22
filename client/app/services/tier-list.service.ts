@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TierList } from '../shared/models/tier-list.model';
 import { Character } from '../shared/models/character.model';
+import { TierListSection } from '../shared/models/tier-list-section.model';
 
 @Injectable()
 export class TierListService {
@@ -17,6 +18,11 @@ export class TierListService {
 	getCharacterTierList(character: Character): Observable<TierList> {
 		console.log("character");
 		return this.http.get<TierList>(`/api/character/tierList/${character._id}`);
+	}
+
+
+	getTierListSectionsByTierId(tierList: TierList): Observable<TierListSection[]> {
+		return this.http.get<TierListSection[]>(`/api/tierListSections/${tierList._id}`);
 	}
 
 
