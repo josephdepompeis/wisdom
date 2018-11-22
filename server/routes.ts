@@ -58,7 +58,9 @@ export default function setRoutes(app) {
 	router.route('/matchNote/:id').delete(matchNotesCtrl.delete);
 
 	// tierLists
-	router.route('/tierList/:id').get(tierListsCtrl.getMatchNotesByOpponentId);
+	router.route('/character/tierList/:id').get(tierListsCtrl.getTierListByCharacter);
+	// router.route('/matches/:id').get(matchCtrl.getMatchesByUserId);
+
 	router.route('/matchNote').post(tierListsCtrl.insert);
 	router.route('/matchNote/:id').put(tierListsCtrl.update);
 	router.route('/matchNote/:id').delete(tierListsCtrl.delete);

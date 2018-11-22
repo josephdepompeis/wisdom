@@ -9,9 +9,17 @@ export class TierListService {
 
 	constructor(private http: HttpClient) { }
 
-	getCharacterTierList(character: Character): Observable<TierList[]> {
-		return this.http.get<TierList[]>(`/api/tierLists/${character._id}`);
+	// getCharacterTierList(character: Character): Observable<TierList> {
+	// 	console.log(character);
+	// 	return this.http.get<TierList>(`/api/character/tierList/${character._id}`);
+	// }
+
+	getCharacterTierList(character: Character): Observable<TierList> {
+		console.log("character");
+		return this.http.get<TierList>(`/api/character/tierList/${character._id}`);
 	}
+
+
 
 	addTierList(tierList: TierList): Observable<TierList> {
 		return this.http.post<TierList>('/api/tierList', tierList);

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import * as _ from 'underscore';
+import { TierListService } from '../services/tier-list.service';
 
 @Component({
 	selector: 'app-tier-list',
@@ -9,6 +10,7 @@ import * as _ from 'underscore';
 })
 export class TierListComponent implements OnInit {
 	@Input() characters: Character[];
+	@Input() selectedCharacter: Character;
 
 	availableCharacters: Character[];
 
@@ -44,7 +46,9 @@ export class TierListComponent implements OnInit {
 		}
 
 	]
-	constructor() { }
+	constructor(
+		private tierListService: TierListService,
+	) { }
 
 	//most of this code taken from https://www.primefaces.org/primeng/#/dragdrop
 	addSection(){
@@ -57,7 +61,22 @@ export class TierListComponent implements OnInit {
 		);
 	}
 
+	getCharacterTierList(character:Character) {
+		this.tierListService.getCharacterTierList(character).subscribe(
+			res => {
+				console.log("res", res);
+				// this.isMatchNotesLoading = false;
+				// this.matchNotes = res
+			},
+			error => {
+				// this.isMatchNotesLoading = false;
+				console.log(error);
+			}
+		);
+	}
+
 	ngOnInit() {
+		console.log("TierListService", TierListService);
 		console.log(this.characters);
 		// this.availableCharacters = this.characters;
 	}
@@ -65,12 +84,18 @@ export class TierListComponent implements OnInit {
 	ngOnChanges(characters: SimpleChanges) {
 		this.availableCharacters = this.characters;
 		this.allCharacters = this.characters;
-		console.log(this.characters);
-
-
-
-
+		// this.selectedCharacter = selectedCharacter;
+		if (this.selectedCharacter) {
+			this.getCharacterTierList(this.selectedCharacter);		
+		}
+		// console.log(this.selectedCharacter);
 	}
+
+	// ngOnChanges(selectedCharacter: SimpleChanges) {
+	// 	this.availableCharacters = this.characters;
+	// 	this.selectedCharacter = selectedCharacter;
+	// 	console.log(this.characters);
+	// }
 
 	dragStart(event, character: Character) {
 		this.draggedCharacter = character;
