@@ -15,28 +15,32 @@ export class TierListComponent implements OnInit {
 	selectedCharacters: Character[] = [];
 	draggedCharacter: Character;
 
-
-
 	allCharacters: Character[] = [];
 	tierSections: {}[] = [
 		{
 			title: "title1",
 			subtext: "subtext",
 			characters: [],
+			sortOrder: 1,
 		},
 		{
 			title: "title2",
 			subtext: "subtext",
-
 			characters: [],
+			sortOrder: 2,
+
 		}, {
 			title: "title3",
 			subtext: "subtext",
 			characters: [],
+			sortOrder: 3,
+
 		}, {
 			title: "title4",
 			subtext: "subtext",
 			characters: [],
+			sortOrder: 4,
+
 		}
 
 	]
@@ -47,7 +51,7 @@ export class TierListComponent implements OnInit {
 		this.tierSections.push(
 			{
 				title: "titlex",
-				characters: [],
+				characters: [{name:'charlie'} , {name:'charlie'}, {name:'charlie'}, {name:'charlie'}],
 				subtext:"whatever",
 			}
 		);
@@ -62,6 +66,9 @@ export class TierListComponent implements OnInit {
 		this.availableCharacters = this.characters;
 		this.allCharacters = this.characters;
 		console.log(this.characters);
+
+
+
 
 	}
 

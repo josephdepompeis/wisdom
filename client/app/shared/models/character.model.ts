@@ -3,4 +3,5 @@ export class Character {
   name?: string;
   weight?: number;
   age?: number;
+  sortOrder?: number; //used for tier lists, might be bloaty.
 }

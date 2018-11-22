@@ -8,6 +8,9 @@ import MatchNotesCtrl from './controllers/matchNotes';
 import CharacterCtrl from './controllers/character';
 import UserCtrl from './controllers/user';
 
+import TierListCtrl from './controllers/tierLists';
+
+
 export default function setRoutes(app) {
 
 	const router = express.Router();
@@ -18,6 +21,11 @@ export default function setRoutes(app) {
 	const characterCtrl = new CharacterCtrl();
 	const userCtrl = new UserCtrl();
 	const matchNotesCtrl = new MatchNotesCtrl();
+
+	const tierListsCtrl = new TierListCtrl();
+
+
+
 
 	// Opponents
 	router.route('/opponents/:id').get(opponentCtrl.getOpponentsByUserId);
@@ -38,7 +46,6 @@ export default function setRoutes(app) {
 	// matches
 	router.route('/matches/:id').get(matchCtrl.getMatchesByUserId);
 	router.route('/findMatch/:playingAs/:playingAgainst').get(matchCtrl.findMatch);
-
 	router.route('/match').post(matchCtrl.insert);
 	router.route('/match/:id').get(matchCtrl.get);
 	router.route('/match/:id').put(matchCtrl.update);
@@ -49,6 +56,12 @@ export default function setRoutes(app) {
 	router.route('/matchNote').post(matchNotesCtrl.insert);
 	router.route('/matchNote/:id').put(matchNotesCtrl.update);
 	router.route('/matchNote/:id').delete(matchNotesCtrl.delete);
+
+	// tierLists
+	router.route('/tierList/:id').get(tierListsCtrl.getMatchNotesByOpponentId);
+	router.route('/matchNote').post(tierListsCtrl.insert);
+	router.route('/matchNote/:id').put(tierListsCtrl.update);
+	router.route('/matchNote/:id').delete(tierListsCtrl.delete);
 
 	// characters
 	router.route('/characters').get(characterCtrl.getAll);

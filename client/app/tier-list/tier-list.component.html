@@ -9,7 +9,6 @@
         <p class="card-text">{{section.subtext}}</p>
 
           <div *ngFor="let characterSlot of section.characters"  pDroppable="character" (onDrop)="dropInSection($event, section, chacterSlot)" class="card text-white bg-secondary mb-3">
-            hello
             <div>
               <div class="card-header">{{characterSlot.name}}
                 <div class="card-body">
@@ -18,13 +17,6 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
-
-
           </div>
         <!-- </div> -->
       </div>

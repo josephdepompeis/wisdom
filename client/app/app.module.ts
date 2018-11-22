@@ -26,6 +26,8 @@ import { OpponentNoteService } from './services/opponentNote.service';
 import { MatchNotesComponent } from './matchNotes/matchNotes.component';
 import { MatchNoteService } from './services/matchNote.service';
 import { TierListComponent } from './tier-list/tier-list.component';
+import { TierListService } from './services/tier-list.service';
+
 
 
 
@@ -88,6 +90,7 @@ export function tokenGetter() {
     OpponentNoteService,
     MatchService,
     MatchNoteService,
+    TierListService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

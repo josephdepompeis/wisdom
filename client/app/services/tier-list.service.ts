@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { TierList } from '../shared/models/tier-list.model';
+import { Character } from '../shared/models/character.model';
+
+@Injectable()
+export class TierListService {
+
+	constructor(private http: HttpClient) { }
+
+	getCharacterTierList(character: Character): Observable<TierList[]> {
+		return this.http.get<TierList[]>(`/api/tierLists/${character._id}`);
+	}
+
+	addTierList(tierList: TierList): Observable<TierList> {
+		return this.http.post<TierList>('/api/tierList', tierList);
+	}
+
+	deleteTierList(tierList: TierList): Observable<any> {
+		return this.http.delete(`/api/tierList/${tierList._id}`, { responseType: 'text' });
+	}
+
+	editTierList(tierList: TierList): Observable<any> {
+		return this.http.put(`/api/tierList/${tierList._id}`, tierList, { responseType: 'text' });
+	}
+}
