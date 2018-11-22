@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 import { TierListService } from '../services/tier-list.service';
 import { TierList } from '../shared/models/tier-list.model';
 import { TierListSection } from '../shared/models/tier-list-section.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
 	selector: 'app-tier-list',
@@ -22,10 +23,10 @@ export class TierListComponent implements OnInit {
 	allCharacters: Character[] = [];
 
 	tierList: TierList;
-	tierListSections: TierListSection[]
+	tierListSections: TierListSection[];
 
 
-	;
+
 	tierSections: {}[] = [
 		{
 			title: "title1",
@@ -55,6 +56,7 @@ export class TierListComponent implements OnInit {
 	]
 	constructor(
 		private tierListService: TierListService,
+		private auth: AuthService,
 	) { }
 
 	//most of this code taken from https://www.primefaces.org/primeng/#/dragdrop
@@ -99,15 +101,43 @@ export class TierListComponent implements OnInit {
 		// );
 	}
 
+	addTierList() {
+		let localTierList = {
+			title: "tier list",
+			subtext: "tier list subtext",
+			type: "character",
+			typeId: this.selectedCharacter._id,
+			userId: this.auth.currentUser._id,
+		}
+		this.tierListService.addTierList(localTierList).subscribe(
+			res => {
+				console.log("res", res);
+				this.tierList = res;
+			},
+			error => {
+				console.log(error);
+			}
+		);
+	}
 
 	getCharacterTierList(character:Character) {
 		this.tierListService.getCharacterTierList(character).subscribe(
 			res => {
-				console.log("res", res);
-				this.getTierListSectionsByTierId(res);
+				console.log("res from get", res);
 				// this.isMatchNotesLoading = false;
 				// this.matchNotes = res
+				if (!res._id) {
+					this.addTierList();
+				}
+				else {
+					this.getTierListSectionsByTierId(res);
+					// this.selectMatch(res);
+					// this.findMatchForm.reset();
+					// this.setFormDefaults();
+					// this.hideAddNewMatchForm();
+				}
 			},
+
 			error => {
 				// this.isMatchNotesLoading = false;
 				console.log(error);

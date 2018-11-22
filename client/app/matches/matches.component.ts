@@ -37,7 +37,7 @@ export class MatchesComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.getMatches();
+		// this.getMatches();
 		this.getCharacters();
 		this.setFormDefaults();
 	}
