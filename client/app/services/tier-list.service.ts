@@ -35,12 +35,10 @@ export class TierListService {
 	// deleteTierList(tierList: TierList): Observable<any> {
 	// 	return this.http.delete(`/api/tierList/${tierList._id}`, { responseType: 'text' });
 	// }
-	//
-	// editTierList(tierList: TierList): Observable<any> {
-	// 	return this.http.put(`/api/tierList/${tierList._id}`, tierList, { responseType: 'text' });
-	// }
+
 
 	getTierListSectionsByTierId(tierList: TierList): Observable<TierListSection[]> {
+		console.log("tierListtierListtierListtierListtierList", tierList)
 		return this.http.get<TierListSection[]>(`/api/tierListSections/${tierList._id}`);
 	}
 
@@ -48,5 +46,12 @@ export class TierListService {
 		return this.http.post<TierListSection>('/api/tierListSection', tierListSection);
 	}
 
+	editTierListSection(tierListSection: TierListSection): Observable<any> {
+		return this.http.put(`/api/tierListSection/${tierListSection._id}`, tierListSection, { responseType: 'text' });
+	}
 
+	editTierList(tierList: TierList): Observable<any> {
+		return this.http.put(`/api/tierList/${tierList._id}`, tierList, { responseType: 'text' });
+	}
+	
 }

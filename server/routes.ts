@@ -60,12 +60,13 @@ export default function setRoutes(app) {
 
 	router.route('/tierList/:userId/:typeId').get(tierListsCtrl.getTierListByTypeId);
 	router.route('/tierList').post(tierListsCtrl.insert);
-	// router.route('/tierList/:id').put(tierListsCtrl.update);
+	router.route('/tierList/:id').put(tierListsCtrl.update);
 	// router.route('/tierList/:id').delete(tierListsCtrl.delete);
 
 	//tier List Sections
 	router.route('/tierListSections/:tierListId').get(tierListSectionCtrl.getTierListSectionsByTierId);
 	router.route('/tierListSection').post(tierListSectionCtrl.insert);
+	router.route('/tierListSection/:id').put(tierListSectionCtrl.update);
 
 	// characters
 	router.route('/characters').get(characterCtrl.getAll);

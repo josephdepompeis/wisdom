@@ -6,6 +6,7 @@ const tierListSchema = new mongoose.Schema({
   type: String,
   typeId: String,
   userId: String,
+  removedCharacters: Array,
 });
 
 const TierLists = mongoose.model('TierLists', tierListSchema);

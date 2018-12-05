@@ -7,4 +7,5 @@ export class TierList {
   type: String;
   typeId: String;
   userId: String;
+  removedCharacters?: Character[];
 }

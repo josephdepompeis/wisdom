@@ -8,5 +8,7 @@ export class TierListSection {
   tierListId: String;
   title?: String;
   type?: String;
+
+
   userId?: String;
 }

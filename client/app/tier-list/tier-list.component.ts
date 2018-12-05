@@ -1,21 +1,48 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Character } from '../shared/models/character.model';
 import * as _ from 'underscore';
 import { TierListService } from '../services/tier-list.service';
 import { TierList } from '../shared/models/tier-list.model';
 import { TierListSection } from '../shared/models/tier-list-section.model';
 import { AuthService } from '../services/auth.service';
+import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
+// import {Component,ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'app-tier-list',
 	templateUrl: './tier-list.component.html',
-	styleUrls: ['./tier-list.component.css']
+	styleUrls: ['./tier-list.component.css'],
+
+	//stolen from https://www.primefaces.org/primeng/#/flexgrid
+	animations: [
+			trigger('animation', [
+					state('visible', style({
+							transform: 'translateX(0)',
+							opacity: 1
+					})),
+					transition('void => *', [
+							style({transform: 'translateX(50%)', opacity: 0}),
+							animate('300ms ease-out')
+					]),
+					transition('* => void', [
+							animate(('250ms ease-in'), style({
+									height: 0,
+									opacity: 0,
+									transform: 'translateX(50%)'
+							}))
+					])
+			])
+	],
+	encapsulation: ViewEncapsulation.None
 })
+
 export class TierListComponent implements OnInit {
 	@Input() characters: Character[];
 	@Input() selectedCharacter: Character;
 
 	availableCharacters: Character[];
+	columns: number[];
+
 
 	selectedCharacters: Character[] = [];
 	draggedCharacter: Character;
@@ -69,6 +96,8 @@ export class TierListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.columns = [0, 1, 2, 3, 4, 5];
+
 		// this.availableCharacters = this.characters;
 	}
 
@@ -104,6 +133,7 @@ export class TierListComponent implements OnInit {
 			type: "character",
 			typeId: this.selectedCharacter._id,
 			userId: this.auth.currentUser._id,
+			removedCharacters: [],
 		}
 		this.tierListService.addTierList(localTierList).subscribe(
 			res => {
@@ -118,8 +148,6 @@ export class TierListComponent implements OnInit {
 	}
 
 	addTierListSection(tierList:TierList) {
-
-		// console.log("new tier list section", tierList);
 		let localTierSection = {
 			title: "Default Local Tier List",
 			type: "character",
@@ -133,19 +161,13 @@ export class TierListComponent implements OnInit {
 		this.tierListService.addTierListSection(localTierSection).subscribe(
 			res => {
 				console.log("res from add tier list section", res);
-				this.tierListSections.push(res);
+				this.getTierListSectionsByTierId(this.tierList);
 			},
 			error => {
 				console.log(error);
 			}
 		);
 	}
-
-
-
-
-
-
 
 	getCharacterTierList(character:Character) {
 		this.tierListService.getCharacterTierList(this.auth.currentUser, character).subscribe(
@@ -155,12 +177,12 @@ export class TierListComponent implements OnInit {
 					this.addTierList();
 				}
 				else {
+					this.tierList = res;
 					this.getTierListSectionsByTierId(res);
 				}
 			},
 
 			error => {
-				// this.isMatchNotesLoading = false;
 				console.log(error);
 			}
 		);
@@ -171,11 +193,29 @@ export class TierListComponent implements OnInit {
 			res => {
 				console.log("list of tier list sections", res);
 				this.tierListSections = res;
-				// this.isMatchNotesLoading = false;
-				// this.matchNotes = res
 			},
 			error => {
-				// this.isMatchNotesLoading = false;
+				console.log(error);
+			}
+		);
+	}
+
+	editTierList(tierList:TierList) {
+		this.tierListService.editTierList(tierList).subscribe(
+			res => {
+				// this.tierList = res;
+				console.log("res -- is this okay?", res);
+				this.draggedCharacter = null;
+
+				console.log("hello joe")
+				//
+				// if (this.draggedCharacter) {
+				// 	this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+				// }
+				// // this.allCharacters = _.without(this.allCharacters, this.draggedCharacter);
+				// this.draggedCharacter = null;
+			},
+			error => {
 				console.log(error);
 			}
 		);
@@ -183,21 +223,46 @@ export class TierListComponent implements OnInit {
 
 
 
+	editTierListSection = (tierListSection:TierListSection) => {
+		this.tierListService.editTierListSection(tierListSection).subscribe(
+			res => {
+				tierListSection = res;
 
 
 
+				// if (this.draggedCharacter) {
+					console.log("this.tierList", this.tierList);
+					this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+				// }
+				// this.allCharacters = _.without(this.allCharacters, this.draggedCharacter);
+				// this.draggedCharacter = null;
+			},
+			error => {
+				console.log(error);
+			}
+		);
+	}
+
+	addCharacterToRemovedList = (tierList:TierList, draggedCharacter: Character) => {
+		let localTierList = _.clone(tierList);
+		console.log("tierList", tierList)
+		localTierList.removedCharacters.push(draggedCharacter);
+		this.editTierList(localTierList);
+	}
 
 
-
-
-
+	addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
+		let localTierListSection = _.clone(tierListSection);
+		localTierListSection.characters.push(draggedCharacter);
+		this.editTierListSection(localTierListSection);
+	}
 
 	dragStart(event, character: Character) {
 		this.draggedCharacter = character;
 	}
 
 	drop(event) {
-		console.log("help");
+		// console.log("help");
 		if (this.draggedCharacter) {
 			let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
 			this.selectedCharacters = [...this.selectedCharacters, this.draggedCharacter];
@@ -206,13 +271,9 @@ export class TierListComponent implements OnInit {
 		}
 	}
 
-	dropInSection(event, section) {
-		console.log("help",event);
-		console.log("section", section);
+	dropInTierListSection = (event, tierListSection) => {
 		if (this.draggedCharacter) {
-			section.characters.push(this.draggedCharacter);
-			this.allCharacters = _.without(this.allCharacters, this.draggedCharacter);
-			this.draggedCharacter = null;
+			this.addCharacterToTierListSection(tierListSection, this.draggedCharacter);
 		}
 	}
 
@@ -232,7 +293,14 @@ export class TierListComponent implements OnInit {
 		return index;
 	}
 
+// https://www.primefaces.org/primeng/#/flexgrid
 
+	addColumn() {
+			this.columns.push(this.columns.length);
+	}
 
+	removeColumn() {
+			this.columns.splice(-1, 1);
+	}
 
 }

@@ -1,29 +1,76 @@
 
-<div *ngFor="let section of tierListSections"  pDroppable="character" (onDrop)="dropInSection($event, section)">
-  <pre>{{section.type}}</pre>
+<div *ngFor="let tierListSection of tierListSections"  pDroppable="character" (onDrop)="dropInTierListSection($event, tierListSection)">
+  <pre>{{tierListSection.type}}</pre>
   <div class="card text-white bg-primary mb-3">
-    <div class="card-header">{{section.title}}
+    <div class="card-header">{{tierListSection.title}}
       <div class="card-body">
-        <h5 class="card-title">{{section.userId}}</h5>
-        <p class="card-text">{{section.subtext}}</p>
-        <p class="card-text">{{section.type}}</p>
-        <p class="card-text">{{section.subtext}}</p>
-        <p class="card-text">{{section.subtext}}</p>
+        <h5 class="card-title">{{tierListSection._id}}</h5>
+        <p class="card-text">{{tierListSection.subtext}}</p>
+        <p class="card-text">{{tierListSection.type}}</p>
+        <p class="card-text">{{tierListSection.sortOrder}}</p>
 
-          <div *ngFor="let characterSlot of section.characters"  pDroppable="character" (onDrop)="dropInSection($event, section, chacterSlot)" class="card text-white bg-secondary mb-3">
-            <div>
-              <div class="card-header">{{characterSlot.name}}
-                <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">{{characterSlot.name}}</p>
+
+
+        <div class="p-grid" style="margin-top: .5em">
+            <div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let i=index" [@animation]="'visible'">
+                <div class="box">
+                  <p>{{i + 1}}</p>
+                  <div class="card-header">{{characterSlot.name}}
+                    <div class="card-body">
+                      <h5 class="card-title">Primary card title</h5>
+                      <p class="card-text">{{characterSlot.name}}</p>
+                    </div>
+                  </div>
                 </div>
+            </div>
+        </div>
+
+
+
+
+
+
+<!--
+this one is old
+        <div *ngFor="let characterSlot of section.characters"  pDroppable="character" (onDrop)="dropInSection($event, section, chacterSlot)" class="card text-white bg-secondary mb-3">
+          <div>
+            <div class="card-header">{{characterSlot.name}}
+              <div class="card-body">
+                <h5 class="card-title">Primary card title</h5>
+                <p class="card-text">{{characterSlot.name}}</p>
               </div>
             </div>
           </div>
+        </div>
+ -->
+
+
+
       </div>
     </div>
   </div>
 
+
+  <div class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
+      <ul style="margin:0;padding:0">
+          <li *ngFor="let character of allCharacters" class="ui-helper-clearfix" pDraggable="character"
+              (onDragStart)="dragStart($event,character)" (onDragEnd)="dragEnd($event)">
+              <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
+              <div style="margin:8px 0 0 8px;float:left">{{character.name}} - {{character._id}}</div>
+          </li>
+      </ul>
+  </div>
+
+
+  <h3>Dynamic</h3>
+  <button pButton type="button" icon="pi pi-plus" title="Add Column" (click)="addColumn()" [disabled]="columns.length === 70" style="margin-right: .5em"></button>
+  <button pButton type="button" icon="pi pi-minus" title="Remove Column" (click)="removeColumn()"[disabled]="columns.length === 1"></button>
+
+  <div class="p-grid" style="margin-top: .5em">
+      <div class="p-col" *ngFor="let col of columns; let i=index" [@animation]="'visible'">
+          <div class="box">{{i + 1}}</div>
+      </div>
+  </div>
 
 
 <!-- <h3>Drag and Drop to Table</h3>
