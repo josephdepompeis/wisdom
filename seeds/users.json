@@ -1,0 +1,17 @@
+[
+  {
+      "username" : "testtest is the pw",
+      "email" : "test@test.com",
+      "password" : "$2a$10$p.1oWL0oT8ChEEqBTzh4WeSYU.UUIRDFe23smh9r3fP8IVRGv9eFy",
+      "role" : "admin",
+      "__v" : 0
+  },
+  {
+      "username" : "joe",
+      "email" : "joe@joe.com",
+      "password" : "$2a$10$2AopOw7n6ErpJ4foPgStA.7X385nNb.Hjd9Akywfeq1ZwBOszHA4y",
+      "role" : "admin",
+      "__v" : 0
+  }
+
+]
