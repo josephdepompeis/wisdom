@@ -31,6 +31,17 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ### Production mode
 `npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000)
 
+
+## Seeds
+
+install this : [node-mongo-seeds](https://www.npmjs.com/package/node-mongo-seeds)
+by doing:
+` npm install -g node-mongo-seeds`
+afterward, navigate to the top level directory
+run `seed`
+should see a message ending with:
+`All done. Go play!` 
+
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app (eg: `your-app-name`)
 2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
