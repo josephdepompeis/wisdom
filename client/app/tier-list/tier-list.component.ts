@@ -119,9 +119,11 @@ export class TierListComponent implements OnInit {
 
 	addTierListSection(tierList:TierList) {
 
-		console.log("new tier list section", tierList);
+		// console.log("new tier list section", tierList);
 		let localTierSection = {
 			title: "Default Local Tier List",
+			type: "character",
+			userId: this.auth.currentUser._id,
 			subtext: "Defualt subtext",
 			sortOrder: 0,
 			tierListId: tierList._id,
@@ -148,7 +150,7 @@ export class TierListComponent implements OnInit {
 	getCharacterTierList(character:Character) {
 		this.tierListService.getCharacterTierList(this.auth.currentUser, character).subscribe(
 			res => {
-				console.log("res from get fff", res);
+				console.log("res from get char tier lsit", res);
 				if (res === null) {
 					this.addTierList();
 				}
@@ -167,8 +169,8 @@ export class TierListComponent implements OnInit {
 	getTierListSectionsByTierId(tierList:TierList) {
 		this.tierListService.getTierListSectionsByTierId(tierList).subscribe(
 			res => {
-				console.log("res list", res);
-
+				console.log("list of tier list sections", res);
+				this.tierListSections = res;
 				// this.isMatchNotesLoading = false;
 				// this.matchNotes = res
 			},

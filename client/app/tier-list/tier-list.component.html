@@ -1,4 +1,32 @@
-<h3>Drag and Drop to Table</h3>
+
+<div *ngFor="let section of tierListSections"  pDroppable="character" (onDrop)="dropInSection($event, section)">
+  <pre>{{section.type}}</pre>
+  <div class="card text-white bg-primary mb-3">
+    <div class="card-header">{{section.title}}
+      <div class="card-body">
+        <h5 class="card-title">{{section.userId}}</h5>
+        <p class="card-text">{{section.subtext}}</p>
+        <p class="card-text">{{section.type}}</p>
+        <p class="card-text">{{section.subtext}}</p>
+        <p class="card-text">{{section.subtext}}</p>
+
+          <div *ngFor="let characterSlot of section.characters"  pDroppable="character" (onDrop)="dropInSection($event, section, chacterSlot)" class="card text-white bg-secondary mb-3">
+            <div>
+              <div class="card-header">{{characterSlot.name}}
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">{{characterSlot.name}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- <h3>Drag and Drop to Table</h3>
 
 <div *ngFor="let section of tierSections"  pDroppable="character" (onDrop)="dropInSection($event, section)">
 
@@ -18,7 +46,6 @@
               </div>
             </div>
           </div>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -71,4 +98,4 @@
             </ng-template>
         </p-table>
     </div>
-</div>
+</div> -->

@@ -1,12 +1,13 @@
 import * as mongoose from 'mongoose';
 
 const tierListSectionSchema = new mongoose.Schema({
-  title: String,
-  subtext: String,
-  type: String,
-  tierListId: String,
-  userId: String,
   characters: [],
+  sortOrder: Number,
+  subtext: String,
+  tierListId: String,
+  title: String,
+  type: String,
+  userId: String,
 });
 
 const TierListSections = mongoose.model('TierListSections', tierListSectionSchema);
