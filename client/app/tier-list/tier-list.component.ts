@@ -204,7 +204,8 @@ export class TierListComponent implements OnInit {
 		this.tierListService.editTierList(tierList).subscribe(
 			res => {
 				// this.tierList = res;
-				console.log("res -- is this okay?", res);
+				console.log("res -- is this okay?", this.tierList);
+
 				this.draggedCharacter = null;
 				this.tierList = tierList;
 				console.log("hello joe");
@@ -280,9 +281,22 @@ export class TierListComponent implements OnInit {
 
 	isCharacterRemoved(character:Character) {
 		console.log("this.tierList.removedCharacters", this.tierList.removedCharacters);
-		console.log("_.contains(this.tierList.removedCharacters, character)", _.contains(this.tierList.removedCharacters, character));
-		return _.contains(this.tierList.removedCharacters, character);
+		console.log("character", character);
+		console.log("_)", _.findWhere(this.tierList.removedCharacters, {_id: character._id}));
+
+		//
+		// _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
+		// => {year: 1918, newsroom: "The New York Times",
+		//   reason: "For its public service in publishing in full so many official reports,
+		//   documents and speeches by European statesmen relating to the progress and
+		//   conduct of the war."}
+
+
+		return _.findWhere(this.tierList.removedCharacters, {_id: character._id});
 	}
+
+
+
 
 
 	dragEnd(event) {
