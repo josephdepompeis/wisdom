@@ -206,8 +206,9 @@ export class TierListComponent implements OnInit {
 				// this.tierList = res;
 				console.log("res -- is this okay?", res);
 				this.draggedCharacter = null;
+				this.tierList = tierList;
+				console.log("hello joe");
 
-				console.log("hello joe")
 				//
 				// if (this.draggedCharacter) {
 				// 	this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
@@ -263,12 +264,12 @@ export class TierListComponent implements OnInit {
 
 	drop(event) {
 		// console.log("help");
-		if (this.draggedCharacter) {
-			let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
-			this.selectedCharacters = [...this.selectedCharacters, this.draggedCharacter];
-			this.availableCharacters = this.availableCharacters.filter((val, i) => i != draggedCharacterIndex);
-			this.draggedCharacter = null;
-		}
+		// if (this.draggedCharacter) {
+		// 	let draggedCharacterIndex = this.findIndex(this.draggedCharacter);
+		// 	this.selectedCharacters = [...this.selectedCharacters, this.draggedCharacter];
+		// 	this.availableCharacters = this.availableCharacters.filter((val, i) => i != draggedCharacterIndex);
+		// 	this.draggedCharacter = null;
+		// }
 	}
 
 	dropInTierListSection = (event, tierListSection) => {
@@ -277,8 +278,15 @@ export class TierListComponent implements OnInit {
 		}
 	}
 
+	isCharacterRemoved(character:Character) {
+		console.log("this.tierList.removedCharacters", this.tierList.removedCharacters);
+		console.log("_.contains(this.tierList.removedCharacters, character)", _.contains(this.tierList.removedCharacters, character));
+		return _.contains(this.tierList.removedCharacters, character);
+	}
+
+
 	dragEnd(event) {
-		this.draggedCharacter = null;
+		// this.draggedCharacter = null;
 	}
 
 	findIndex(character: Character) {
