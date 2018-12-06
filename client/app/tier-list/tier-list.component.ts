@@ -191,7 +191,7 @@ export class TierListComponent implements OnInit {
 	getTierListSectionsByTierId(tierList:TierList) {
 		this.tierListService.getTierListSectionsByTierId(tierList).subscribe(
 			res => {
-				console.log("list of tier list sections", res);
+				// console.log("list of tier list sections", res);
 				this.tierListSections = res;
 			},
 			error => {
@@ -204,11 +204,11 @@ export class TierListComponent implements OnInit {
 		this.tierListService.editTierList(tierList).subscribe(
 			res => {
 				// this.tierList = res;
-				console.log("res -- is this okay?", this.tierList);
+				// console.log("res -- is this okay?", this.tierList);
 
 				this.draggedCharacter = null;
 				this.tierList = tierList;
-				console.log("hello joe");
+				// console.log("hello joe");
 
 				//
 				// if (this.draggedCharacter) {
@@ -229,15 +229,15 @@ export class TierListComponent implements OnInit {
 		this.tierListService.editTierListSection(tierListSection).subscribe(
 			res => {
 				tierListSection = res;
-
-
-
-				// if (this.draggedCharacter) {
-					console.log("this.tierList", this.tierList);
+				
+				//this checks if character last dragged character needs to be removed from list.
+				if (!this.isCharacterRemoved(this.draggedCharacter)) {
 					this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
-				// }
-				// this.allCharacters = _.without(this.allCharacters, this.draggedCharacter);
-				// this.draggedCharacter = null;
+				}
+				else {
+					this.draggedCharacter = null;
+				}
+
 			},
 			error => {
 				console.log(error);
@@ -247,28 +247,80 @@ export class TierListComponent implements OnInit {
 
 	addCharacterToRemovedList = (tierList:TierList, draggedCharacter: Character) => {
 		let localTierList = _.clone(tierList);
-		console.log("tierList", tierList)
+		console.log("tierList", tierList);
+
 		localTierList.removedCharacters.push(draggedCharacter);
 		this.editTierList(localTierList);
 	}
 
 
 	addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
-
 		console.log("does this stil happen???")
 		let localTierListSection = _.clone(tierListSection);
 		localTierListSection.characters.push(draggedCharacter);
 		this.editTierListSection(localTierListSection);
 	}
 
-	moveCharacterToCharacterSlot = (tierListSection:TierListSection, draggedCharacter: Character, index:number) => {
+	moveCharacterToCharacterSlot = (tierListSection: TierListSection, draggedCharacter: Character, index:number) => {
+		let characterInSlot = tierListSection.characters[index];
 		let localTierListSection = _.clone(tierListSection);
-		localTierListSection.characters.splice(index, 0, draggedCharacter);
+
+		console.log("characterInSlot", characterInSlot);
+
+		// if they are in the same tierListSection we dont have to find the tierListSection of draggedChracter
+		if ( _.contains(tierListSection.characters, draggedCharacter) ) {
+
+			let indexOfDraggedCharacter =  _.indexOf(tierListSection.characters, draggedCharacter);
+
+
+
+			// removes character from passed in index position, replaces with dragged character
+			localTierListSection.characters.splice(index, 1, draggedCharacter);
+			// removes draggedCharacter from  indexOfDraggedCharacter position, replaces with characterInSlot
+			localTierListSection.characters.splice(indexOfDraggedCharacter, 1, characterInSlot);
+			// this.editTierListSection(localTierListSection);
+		}
+
+			//this tells us it was moved from character select part, and needs to be removed from tierList
+		else if (!this.isCharacterRemoved(draggedCharacter)) {
+			localTierListSection.characters.splice(index, 0, draggedCharacter);
+			// this.editTierListSection(localTierListSection);
+		}
+
 		this.editTierListSection(localTierListSection);
+
+		// let draggedCharactersTierListSection = _.filter(this.tierListSections, {character: );
+
+
+			// _.each(this.tierListSections, alert);
+
+
+
+		// let draggedCharactersTierListSection =  _.some(this.tierListSections,function(localTierListSection){ return _.contains(localTierListSection.characters, draggedCharacter) });
+
+		// console.log("draggedCharactersTierListSection", draggedCharactersTierListSection);
+		 // _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+			// => [2, 4, 6]
+
+		//
+		// let localTierListSection = _.clone(tierListSection);
+		//
+		// if (this.isCharacterRemoved(draggedCharacter)) {
+		// 	//probably will have to  find index in target character tierlistsection and remove from that.
+		// 	let oldIndex  = _.findIndex(localTierListSection.characters, draggedCharacter);
+		// 	localTierListSection.characters.splice(oldIndex, 1);
+		// }
+		//
+		//
+		//
+		// localTierListSection.characters.splice(index, 0, draggedCharacter);
+		// this.editTierListSection(localTierListSection);
 	}
 
-	dragStart(event, character: Character) {
+	dragStart = (event, character: Character) => {
+		console.log("helo")
 		this.draggedCharacter = character;
+		console.log("this.draggedCharacter", this.draggedCharacter);
 	}
 
 	drop(event) {
@@ -281,18 +333,20 @@ export class TierListComponent implements OnInit {
 		// }
 	}
 
-	dropInTierListSection = (event, tierListSection) => {
+	dropInTierListSection = (event, tierListSection: TierListSection) => {
 		if (this.draggedCharacter) {
 			this.addCharacterToTierListSection(tierListSection, this.draggedCharacter);
 		}
 	}
-	dropInCharacterSlot = (event, tierListSection, index :number) => {
+
+
+	dropInCharacterSlot = (event, tierListSection:TierListSection, index :number) => {
 		console.log("index", index);
+		console.log("this.draggedCharacter", this.draggedCharacter);
 		if (this.draggedCharacter) {
 			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, index);
 		}
 	}
-
 
 	isCharacterRemoved(character:Character) {
 		return _.findWhere(this.tierList.removedCharacters, {_id: character._id});

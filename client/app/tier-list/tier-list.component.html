@@ -16,7 +16,7 @@
             <div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'">
                 <div class="box" pDroppable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)"
                 pDraggable="character"
-                    (onDragStart)="dragStart($event,character)" 
+                (onDragStart)="dragStart($event, characterSlot)"
                 >
                   <p>{{index + 1}}</p>
                   <div class="card-header">{{characterSlot.name}}
