@@ -57,6 +57,7 @@ this one is old
     </div>
   </div>
 </div>
+<button pButton type="button" icon="pi pi-plus" title="Add Column" (click)="addTierListSection(tierList)" [disabled]="columns.length === 70" style="margin-right: .5em"></button>
 
 
   <div *ngIf="tierList"  class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
@@ -94,6 +95,7 @@ this one is old
 
 
   <h3>Dynamic</h3>
+
   <button pButton type="button" icon="pi pi-plus" title="Add Column" (click)="addColumn()" [disabled]="columns.length === 70" style="margin-right: .5em"></button>
   <button pButton type="button" icon="pi pi-minus" title="Remove Column" (click)="removeColumn()"[disabled]="columns.length === 1"></button>
 
