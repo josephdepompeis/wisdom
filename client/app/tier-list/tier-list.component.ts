@@ -254,8 +254,16 @@ export class TierListComponent implements OnInit {
 
 
 	addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
+
+		console.log("does this stil happen???")
 		let localTierListSection = _.clone(tierListSection);
 		localTierListSection.characters.push(draggedCharacter);
+		this.editTierListSection(localTierListSection);
+	}
+
+	moveCharacterToCharacterSlot = (tierListSection:TierListSection, draggedCharacter: Character, index:number) => {
+		let localTierListSection = _.clone(tierListSection);
+		localTierListSection.characters.splice(index, 0, draggedCharacter);
 		this.editTierListSection(localTierListSection);
 	}
 
@@ -278,26 +286,17 @@ export class TierListComponent implements OnInit {
 			this.addCharacterToTierListSection(tierListSection, this.draggedCharacter);
 		}
 	}
-
-	isCharacterRemoved(character:Character) {
-		console.log("this.tierList.removedCharacters", this.tierList.removedCharacters);
-		console.log("character", character);
-		console.log("_)", _.findWhere(this.tierList.removedCharacters, {_id: character._id}));
-
-		//
-		// _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
-		// => {year: 1918, newsroom: "The New York Times",
-		//   reason: "For its public service in publishing in full so many official reports,
-		//   documents and speeches by European statesmen relating to the progress and
-		//   conduct of the war."}
-
-
-		return _.findWhere(this.tierList.removedCharacters, {_id: character._id});
+	dropInCharacterSlot = (event, tierListSection, index :number) => {
+		console.log("index", index);
+		if (this.draggedCharacter) {
+			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, index);
+		}
 	}
 
 
-
-
+	isCharacterRemoved(character:Character) {
+		return _.findWhere(this.tierList.removedCharacters, {_id: character._id});
+	}
 
 	dragEnd(event) {
 		// this.draggedCharacter = null;

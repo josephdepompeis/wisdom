@@ -1,5 +1,6 @@
+<div *ngFor="let tierListSection of tierListSections" >
 
-<div *ngFor="let tierListSection of tierListSections"  pDroppable="character" (onDrop)="dropInTierListSection($event, tierListSection)">
+<!-- <div *ngFor="let tierListSection of tierListSections"  pDroppable="character" (onDrop)="dropInTierListSection($event, tierListSection)"> -->
   <pre>{{tierListSection.type}}</pre>
   <div class="card text-white bg-primary mb-3">
     <div class="card-header">{{tierListSection.title}}
@@ -12,9 +13,12 @@
 
 
         <div class="p-grid" style="margin-top: .5em">
-            <div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let i=index" [@animation]="'visible'">
-                <div class="box">
-                  <p>{{i + 1}}</p>
+            <div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'">
+                <div class="box" pDroppable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)"
+                pDraggable="character"
+                    (onDragStart)="dragStart($event,character)" 
+                >
+                  <p>{{index + 1}}</p>
                   <div class="card-header">{{characterSlot.name}}
                     <div class="card-body">
                       <h5 class="card-title">Primary card title</h5>
@@ -23,6 +27,9 @@
                   </div>
                 </div>
             </div>
+        </div>
+        <div class="p-grid btn-secondary" style="margin-top: .5em;" pDroppable="character" (onDrop)="dropInTierListSection($event, tierListSection)">
+          Drag here to add to this section!
         </div>
 
 
@@ -52,7 +59,7 @@ this one is old
 </div>
 
 
-  <div class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
+  <div *ngIf="tierList"  class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
       <!-- <ul style="margin:0;padding:0"> -->
           <div *ngFor="let character of allCharacters" class="ui-helper-clearfix" pDraggable="character"
               (onDragStart)="dragStart($event,character)" (onDragEnd)="dragEnd($event)">
@@ -65,8 +72,14 @@ this one is old
 
               <div *ngIf="!isCharacterRemoved(character); then thenBlock else elseBlock"></div>
               <ng-template #thenBlock>
-                <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
-                <div style="margin:8px 0 0 8px;float:left">{{character.name}} - {{character._id}}</div>
+                <div class="card-header">{{character.name}}
+                  <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">{{character.name}}</p>
+                  </div>
+                </div>
+                <!-- <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
+                <div style="margin:8px 0 0 8px;float:left">{{character.name}} - {{character._id}}</div> -->
               </ng-template>
               <ng-template #elseBlock>...</ng-template>
 
