@@ -1,459 +1,432 @@
 [{
 		"name": "Mario",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Donkey Kong",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
+
 	},
 	{
 		"name": "Link",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
+
 	},
 	{
 		"name": "Samus",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
+
 	},
 	{
 		"name": "Dark Samus",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
+
 	},
 	{
 		"name": "Yoshi",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Kirby",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Fox",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Pikachu",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Luigi",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Ness",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Captain Falcon",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
-
-
 
 	{
 		"name": "Jigglypuff",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Peach",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Daisy",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Bowser",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Ice Climbers",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Sheik",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Zelda",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": "assets/characters/thumbnails/mario.png",
+		"fullSize": "assets/characters/fullSize/mario.png"
 	},
 	{
 		"name": "Dr. Mario",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Pichu",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Falco",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Marth",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Lucina",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
-
-
-
 
 	{
 		"name": "Young Link",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Ganondorf",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Mewtwo",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Roy",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Chrom",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
 	},
 	{
 		"name": "Mr. Game & Watch",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Meta Knight",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Pit",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Dark Pit",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Zero Suit Samus",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Wario",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Snake",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 
 	{
 		"name": "Ike",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Pokemon Trainer",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Diddy Kong",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Lucas",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Sonic",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "King Dedede",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Olimar",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Lucario",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "R.O.B.",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Toon Link",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Wolf",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
-		"name": "Villager",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"name": "Villthumbnailr",
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 
 	{
 		"name": "Mega Man",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Wii Fit Trainer",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Rosalina & Luma",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Little Mac",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Greninja",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Palutena",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "PAC-MAN",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Robin",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Shulk",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Bowser Jr.",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Duck Hunt",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Ryu",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Ken",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Cloud",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Corrin",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Bayonetta",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Inkling",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Ridley",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Simon",
-		"age": 2343,
-		"weight": 23423,
-		"__v": 0
+		"thumbnail": 2343,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Richter",
-		"age": 11,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 11,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "King K. Rool",
-		"age": 33,
-		"weight": 55,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Isabelle",
-		"age": 12,
-		"weight": 123,
-		"__v": 0
+		"thumbnail": 12,
+		"fullSize": "string here"
 	},
 	{
 		"name": "Incineroar",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Squirtle",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Ivysaur",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	},
 	{
 		"name": "Charizard",
-		"age": 33,
-		"weight": 33,
-		"__v": 0
+		"thumbnail": 33,
+		"fullSize": "string here"
+
 	}
-
-
-
-
-
 ]

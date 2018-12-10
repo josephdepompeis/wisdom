@@ -2,8 +2,8 @@ import * as mongoose from 'mongoose';
 
 const characterSchema = new mongoose.Schema({
   name: String,
-  // weight: Number,
-  // age: Number
+  thumbnail: String,
+  fullSize: String,
 });
 
 const Character = mongoose.model('Character', characterSchema);

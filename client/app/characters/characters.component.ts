@@ -19,8 +19,6 @@ export class CharactersComponent implements OnInit {
 	addCharacterForm: FormGroup;
 
 	name = new FormControl('', Validators.required);
-	// age = new FormControl('', Validators.required);
-	// weight = new FormControl('', Validators.required);
 
 	constructor(
 		private characterService: CharacterService,

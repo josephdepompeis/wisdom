@@ -6,7 +6,6 @@ import { TierList } from '../shared/models/tier-list.model';
 import { TierListSection } from '../shared/models/tier-list-section.model';
 import { AuthService } from '../services/auth.service';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
-// import {Component,ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'app-tier-list',
@@ -41,10 +40,7 @@ export class TierListComponent implements OnInit {
 	@Input() selectedCharacter: Character;
 
 	availableCharacters: Character[];
-	columns: number[];
 
-
-	selectedCharacters: Character[] = [];
 	draggedCharacter: Character;
 
 	allCharacters: Character[] = [];
@@ -52,78 +48,22 @@ export class TierListComponent implements OnInit {
 	tierList: TierList;
 	tierListSections: TierListSection[] = [];
 
-	tierSections: {}[] = [
-		{
-			title: "title1",
-			subtext: "subtext",
-			characters: [],
-			sortOrder: 1,
-		},
-		{
-			title: "title2",
-			subtext: "subtext",
-			characters: [],
-			sortOrder: 2,
-
-		}, {
-			title: "title3",
-			subtext: "subtext",
-			characters: [],
-			sortOrder: 3,
-
-		}, {
-			title: "title4",
-			subtext: "subtext",
-			characters: [],
-			sortOrder: 4,
-		}
-
-	]
 	constructor(
 		private tierListService: TierListService,
 		private auth: AuthService,
 	) { }
 
-	//most of this code taken from https://www.primefaces.org/primeng/#/dragdrop
-	addSection(){
-		this.tierSections.push(
-			{
-				title: "titlex",
-				characters: [{name:'charlie'} , {name:'charlie'}, {name:'charlie'}, {name:'charlie'}],
-				subtext:"whatever",
-			}
-		);
-	}
 
 	ngOnInit() {
-		this.columns = [0, 1, 2, 3, 4, 5];
-
-		// this.availableCharacters = this.characters;
 	}
 
 	ngOnChanges(characters: SimpleChanges) {
 		this.availableCharacters = this.characters;
 		this.allCharacters = this.characters;
-		// this.selectedCharacter = selectedCharacter;
 		if (this.selectedCharacter) {
 			this.getCharacterTierList(this.selectedCharacter);
 		}
 
-		// console.log(this.selectedCharacter);
-	}
-
-	saveTierListSection(){
-		// this.tierListService.addTierList(character).subscribe(
-		// 	res => {
-		// 		console.log("res", res);
-		// 		// this.isMatchNotesLoading = false;
-		// 		// this.matchNotes = res
-		// 	},
-		// 	error => {
-		// 		// this.isMatchNotesLoading = false;
-		// 		console.log(error);
-		// 	}
-		// );
 	}
 
 	addTierList() {
@@ -181,7 +121,6 @@ export class TierListComponent implements OnInit {
 					this.getTierListSectionsByTierId(res);
 				}
 			},
-
 			error => {
 				console.log(error);
 			}
@@ -191,7 +130,6 @@ export class TierListComponent implements OnInit {
 	getTierListSectionsByTierId(tierList:TierList) {
 		this.tierListService.getTierListSectionsByTierId(tierList).subscribe(
 			res => {
-				// console.log("list of tier list sections", res);
 				this.tierListSections = res;
 			},
 			error => {
@@ -213,8 +151,6 @@ export class TierListComponent implements OnInit {
 		);
 	}
 
-
-
 	editTierListSection = (tierListSection:TierListSection) => {
 		this.tierListService.editTierListSection(tierListSection).subscribe(
 			res => {
@@ -231,15 +167,6 @@ export class TierListComponent implements OnInit {
 		localTierList.removedCharacters.push(draggedCharacter);
 		this.editTierList(localTierList);
 	}
-
-
-	// addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
-	// 	let localTierListSection = _.clone(tierListSection);
-	// 	localTierListSection.characters.push(draggedCharacter);
-	// 	this.editTierListSection(localTierListSection);
-	//
-	// }
-
 
 	findCharacterTierListSection = (draggedCharacter:Character):TierListSection => {
 		let draggedCharacterTierListSection;
@@ -378,10 +305,7 @@ export class TierListComponent implements OnInit {
 		}
 	}
 
-
 	dropInCharacterSlot = (event, tierListSection:TierListSection, index :number) => {
-		console.log("index", index);
-		console.log("this.draggedCharacter", this.draggedCharacter);
 		if (this.draggedCharacter) {
 			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, index);
 		}
@@ -405,16 +329,6 @@ export class TierListComponent implements OnInit {
 			}
 		}
 		return index;
-	}
-
-// https://www.primefaces.org/primeng/#/flexgrid
-
-	addColumn() {
-			this.columns.push(this.columns.length);
-	}
-
-	removeColumn() {
-			this.columns.splice(-1, 1);
 	}
 
 }
