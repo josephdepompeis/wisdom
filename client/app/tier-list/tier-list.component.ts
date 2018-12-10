@@ -267,22 +267,14 @@ export class TierListComponent implements OnInit {
 		}
 	}
 
-
-
-
 	moveCharacterToCharacterSlot = (tierListSectionOfCharacterSlot: TierListSection, draggedCharacter: Character, indexOfCharacterSlot:number, forcePosition?: string) => {
 		let characterInSlot = tierListSectionOfCharacterSlot.characters[indexOfCharacterSlot];
 		let draggedCharacterTierListSection = this.findCharacterTierListSection(draggedCharacter);
-
 		let localTierListSectionOfCharacterSlot = _.clone(tierListSectionOfCharacterSlot);
 		let localTierListSectionOfDraggedCharacter = _.clone(draggedCharacterTierListSection);
-
 		console.log("characterInSlot", characterInSlot);
-
-
-
+		
 		//assumes if character is not removed yet, it must be moving from here first.
-			//it was not moved from character select part, and needs to be removed from tierList
 		if (!this.isCharacterRemoved(draggedCharacter)) {
 			//does no removing of characters from sections, just puts draggedCharacter in place
 			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 0, draggedCharacter);
@@ -294,68 +286,52 @@ export class TierListComponent implements OnInit {
 
 		// if draggedCharacter is in same section as chracterSlot
 		else if ( _.contains(tierListSectionOfCharacterSlot.characters, draggedCharacter) ) {
-
 			let indexOfDraggedCharacter =  _.indexOf(tierListSectionOfCharacterSlot.characters, draggedCharacter);
-
-		if (forcePosition && forcePosition === 'FRONT') {
-			tierListSectionOfCharacterSlot.characters.splice(0, 0, draggedCharacter);
+			if (forcePosition && forcePosition === 'FRONT') {
+				//removes dragged character from spot
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfDraggedCharacter, 1);
+				//moves dragged character to the front
+				tierListSectionOfCharacterSlot.characters.splice(0, 0, draggedCharacter);
+			}
+			else if (forcePosition && forcePosition === 'BACK') {
+				//removes dragged character from spot
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfDraggedCharacter, 1);
+				//pushes dragged character to the back
+				tierListSectionOfCharacterSlot.characters.push(draggedCharacter);
+			}
+			else {
+				// removes character from passed in index position, replaces with dragged character
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
+				// removes draggedCharacter from  indexOfDraggedCharacter position, replaces with characterInSlot
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfDraggedCharacter, 1, characterInSlot);
+				// this.editTierListSection(localTierListSection);
+			}
 		}
-		else if (forcePosition && forcePosition === 'BACK') {
-			tierListSectionOfCharacterSlot.characters.push(draggedCharacter);
-		}
 
-
-			// removes character from passed in index position, replaces with dragged character
-			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
-			// removes draggedCharacter from  indexOfDraggedCharacter position, replaces with characterInSlot
-			localTierListSectionOfCharacterSlot.characters.splice(indexOfDraggedCharacter, 1, characterInSlot);
-			// this.editTierListSection(localTierListSection);
-		}
-
+		// if draggedCharacter is in a section group, but not the same as chracterSlot
 		else if (draggedCharacterTierListSection) {
-			console.log("the holy grail draggedCharacterTierListSection", draggedCharacterTierListSection);
 			let indexOfDraggedCharacter =  _.indexOf(draggedCharacterTierListSection.characters, draggedCharacter);
-
-
-//have to do some logic here to check which group it is in.
-
-			// removes character from passed in index position, replaces with dragged character
-			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
-			// removes draggedCharacter from  indexOfDraggedCharacter position, replaces with characterInSlot
-			localTierListSectionOfDraggedCharacter.characters.splice(indexOfDraggedCharacter, 1, characterInSlot);
-
+			if (forcePosition && forcePosition === 'FRONT') {
+				//add dragged character to the front.
+				tierListSectionOfCharacterSlot.characters.splice(0, 0, draggedCharacter);
+				// removes draggedCharacter from  indexOfDraggedCharacter position
+				localTierListSectionOfDraggedCharacter.characters.splice(indexOfDraggedCharacter, 1);
+			}
+			else if (forcePosition && forcePosition === 'BACK') {
+				//add dragged character to the back.
+				tierListSectionOfCharacterSlot.characters.push(draggedCharacter);
+				// removes draggedCharacter from  indexOfDraggedCharacter position
+				localTierListSectionOfDraggedCharacter.characters.splice(indexOfDraggedCharacter, 1);
+			}
+			else {
+				// removes character from passed in index position, replaces with dragged character
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
+				// removes draggedCharacter from  indexOfDraggedCharacter position, replaces with characterInSlot
+				localTierListSectionOfDraggedCharacter.characters.splice(indexOfDraggedCharacter, 1, characterInSlot);
+			}
 			this.editTierListSection(localTierListSectionOfDraggedCharacter);
 		}
-
-
 		this.editTierListSection(localTierListSectionOfCharacterSlot);
-
-		// let draggedCharactersTierListSection = _.filter(this.tierListSections, {character: );
-
-
-			// _.each(this.tierListSections, alert);
-
-
-
-		// let draggedCharactersTierListSection =  _.some(this.tierListSections,function(localTierListSection){ return _.contains(localTierListSection.characters, draggedCharacter) });
-
-		// console.log("draggedCharactersTierListSection", draggedCharactersTierListSection);
-		 // _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
-			// => [2, 4, 6]
-
-		//
-		// let localTierListSection = _.clone(tierListSection);
-		//
-		// if (this.isCharacterRemoved(draggedCharacter)) {
-		// 	//probably will have to  find index in target character tierlistsection and remove from that.
-		// 	let oldIndex  = _.findIndex(localTierListSection.characters, draggedCharacter);
-		// 	localTierListSection.characters.splice(oldIndex, 1);
-		// }
-		//
-		//
-		//
-		// localTierListSection.characters.splice(index, 0, draggedCharacter);
-		// this.editTierListSection(localTierListSection);
 	}
 
 	dragStart = (event, character: Character) => {
@@ -375,14 +351,12 @@ export class TierListComponent implements OnInit {
 	dropInFirstPositionTierListSection = (event, tierListSection: TierListSection) => {
 
 
-		this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, index);
 
 
 		if (this.draggedCharacter) {
-			let localTierListSection = _.clone(tierListSection);
-			localTierListSection.characters.splice(0, 0, this.draggedCharacter);
-			this.editTierListSection(localTierListSection);
-			this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+
+			//0 below not used.
+			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, 0, 'FRONT' );
 		}
 	}
 
@@ -390,10 +364,8 @@ export class TierListComponent implements OnInit {
 
 	dropInLastPositionTierListSection = (event, tierListSection: TierListSection) => {
 		if (this.draggedCharacter) {
-			let localTierListSection = _.clone(tierListSection);
-			localTierListSection.characters.push(this.draggedCharacter);
-			this.editTierListSection(localTierListSection);
-			this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+			//0 below not used.
+			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, 0, 'BACK' );
 		}
 	}
 

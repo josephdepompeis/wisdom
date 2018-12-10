@@ -1,37 +1,459 @@
 [{
-		"name": "mario",
+		"name": "Mario",
 		"age": 2343,
 		"weight": 23423,
 		"__v": 0
 	},
 	{
-		"name": "donky kong",
+		"name": "Donkey Kong",
 		"age": 11,
 		"weight": 123,
 		"__v": 0
 	},
 	{
-		"name": "boner",
+		"name": "Link",
 		"age": 33,
 		"weight": 55,
 		"__v": 0
 	},
 	{
-		"name": "Spoopy",
+		"name": "Samus",
 		"age": 12,
 		"weight": 123,
 		"__v": 0
 	},
 	{
-		"name": "Ditto",
+		"name": "Dark Samus",
 		"age": 33,
 		"weight": 33,
 		"__v": 0
 	},
 	{
-		"name": "dfdf",
+		"name": "Yoshi",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Kirby",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Fox",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Pikachu",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Luigi",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Ness",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Captain Falcon",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+
+
+
+	{
+		"name": "Jigglypuff",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Peach",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Daisy",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Bowser",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Ice Climbers",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Sheik",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Zelda",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Dr. Mario",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Pichu",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Falco",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Marth",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Lucina",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+
+
+
+
+	{
+		"name": "Young Link",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Ganondorf",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Mewtwo",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Roy",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Chrom",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Mr. Game & Watch",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Meta Knight",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Pit",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Dark Pit",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Zero Suit Samus",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Wario",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Snake",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+
+	{
+		"name": "Ike",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Pokemon Trainer",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Diddy Kong",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Lucas",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Sonic",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "King Dedede",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Olimar",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Lucario",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "R.O.B.",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Toon Link",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Wolf",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Villager",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+
+	{
+		"name": "Mega Man",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Wii Fit Trainer",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Rosalina & Luma",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Little Mac",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Greninja",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Palutena",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "PAC-MAN",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Robin",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Shulk",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Bowser Jr.",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Duck Hunt",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Ryu",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Ken",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Cloud",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Corrin",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Bayonetta",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Inkling",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Ridley",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Simon",
+		"age": 2343,
+		"weight": 23423,
+		"__v": 0
+	},
+	{
+		"name": "Richter",
+		"age": 11,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "King K. Rool",
+		"age": 33,
+		"weight": 55,
+		"__v": 0
+	},
+	{
+		"name": "Isabelle",
+		"age": 12,
+		"weight": 123,
+		"__v": 0
+	},
+	{
+		"name": "Inineroar",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Squirtle",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Ivysaur",
+		"age": 33,
+		"weight": 33,
+		"__v": 0
+	},
+	{
+		"name": "Charizard",
 		"age": 33,
 		"weight": 33,
 		"__v": 0
 	}
+
+
+
+
+
 ]
