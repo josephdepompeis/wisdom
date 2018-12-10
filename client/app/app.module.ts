@@ -23,7 +23,7 @@ import { MatchService } from './services/match.service';
 import { MatchesComponent } from './matches/matches.component';
 import { OpponentNotesComponent } from './opponentNotes/opponentNotes.component';
 import { OpponentNoteService } from './services/opponentNote.service';
-import { MatchNotesComponent } from './matchNotes/matchNotes.component';
+import { MatchNotesComponent } from './matchNotes/MatchNotes.component';
 import { MatchNoteService } from './services/matchNote.service';
 import { TierListComponent } from './tier-list/tier-list.component';
 import { TierListService } from './services/tier-list.service';

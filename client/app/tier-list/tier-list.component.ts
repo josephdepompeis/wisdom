@@ -228,19 +228,17 @@ export class TierListComponent implements OnInit {
 
 	addCharacterToRemovedList = (tierList:TierList, draggedCharacter: Character) => {
 		let localTierList = _.clone(tierList);
-		console.log("tierList", tierList);
-
 		localTierList.removedCharacters.push(draggedCharacter);
 		this.editTierList(localTierList);
 	}
 
 
-	addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
-		let localTierListSection = _.clone(tierListSection);
-		localTierListSection.characters.push(draggedCharacter);
-		this.editTierListSection(localTierListSection);
-
-	}
+	// addCharacterToTierListSection = (tierListSection:TierListSection, draggedCharacter: Character) => {
+	// 	let localTierListSection = _.clone(tierListSection);
+	// 	localTierListSection.characters.push(draggedCharacter);
+	// 	this.editTierListSection(localTierListSection);
+	//
+	// }
 
 
 	findCharacterTierListSection = (draggedCharacter:Character):TierListSection => {
@@ -272,7 +270,7 @@ export class TierListComponent implements OnInit {
 
 
 
-	moveCharacterToCharacterSlot = (tierListSectionOfCharacterSlot: TierListSection, draggedCharacter: Character, indexOfCharacterSlot:number) => {
+	moveCharacterToCharacterSlot = (tierListSectionOfCharacterSlot: TierListSection, draggedCharacter: Character, indexOfCharacterSlot:number, forcePosition?: string) => {
 		let characterInSlot = tierListSectionOfCharacterSlot.characters[indexOfCharacterSlot];
 		let draggedCharacterTierListSection = this.findCharacterTierListSection(draggedCharacter);
 
@@ -283,26 +281,29 @@ export class TierListComponent implements OnInit {
 
 
 
-
-			//this tells us it was moved from character select part, and needs to be removed from tierList
+		//assumes if character is not removed yet, it must be moving from here first.
+			//it was not moved from character select part, and needs to be removed from tierList
 		if (!this.isCharacterRemoved(draggedCharacter)) {
 			//does no removing of characters from sections, just puts draggedCharacter in place
 			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 0, draggedCharacter);
 
 			//this checks if character last dragged character needs to be removed from list.
 			//probably not a good place for this.
-
 				this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
-
-
-
-
 		}
 
-		// if draggedCharacter is tierListSectionOfCharacterSlot
+		// if draggedCharacter is in same section as chracterSlot
 		else if ( _.contains(tierListSectionOfCharacterSlot.characters, draggedCharacter) ) {
 
 			let indexOfDraggedCharacter =  _.indexOf(tierListSectionOfCharacterSlot.characters, draggedCharacter);
+
+		if (forcePosition && forcePosition === 'FRONT') {
+			tierListSectionOfCharacterSlot.characters.splice(0, 0, draggedCharacter);
+		}
+		else if (forcePosition && forcePosition === 'BACK') {
+			tierListSectionOfCharacterSlot.characters.push(draggedCharacter);
+		}
+
 
 			// removes character from passed in index position, replaces with dragged character
 			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
@@ -314,6 +315,9 @@ export class TierListComponent implements OnInit {
 		else if (draggedCharacterTierListSection) {
 			console.log("the holy grail draggedCharacterTierListSection", draggedCharacterTierListSection);
 			let indexOfDraggedCharacter =  _.indexOf(draggedCharacterTierListSection.characters, draggedCharacter);
+
+
+//have to do some logic here to check which group it is in.
 
 			// removes character from passed in index position, replaces with dragged character
 			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 1, draggedCharacter);
@@ -368,9 +372,27 @@ export class TierListComponent implements OnInit {
 		// }
 	}
 
-	dropInTierListSection = (event, tierListSection: TierListSection) => {
+	dropInFirstPositionTierListSection = (event, tierListSection: TierListSection) => {
+
+
+		this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, index);
+
+
 		if (this.draggedCharacter) {
-			this.addCharacterToTierListSection(tierListSection, this.draggedCharacter);
+			let localTierListSection = _.clone(tierListSection);
+			localTierListSection.characters.splice(0, 0, this.draggedCharacter);
+			this.editTierListSection(localTierListSection);
+			this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+		}
+	}
+
+
+
+	dropInLastPositionTierListSection = (event, tierListSection: TierListSection) => {
+		if (this.draggedCharacter) {
+			let localTierListSection = _.clone(tierListSection);
+			localTierListSection.characters.push(this.draggedCharacter);
+			this.editTierListSection(localTierListSection);
 			this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
 		}
 	}
