@@ -2,8 +2,8 @@ import * as mongoose from 'mongoose';
 
 const opponentSchema = new mongoose.Schema({
   name: String,
-  weight: Number,
-  age: Number,
+  // weight: Number,
+  // age: Number,
   userId: String,
 });
 

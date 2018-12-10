@@ -8,8 +8,8 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Weight</th>
+          <!-- <th scope="col">Age</th> -->
+          <!-- <th scope="col">Weight</th> -->
           <th scope="col">_id</th>
           <th scope="col">Actions</th>
         </tr>
@@ -22,8 +22,8 @@
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let character of characters">
           <td>{{character.name}}</td>
-          <td>{{character.age}}</td>
-          <td>{{character.weight}}</td>
+          <!-- <td>{{character.age}}</td> -->
+          <!-- <td>{{character.weight}}</td> -->
           <td>{{character._id}}</td>
 
           <td>
@@ -45,10 +45,10 @@
             <form class="form-inline" #form="ngForm" (ngSubmit)="editCharacter(character)">
               <input class="form-control mr-2" type="text" name="name"
                      [(ngModel)]="character.name" placeholder="Name" required>
-              <input class="form-control mr-2" type="number" name="age"
+              <!-- <input class="form-control mr-2" type="number" name="age"
                      [(ngModel)]="character.age" placeholder="Age" min="0" required>
               <input class="form-control mr-2" type="number" name="weight"
-                     [(ngModel)]="character.weight" placeholder="Weight" step="any" min="0" required>
+                     [(ngModel)]="character.weight" placeholder="Weight" step="any" min="0" required> -->
               <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
                 <i class="fa fa-floppy-o"></i> Save
               </button>

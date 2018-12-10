@@ -19,8 +19,8 @@ export class CharactersComponent implements OnInit {
 	addCharacterForm: FormGroup;
 
 	name = new FormControl('', Validators.required);
-	age = new FormControl('', Validators.required);
-	weight = new FormControl('', Validators.required);
+	// age = new FormControl('', Validators.required);
+	// weight = new FormControl('', Validators.required);
 
 	constructor(
 		private characterService: CharacterService,
@@ -34,8 +34,8 @@ export class CharactersComponent implements OnInit {
 		// console.log("this.char from charactsfs", this.characters)
 		this.addCharacterForm = this.formBuilder.group({
 			name: this.name,
-			age: this.age,
-			weight: this.weight
+			// age: this.age,
+			// weight: this.weight
 		});
 	}
 

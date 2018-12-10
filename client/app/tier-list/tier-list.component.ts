@@ -273,12 +273,21 @@ export class TierListComponent implements OnInit {
 		let localTierListSectionOfCharacterSlot = _.clone(tierListSectionOfCharacterSlot);
 		let localTierListSectionOfDraggedCharacter = _.clone(draggedCharacterTierListSection);
 		console.log("characterInSlot", characterInSlot);
-		
+
 		//assumes if character is not removed yet, it must be moving from here first.
 		if (!this.isCharacterRemoved(draggedCharacter)) {
-			//does no removing of characters from sections, just puts draggedCharacter in place
-			localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 0, draggedCharacter);
 
+			if (forcePosition && forcePosition === 'FRONT') {
+				localTierListSectionOfCharacterSlot.characters.splice(0, 0, draggedCharacter);
+					this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);
+			}
+			else if (forcePosition && forcePosition === 'BACK') {
+				localTierListSectionOfCharacterSlot.characters.push(draggedCharacter);
+			}
+			else {
+				//does no removing of characters from sections, just puts draggedCharacter in place
+				localTierListSectionOfCharacterSlot.characters.splice(indexOfCharacterSlot, 0, draggedCharacter);
+			}
 			//this checks if character last dragged character needs to be removed from list.
 			//probably not a good place for this.
 				this.addCharacterToRemovedList(this.tierList, this.draggedCharacter);

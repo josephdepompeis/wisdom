@@ -22,8 +22,8 @@ export class OpponentsComponent implements OnInit {
 	displayOpponentForm:boolean;
 
 	name = new FormControl('', Validators.required);
-	age = new FormControl('', Validators.required);
-	weight = new FormControl('', Validators.required);
+	// age = new FormControl('', Validators.required);
+	// weight = new FormControl('', Validators.required);
 
 	constructor(
 		private opponentService: OpponentService,
@@ -40,8 +40,8 @@ export class OpponentsComponent implements OnInit {
 	setFormDefaults() {
 		this.addOpponentForm = this.formBuilder.group({
 			name: this.name,
-			age: this.age,
-			weight: this.weight,
+			// age: this.age,
+			// weight: this.weight,
 			userId: this.auth.currentUser._id,
 		});
 	}
