@@ -2,8 +2,10 @@ import * as express from 'express';
 
 import OpponentCtrl from './controllers/opponent';
 import OpponentNotesCtrl from './controllers/opponentNotes';
+
 import MatchCtrl from './controllers/match';
 import MatchNotesCtrl from './controllers/matchNotes';
+import MatchNoteSectionCtrl from './controllers/matchNoteSection'
 
 import CharacterCtrl from './controllers/character';
 import UserCtrl from './controllers/user';
@@ -22,6 +24,7 @@ export default function setRoutes(app) {
 	const characterCtrl = new CharacterCtrl();
 	const userCtrl = new UserCtrl();
 	const matchNotesCtrl = new MatchNotesCtrl();
+	const matchNoteSectionCtrl = new MatchNoteSectionCtrl();
 
 	const tierListsCtrl = new TierListCtrl();
 	const tierListSectionCtrl = new TierListSectionCtrl();
@@ -56,12 +59,15 @@ export default function setRoutes(app) {
 	router.route('/matchNote/:id').put(matchNotesCtrl.update);
 	router.route('/matchNote/:id').delete(matchNotesCtrl.delete);
 
-	// tierLists
+	// MatchNoteSections
+	router.route('/matchNoteSections/:matchId').get(matchNoteSectionCtrl.getMatchNoteSectionsByMatchId);
+	router.route('/matchNoteSection').post(matchNoteSectionCtrl.insert);
+	router.route('/matchNoteSection/:id').put(matchNoteSectionCtrl.update);
 
+	// tierLists
 	router.route('/tierList/:userId/:typeId').get(tierListsCtrl.getTierListByTypeId);
 	router.route('/tierList').post(tierListsCtrl.insert);
 	router.route('/tierList/:id').put(tierListsCtrl.update);
-	// router.route('/tierList/:id').delete(tierListsCtrl.delete);
 
 	//tier List Sections
 	router.route('/tierListSections/:tierListId').get(tierListSectionCtrl.getTierListSectionsByTierId);

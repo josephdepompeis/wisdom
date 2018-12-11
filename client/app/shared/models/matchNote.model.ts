@@ -1,5 +1,5 @@
 export class MatchNote {
-  _id?: string;
+  _id?: String;
   matchId: String;
   body: String;
 }

@@ -53,7 +53,6 @@ export class MatchesComponent implements OnInit {
 
 	setFormDefaults() {
 		this.findMatchForm = this.formBuilder.group({
-			// name: this.name,
 			playingAs: null,
 			playingAgainst: null,
 			userId: this.auth.currentUser._id,

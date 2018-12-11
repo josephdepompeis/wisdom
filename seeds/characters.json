@@ -12,19 +12,16 @@
 		"name": "Link",
 		"thumbnail": "assets/characters/thumbnails/link.png",
 		"fullSize": "assets/characters/fullSize/link.png"
-
 	},
 	{
 		"name": "Samus",
 		"thumbnail": "assets/characters/thumbnails/samus.png",
 		"fullSize": "assets/characters/fullSize/samus.png"
-
 	},
 	{
 		"name": "Dark Samus",
 		"thumbnail": "assets/characters/thumbnails/darkSamus.png",
 		"fullSize": "assets/characters/fullSize/darkSamus.png"
-
 	},
 	{
 		"name": "Yoshi",
@@ -330,7 +327,8 @@
 	{
 		"name": "Inkling",
 		"thumbnail": "assets/characters/thumbnails/inkling.png",
-		"fullSize": "assets/characters/fullSize/inkling.png"	},
+		"fullSize": "assets/characters/fullSize/inkling.png"
+	},
 	{
 		"name": "Ridley",
 		"thumbnail": "assets/characters/thumbnails/ridley.png",

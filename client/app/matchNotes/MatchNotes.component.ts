@@ -47,8 +47,15 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		// can check object 'match' for change before and after tho!
 		console.log(" on changes match", match);
 		this.setFormDefaults();
+
 		this.getMatchNotes();
+		this.getMatchNoteSections();
 		this.getCharacters();
+	}
+
+	ngOnInit() {
+		this.getMatchNotes();
+		this.setFormDefaults();
 	}
 
 
@@ -63,33 +70,11 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		);
 	}
 
-
-	displayCharacterName(characterId: string) {
-		//TODO this should be a filter,  OR PIPE i believe.
-		let matchingCharacterToId = _.find(this.characters, function(character){ return character._id === characterId });
-		if (matchingCharacterToId) {
-			return matchingCharacterToId.name;
-		}
-	}
-
-	ngOnInit() {
-		this.getMatchNotes();
-		this.setFormDefaults();
-	}
-
-	setFormDefaults() {
-		this.addMatchNoteForm = this.formBuilder.group({
-			body: this.body,
-			matchId: this.match._id,
-			section: this.section,
-		});
-	}
-
 	getMatchNotes() {
 		this.isMatchNotesLoading = true;
 		this.matchNoteService.getMatchNotes(this.match).subscribe(
 			res => {
-				console.log("res", res);
+				console.log("res why twice tho?", res);
 				this.isMatchNotesLoading = false;
 				this.matchNotes = res
 			},
@@ -101,7 +86,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	}
 
 	addMatchNote() {
-		console.log("idk");
 		this.isMatchNotesLoading = true;
 		this.matchNoteService.addMatchNote(this.addMatchNoteForm.value).subscribe(
 			res => {
@@ -114,6 +98,17 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 				this.isMatchNotesLoading = true;
 				console.log(error)
 			}
+		);
+	}
+
+	editMatchNote(matchNote: MatchNote) {
+		this.matchNoteService.editMatchNote(matchNote).subscribe(
+			() => {
+				this.matchNoteBeingEdited = null;
+				this.toast.setMessage('item edited successfully.', 'success');
+				this.getMatchNotes();
+			},
+			error => console.log(error)
 		);
 	}
 
@@ -133,34 +128,81 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		}
 	}
 
-	enableEditing(matchNote: MatchNote) {
-		this.matchNoteBeingEdited = _.clone(matchNote);
-	}
 
-	isMatchNoteBeingEdited(matchNote: MatchNote) {
-		if (this.matchNoteBeingEdited) {
-			if (this.matchNoteBeingEdited._id === matchNote._id) {
-				return true;
-			}
-		} else {
-			return false;
+
+
+
+	// ui functions
+
+		setFormDefaults() {
+			this.addMatchNoteForm = this.formBuilder.group({
+				body: this.body,
+				matchId: this.match._id,
+				section: this.section,
+			});
 		}
-	}
 
-	cancelEditing() {
-		this.matchNoteBeingEdited = null;
-		this.toast.setMessage('item editing cancelled.', 'warning');
-	}
+		displayCharacterName(characterId: string) {
+			//TODO this should be a filter,  OR PIPE i believe.
+			let matchingCharacterToId = _.find(this.characters, function(character){ return character._id === characterId });
+			if (matchingCharacterToId) {
+				return matchingCharacterToId.name;
+			}
+		}
 
-	editMatchNote(matchNote: MatchNote) {
-		this.matchNoteService.editMatchNote(matchNote).subscribe(
-			() => {
-				this.matchNoteBeingEdited = null;
-				this.toast.setMessage('item edited successfully.', 'success');
-				this.getMatchNotes();
+		enableEditing(matchNote: MatchNote) {
+			this.matchNoteBeingEdited = _.clone(matchNote);
+		}
+
+		isMatchNoteBeingEdited(matchNote: MatchNote) {
+			if (this.matchNoteBeingEdited) {
+				if (this.matchNoteBeingEdited._id === matchNote._id) {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		}
+
+		cancelEditing() {
+			this.matchNoteBeingEdited = null;
+			this.toast.setMessage('item editing cancelled.', 'warning');
+		}
+
+
+
+
+
+
+	// sections
+	getMatchNoteSections() {
+		this.matchNoteService.getMatchNoteSections(this.match).subscribe(
+			res => {
+				// work must continue here
+				console.log("resxxx", res);
+				// this.isMatchNotesLoading = false;
+				// this.matchNotes = res
 			},
-			error => console.log(error)
+			error => {
+				this.isMatchNotesLoading = false;
+				console.log(error);
+			}
 		);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
