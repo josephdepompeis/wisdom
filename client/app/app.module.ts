@@ -37,6 +37,7 @@ import { TableModule } from 'primeng/table';
 import {DragDropModule} from 'primeng/dragdrop';
 import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CardModule} from 'primeng/card';
 
 BrowserAnimationsModule
 
@@ -72,6 +73,7 @@ export function tokenGetter() {
     DragDropModule,
     PanelModule,
     BrowserAnimationsModule,
+    CardModule,
 
     JwtModule.forRoot({
       config: {

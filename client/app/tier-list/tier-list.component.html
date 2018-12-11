@@ -8,24 +8,68 @@
 				<p class="card-text">{{tierListSection.type}}</p>
 				<p class="card-text">{{tierListSection.sortOrder}}</p>
 				<div class="p-grid" style="margin-top: .5em">
-					<div class=" card" style="margin-top: .5em;" pDroppable="character" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
+					<!-- <div class=" card" style="margin-top: .5em;" pDroppable="character" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
 						Drag here to add to this section!
+					</div> -->
+
+
+
+					<div class="p-col">
+						<p-card [style]="{width: '180px'}" styleClass="ui-card-shadow" pDroppable="character" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
+							<p-header>
+								<!-- <img src='{{characterSlot.thumbnail}}'>
+								<p>{{characterSlot.name}}</p> -->
+								Drag here to add to this section!
+							</p-header>
+						</p-card>
 					</div>
-					<div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'">
-						<div class="box" pDroppable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)" pDraggable="character" (onDragStart)="dragStart($event, characterSlot)">
-							<p>{{index + 1}}</p>
-							<div class="card-header">{{characterSlot.name}}
-								<div class="card-body">
-									<h5 class="card-title">Primary card title</h5>
-									<p class="card-text">{{characterSlot.name}}</p>
-								</div>
-							</div>
+					<!-- <div *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'"> -->
+					<!-- <div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'"> -->
+						<!-- <div class="box" pDroppable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)" (onDragStart)="dragStart($event, characterSlot)"> -->
+							<!-- <div class="box" pDroppable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)" (onDragStart)="dragStart($event, characterSlot)"> -->
+
+
+
+						<div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'">
+							<p-card  [style]="{width: '180px'}" styleClass="ui-card-shadow" pDroppable="character"  pDraggable="character" (onDrop)="dropInCharacterSlot($event, tierListSection, index)" (onDragStart)="dragStart($event, characterSlot)">
+								<p-header>
+									<img src='{{characterSlot.thumbnail}}'>
+									<p>{{characterSlot.name}}</p>
+								</p-header>
+							</p-card>
 						</div>
-					</div>
-					<div class="card" style="margin-top: .5em;" pDroppable="character" (onDrop)="dropInLastPositionTierListSection($event, tierListSection)">
+
+							<!-- <p>{{index + 1}} {{characterSlot.name}}</p> -->
+							<!-- <div class="card-header"> -->
+								<!-- <div> -->
+									<!-- <img src='{{characterSlot.thumbnail}}'> -->
+
+									<!-- <h5 class="card-title">Primary card title</h5>
+									<p class="card-text">{{characterSlot.name}}</p> -->
+								<!-- </div> -->
+							<!-- </div> -->
+
+
+						<!-- </div> -->
+					<!-- </div> -->
+					<!-- <div class="card" style="margin-top: .5em;" pDroppable="character" (onDrop)="dropInLastPositionTierListSection($event, tierListSection)">
 						Drag here to add to this section!
-					</div>
+					</div> -->
+				<!-- </div> -->
+
+				<div class="p-col">
+					<p-card [style]="{width: '180px'}" styleClass="ui-card-shadow" pDroppable="character" (onDrop)="dropInLastPositionTierListSection($event, tierListSection)">
+						Drag here to add to this section!
+						<!-- <p-header>
+							<img src='{{characterSlot.thumbnail}}'>
+							<p>{{characterSlot.name}}</p>
+						</p-header> -->
+					</p-card>
 				</div>
+
+
+
+			</div>
 			</div>
 		</div>
 	</div>
@@ -34,19 +78,31 @@
 
 
 <div *ngIf="tierList" class="ui-g-12 ui-md-6 ui-g-nopad drag-column">
-	<div *ngFor="let character of allCharacters" class="ui-helper-clearfix" pDraggable="character" (onDragStart)="dragStart($event,character)" (onDragEnd)="dragEnd($event)">
+	<div *ngFor="let character of allCharacters" class="ui-helper-clearfix">
 		<div *ngIf="!isCharacterRemoved(character); then thenBlock else elseBlock"></div>
 		<ng-template #thenBlock>
-			<div class="card-header">{{character.name}}
-				<div class="card-body">
-					<h5 class="card-title">Primary card title</h5>
-					<p class="card-text">{{character.name}}</p>
-					<p class="card-text">{{character.thumbnail}}</p>
-					<img src='{{character.thumbnail}}'>
 
-				</div>
-			</div>
+			<p-card  [style]="{width: '180px'}" styleClass="ui-card-shadow" pDraggable="character" (onDragStart)="dragStart($event,character)">
+				<p-header>
+					<img src='{{character.thumbnail}}'>
+					<p>{{character.name}}</p>
+				</p-header>
+			</p-card>
+
+			<!-- </div> -->
 		</ng-template>
-		<ng-template #elseBlock>...</ng-template>
+		<ng-template #elseBlock>
+			used!
+
+			<!-- <p-card  [style]="{width: '360px'}" styleClass="ui-card-shadow" pDraggableDisabled="true">
+				<p-header pDraggableDisabled="true">
+
+					<img src='{{character.thumbnail}}' pDraggableDisabled="true">
+					<p>{{character.name}}</p>
+				</p-header>
+			</p-card> -->
+
+
+		</ng-template>
 	</div>
 </div>
