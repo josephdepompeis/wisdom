@@ -2,12 +2,15 @@ import { Component, OnInit, Input, OnChanges,  SimpleChanges } from '@angular/co
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { MatchNote } from '../shared/models/matchNote.model';
+import { MatchNoteSection } from '../shared/models/match-note-section.model';
+
 import { User } from '../shared/models/user.model';
 import { MatchNoteService } from '../services/matchNote.service';
 import { Match } from '../shared/models/match.model';
 import * as _ from 'underscore';
 import { CharacterService } from '../services/character.service';
 import { Character } from '../shared/models/character.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
 	selector: 'app-match-notes',
@@ -39,7 +42,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		private formBuilder: FormBuilder,
 		public toast: ToastComponent,
 		private characterService: CharacterService,
-
+		private auth: AuthService,
 	) { }
 
 	ngOnChanges(match:  SimpleChanges) {
@@ -170,10 +173,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		}
 
 
-
-
-
-
 	// sections
 	getMatchNoteSections() {
 		this.matchNoteService.getMatchNoteSections(this.match).subscribe(
@@ -190,6 +189,32 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		);
 	}
 
+
+	addMatchNoteSection(match:Match) {
+		console.log("match", match);
+			let localMatchNoteSection = new MatchNoteSection();
+
+
+
+			localMatchNoteSection = {
+				title: "Default Local Tier List",
+				type: "match",
+				userId: this.auth.currentUser._id,
+				subtext: "Default subtext",
+				sortOrder: 0,
+				matchId: match._id,
+			}
+
+			this.matchNoteService.addMatchNoteSection(localMatchNoteSection).subscribe(
+				res => {
+					console.log("res from add match note section", res);
+					// this.getTierListSectionsByTierId(this.tierList);
+				},
+				error => {
+					console.log(error);
+				}
+			);
+		}
 
 
 

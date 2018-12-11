@@ -60,3 +60,56 @@
 		</form>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+<div *ngFor="let tierListSection of matchNoteSections">
+	<pre>{{tierListSection.type}}</pre>
+	<div class="card text-white bg-primary mb-3">
+		<div class="card-header">{{tierListSection.title}}
+			<div class="card-body">
+				<h5 class="card-title">{{tierListSection._id}}</h5>
+				<p class="card-text">{{tierListSection.subtext}}</p>
+				<p class="card-text">{{tierListSection.type}}</p>
+				<p class="card-text">{{tierListSection.sortOrder}}</p>
+				<div class="p-grid p-justify-center">
+					<div class="p-col-6">
+						<p-card [style]="" styleClass="ui-card-shadow" pDroppable="characterSlot" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
+							<p-header>
+								Drag here to add to start section!
+							</p-header>
+						</p-card>
+					</div>
+					<div class="p-col-12">
+						<div class="p-grid">
+							<div class="p-col" *ngFor="let characterSlot of tierListSection.characters; let index=index" [@animation]="'visible'">
+								<p-card [style]="{width: '180px'}" styleClass="ui-card-shadow" pDroppable="characterSlot"  pDraggable="characterSlot"  (onDrop)="dropInCharacterSlot($event, tierListSection, index)" (onDragStart)="dragStart($event, characterSlot)">
+									<p-header>
+										<img src='{{characterSlot.thumbnail}}'>
+										<p>{{characterSlot.name}}</p>
+									</p-header>
+								</p-card>
+							</div>
+						</div>
+					</div>
+					<div class="p-col-6" *ngIf="tierListSection.characters.length" >
+						<p-card [style]="" styleClass="ui-card-shadow" pDroppable="characterSlot" (onDrop)="dropInLastPositionTierListSection($event, tierListSection)">
+							<p-header>
+								Drag here to add to the end section!
+							</p-header>
+						</p-card>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button pButton type="button" icon="pi pi-plus" title="Add Tier List Section" (click)="addMatchNoteSection(match)" [disabled]=""></button>

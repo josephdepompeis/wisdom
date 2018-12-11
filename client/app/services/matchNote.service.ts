@@ -26,18 +26,13 @@ export class MatchNoteService {
 		return this.http.put(`/api/matchNote/${matchNote._id}`, matchNote, { responseType: 'text' });
 	}
 
-
 	//match note sections
 	getMatchNoteSections(match: Match): Observable<MatchNoteSection[]> {
 		return this.http.get<MatchNoteSection[]>(`/api/matchNoteSections/${match._id}`);
 	}
 
-	addMatchNoteSection(matchNote: MatchNote): Observable<MatchNote> {
-		return this.http.post<MatchNote>('/api/matchNote', matchNote);
+	addMatchNoteSection(matchNoteSection: MatchNoteSection): Observable<MatchNoteSection> {
+		return this.http.post<MatchNoteSection>('/api/matchNoteSection', matchNoteSection);
 	}
-
-
-
-
 
 }

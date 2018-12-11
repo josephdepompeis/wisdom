@@ -67,7 +67,9 @@ export class TierListComponent implements OnInit {
 	}
 
 	addTierList() {
-		let localTierList = {
+		let localTierList = new TierList();
+
+		localTierList = {
 			title: "tier list",
 			subtext: "tier list subtext",
 			type: "character",
@@ -285,18 +287,11 @@ export class TierListComponent implements OnInit {
 	}
 
 	dropInFirstPositionTierListSection = (event, tierListSection: TierListSection) => {
-
-
-
-
 		if (this.draggedCharacter) {
-
 			//0 below not used.
 			this.moveCharacterToCharacterSlot(tierListSection, this.draggedCharacter, 0, 'FRONT' );
 		}
 	}
-
-
 
 	dropInLastPositionTierListSection = (event, tierListSection: TierListSection) => {
 		if (this.draggedCharacter) {
