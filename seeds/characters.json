@@ -5,428 +5,361 @@
 	},
 	{
 		"name": "Donkey Kong",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
-
+		"thumbnail": "assets/characters/thumbnails/donkeyKong.png",
+		"fullSize": "assets/characters/fullSize/donkeyKong.png"
 	},
 	{
 		"name": "Link",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/link.png",
+		"fullSize": "assets/characters/fullSize/link.png"
 
 	},
 	{
 		"name": "Samus",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/samus.png",
+		"fullSize": "assets/characters/fullSize/samus.png"
 
 	},
 	{
 		"name": "Dark Samus",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/darkSamus.png",
+		"fullSize": "assets/characters/fullSize/darkSamus.png"
 
 	},
 	{
 		"name": "Yoshi",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/yoshi.png",
+		"fullSize": "assets/characters/fullSize/yoshi.png"
 	},
 	{
 		"name": "Kirby",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/kirby.png",
+		"fullSize": "assets/characters/fullSize/kirby.png"
 	},
 	{
 		"name": "Fox",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/fox.png",
+		"fullSize": "assets/characters/fullSize/fox.png"
 	},
 	{
 		"name": "Pikachu",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/pikachu.png",
+		"fullSize": "assets/characters/fullSize/pikachu.png"
 	},
 	{
 		"name": "Luigi",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/luigi.png",
+		"fullSize": "assets/characters/fullSize/luigi.png"
 	},
 	{
 		"name": "Ness",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/ness.png",
+		"fullSize": "assets/characters/fullSize/ness.png"
 	},
 	{
 		"name": "Captain Falcon",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/captainFalcon.png",
+		"fullSize": "assets/characters/fullSize/captainFalcon.png"
 	},
 
 	{
 		"name": "Jigglypuff",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/jigglypuff.png",
+		"fullSize": "assets/characters/fullSize/jigglypuff.png"
 	},
 	{
 		"name": "Peach",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/peach.png",
+		"fullSize": "assets/characters/fullSize/peach.png"
 	},
 	{
 		"name": "Daisy",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/daisy.png",
+		"fullSize": "assets/characters/fullSize/daisy.png"
 	},
 	{
 		"name": "Bowser",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/bowser.png",
+		"fullSize": "assets/characters/fullSize/bowser.png"
 	},
 	{
 		"name": "Ice Climbers",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/iceClimbers.png",
+		"fullSize": "assets/characters/fullSize/iceClimbers.png"
 	},
 	{
 		"name": "Sheik",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/sheik.png",
+		"fullSize": "assets/characters/fullSize/sheik.png"
 	},
 	{
 		"name": "Zelda",
-		"thumbnail": "assets/characters/thumbnails/mario.png",
-		"fullSize": "assets/characters/fullSize/mario.png"
+		"thumbnail": "assets/characters/thumbnails/zelda.png",
+		"fullSize": "assets/characters/fullSize/zelda.png"
 	},
 	{
 		"name": "Dr. Mario",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/drMario.png",
+		"fullSize": "assets/characters/fullSize/drMario.png"
 	},
 	{
 		"name": "Pichu",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/pichu.png",
+		"fullSize": "assets/characters/fullSize/pichu.png"
 	},
 	{
 		"name": "Falco",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/falco.png",
+		"fullSize": "assets/characters/fullSize/falco.png"
 	},
 	{
 		"name": "Marth",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/marth.png",
+		"fullSize": "assets/characters/fullSize/marth.png"
 	},
 	{
 		"name": "Lucina",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/lucina.png",
+		"fullSize": "assets/characters/fullSize/lucina.png"
 	},
 
 	{
 		"name": "Young Link",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/youngLink.png",
+		"fullSize": "assets/characters/fullSize/youngLink.png"
 	},
 	{
 		"name": "Ganondorf",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/ganondorf.png",
+		"fullSize": "assets/characters/fullSize/ganondorf.png"
 	},
 	{
 		"name": "Mewtwo",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/mewtwo.png",
+		"fullSize": "assets/characters/fullSize/mewtwo.png"
 	},
 	{
 		"name": "Roy",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/roy.png",
+		"fullSize": "assets/characters/fullSize/roy.png"
 	},
 	{
 		"name": "Chrom",
-		"thumbnail": 33,
-		"fullSize": "string here"
+		"thumbnail": "assets/characters/thumbnails/chrom.png",
+		"fullSize": "assets/characters/fullSize/chroma.png"
 	},
 	{
 		"name": "Mr. Game & Watch",
-		"thumbnail": 33,
-		"fullSize": "string here"
+		"thumbnail": "assets/characters/thumbnails/mrGameAndWatch.png",
+		"fullSize": "assets/characters/fullSize/mrGameAndWatch.png"
 
 	},
 	{
 		"name": "Meta Knight",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/metaKnight.png",
+		"fullSize": "assets/characters/fullSize/metaKnight.png"
 	},
 	{
 		"name": "Pit",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/pit.png",
+		"fullSize": "assets/characters/fullSize/pit.png"
 	},
 	{
 		"name": "Dark Pit",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/darkPit.png",
+		"fullSize": "assets/characters/fullSize/darkPit.png"
 	},
 	{
 		"name": "Zero Suit Samus",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/zeroSuitSamus.png",
+		"fullSize": "assets/characters/fullSize/zeroSuitSamus.png"
 	},
 	{
 		"name": "Wario",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/wario.png",
+		"fullSize": "assets/characters/fullSize/wario.png"
 	},
 	{
 		"name": "Snake",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/snake.png",
+		"fullSize": "assets/characters/fullSize/snake.png"
 	},
 
 	{
 		"name": "Ike",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/ike.png",
+		"fullSize": "assets/characters/fullSize/ike.png"
 	},
 	{
 		"name": "Pokemon Trainer",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/pokemonTrainer.png",
+		"fullSize": "assets/characters/fullSize/pokemonTrainer.png"
 	},
 	{
 		"name": "Diddy Kong",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/diddyKong.png",
+		"fullSize": "assets/characters/fullSize/diddyKong.png"
 	},
 	{
 		"name": "Lucas",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/lucas.png",
+		"fullSize": "assets/characters/fullSize/lucas.png"
 	},
 	{
 		"name": "Sonic",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/sonic.png",
+		"fullSize": "assets/characters/fullSize/sonic.png"
 	},
 	{
 		"name": "King Dedede",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/kingDedede.png",
+		"fullSize": "assets/characters/fullSize/kingDedede.png"
 	},
 	{
 		"name": "Olimar",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/olimar.png",
+		"fullSize": "assets/characters/fullSize/olimar.png"
 	},
 	{
 		"name": "Lucario",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/lucario.png",
+		"fullSize": "assets/characters/fullSize/lucario.png"
 	},
 	{
 		"name": "R.O.B.",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/rob.png",
+		"fullSize": "assets/characters/fullSize/rob.png"
 	},
 	{
 		"name": "Toon Link",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/toonLink.png",
+		"fullSize": "assets/characters/fullSize/toonLink.png"
 	},
 	{
 		"name": "Wolf",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/wolf.png",
+		"fullSize": "assets/characters/fullSize/wolf.png"
 	},
 	{
-		"name": "Villthumbnailr",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"name": "Villager",
+		"thumbnail": "assets/characters/thumbnails/villager.png",
+		"fullSize": "assets/characters/fullSize/villager.png"
 	},
 
 	{
 		"name": "Mega Man",
-		"thumbnail": 2343,
-		"fullSize": "string here"
+		"thumbnail": "assets/characters/thumbnails/megaMan.png",
+		"fullSize": "assets/characters/fullSize/megaMan.png"
 
 	},
 	{
 		"name": "Wii Fit Trainer",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/wiiFitTrainer.png",
+		"fullSize": "assets/characters/fullSize/wiiFitTrainer.png"
 	},
 	{
 		"name": "Rosalina & Luma",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/rosalina.png",
+		"fullSize": "assets/characters/fullSize/rosalina.png"
 	},
 	{
 		"name": "Little Mac",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/littleMac.png",
+		"fullSize": "assets/characters/fullSize/littleMac.png"
 	},
 	{
 		"name": "Greninja",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/greninja.png",
+		"fullSize": "assets/characters/fullSize/reninja.png"
 	},
 	{
 		"name": "Palutena",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/palutena.png",
+		"fullSize": "assets/characters/fullSize/palutena.png"
 	},
 	{
 		"name": "PAC-MAN",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/pacman.png",
+		"fullSize": "assets/characters/fullSize/pacman.png"
 	},
 	{
 		"name": "Robin",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/robin.png",
+		"fullSize": "assets/characters/fullSize/robin.png"
 	},
 	{
 		"name": "Shulk",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/shulk.png",
+		"fullSize": "assets/characters/fullSize/shulk.png"
 	},
 	{
 		"name": "Bowser Jr.",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/bowserJr.png",
+		"fullSize": "assets/characters/fullSize/bowserJr.png"
 	},
 	{
 		"name": "Duck Hunt",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/duckHunt.png",
+		"fullSize": "assets/characters/fullSize/duckHunt.png"
 	},
 	{
 		"name": "Ryu",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/ryu.png",
+		"fullSize": "assets/characters/fullSize/ryu.png"
 	},
 	{
 		"name": "Ken",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/ken.png",
+		"fullSize": "assets/characters/fullSize/ken.png"
 	},
 	{
 		"name": "Cloud",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/cloud.png",
+		"fullSize": "assets/characters/fullSize/cloud.png"
 	},
 	{
 		"name": "Corrin",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/corrin.png",
+		"fullSize": "assets/characters/fullSize/corrin.png"
 	},
 	{
 		"name": "Bayonetta",
-		"thumbnail": 12,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/bayonetta.png",
+		"fullSize": "assets/characters/fullSize/bayonetta.png"
 	},
 	{
 		"name": "Inkling",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
-	},
+		"thumbnail": "assets/characters/thumbnails/inkling.png",
+		"fullSize": "assets/characters/fullSize/inkling.png"	},
 	{
 		"name": "Ridley",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/ridley.png",
+		"fullSize": "assets/characters/fullSize/ridley.png"
 	},
 	{
 		"name": "Simon",
-		"thumbnail": 2343,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/simon.png",
+		"fullSize": "assets/characters/fullSize/simon.png"
 	},
 	{
 		"name": "Richter",
-		"thumbnail": 11,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/richter.png",
+		"fullSize": "assets/characters/fullSize/richter.png"
 	},
 	{
 		"name": "King K. Rool",
-		"thumbnail": 33,
-		"fullSize": "string here"
+		"thumbnail": "assets/characters/thumbnails/kingKRool.png",
+		"fullSize": "assets/characters/fullSize/sonic.png"
 
 	},
 	{
 		"name": "Isabelle",
-		"thumbnail": 12,
-		"fullSize": "string here"
+		"thumbnail": "assets/characters/thumbnails/isabelle.png",
+		"fullSize": "assets/characters/fullSize/isabelle.png"
 	},
 	{
 		"name": "Incineroar",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
-	},
-	{
-		"name": "Squirtle",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
-	},
-	{
-		"name": "Ivysaur",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
-	},
-	{
-		"name": "Charizard",
-		"thumbnail": 33,
-		"fullSize": "string here"
-
+		"thumbnail": "assets/characters/thumbnails/incineroar.png",
+		"fullSize": "assets/characters/fullSize/incineroar.png"
 	}
 ]
