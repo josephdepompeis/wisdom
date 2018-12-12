@@ -22,6 +22,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	matchNote = new MatchNote();
 	matchNoteBeingEdited: MatchNote;
 	matchNotes: MatchNote[] = [];
+	matchNoteSections: MatchNoteSection[];
 	isMatchNotesLoading = true;
 	user: User;
 	addMatchNoteForm: FormGroup;
@@ -49,11 +50,11 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		//this log prevents a ts lint error. not sure wut do yet.
 		// can check object 'match' for change before and after tho!
 		console.log(" on changes match", match);
-		this.setFormDefaults();
 
+		this.setFormDefaults();
 		this.getMatchNotes();
-		this.getMatchNoteSections();
 		this.getCharacters();
+
 	}
 
 	ngOnInit() {
@@ -177,8 +178,9 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	getMatchNoteSections() {
 		this.matchNoteService.getMatchNoteSections(this.match).subscribe(
 			res => {
+				this.matchNoteSections = res;
 				// work must continue here
-				console.log("resxxx", res);
+				// console.log("resxxx", res);
 				// this.isMatchNotesLoading = false;
 				// this.matchNotes = res
 			},
@@ -193,9 +195,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 	addMatchNoteSection(match:Match) {
 		console.log("match", match);
 			let localMatchNoteSection = new MatchNoteSection();
-
-
-
 			localMatchNoteSection = {
 				title: "Default Local Tier List",
 				type: "match",
@@ -207,6 +206,7 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 
 			this.matchNoteService.addMatchNoteSection(localMatchNoteSection).subscribe(
 				res => {
+					this.getMatchNoteSections();
 					console.log("res from add match note section", res);
 					// this.getTierListSectionsByTierId(this.tierList);
 				},

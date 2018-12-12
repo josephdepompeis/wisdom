@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 const matchNoteSectionSchema = new mongoose.Schema({
-  matchI: String,
+  matchId: String,
   userId: String,
   sortOrder: Number, //not used yet.
   subtext: String,
