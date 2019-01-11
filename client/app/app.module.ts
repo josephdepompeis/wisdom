@@ -38,6 +38,7 @@ import {DragDropModule} from 'primeng/dragdrop';
 import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CardModule} from 'primeng/card';
+import { MatchNoteSectionComponent } from './match-note-section/match-note-section.component';
 
 BrowserAnimationsModule
 
@@ -62,6 +63,7 @@ export function tokenGetter() {
     MatchesComponent,
     MatchNotesComponent,
     TierListComponent,
+    MatchNoteSectionComponent,
   ],
   imports: [
     RoutingModule,

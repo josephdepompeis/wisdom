@@ -62,6 +62,8 @@
 </div>
 
 
+
+
 <div *ngFor="let tierListSection of matchNoteSections">
 	<pre>{{tierListSection.type}}</pre>
 	<div class="card text-white bg-primary mb-3">
@@ -102,5 +104,18 @@
 			</div>
 		</div>
 	</div>
+
+
+	<match-note-section></match-note-section>
+
 </div>
+
+
+
+
+
+
+
+
+
 <button pButton type="button" icon="pi pi-plus" title="Add Tier List Section" (click)="addMatchNoteSection(match)" [disabled]=""></button>
