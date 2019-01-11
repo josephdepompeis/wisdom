@@ -45,7 +45,7 @@
 	<div *ngFor="let characterSlot of allCharacters" class="ui-helper-clearfix">
 		<div *ngIf="!isCharacterRemoved(characterSlot); then thenBlock else elseBlock"></div>
 		<ng-template #thenBlock>
-			<p-card  [style]="{width: '180px'}" styleClass="ui-card-shadow" pDraggable="characterSlot" (onDragStart)="dragStart($event,characterSlot)">
+			<p-card [style]="{width: '180px'}" styleClass="ui-card-shadow" pDraggable="characterSlot" (onDragStart)="dragStart($event,characterSlot)">
 				<p-header>
 					<img src='{{characterSlot.thumbnail}}'>
 					<p>{{characterSlot.name}}</p>

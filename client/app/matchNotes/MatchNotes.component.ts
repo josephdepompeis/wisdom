@@ -54,14 +54,12 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		this.setFormDefaults();
 		this.getMatchNotes();
 		this.getCharacters();
-
 	}
 
 	ngOnInit() {
 		this.getMatchNotes();
 		this.setFormDefaults();
 	}
-
 
 	getCharacters() {
 		this.characterService.getCharacters().subscribe(
@@ -132,10 +130,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		}
 	}
 
-
-
-
-
 	// ui functions
 
 		setFormDefaults() {
@@ -179,8 +173,6 @@ export class MatchNotesComponent implements OnInit, OnChanges {
 		this.matchNoteService.getMatchNoteSections(this.match).subscribe(
 			res => {
 				this.matchNoteSections = res;
-				// work must continue here
-				// console.log("resxxx", res);
 				// this.isMatchNotesLoading = false;
 				// this.matchNotes = res
 			},

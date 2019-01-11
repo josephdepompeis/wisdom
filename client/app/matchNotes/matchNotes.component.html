@@ -5,7 +5,7 @@
 	<div class="card-body">
 		<div class="card-deck">
 			<div *ngFor="let matchNote of matchNotes" class="card" style="width: 18rem;">
-				<div *ngIf="!isMatchNoteBeingEdited(matchNote)">
+				<div *ngIf="!isMatchNoteBeingEdited(matchNote)" pDraggable="matchNote">
 					<h5 class="card-title">{{matchNote.body}}</h5>
 					<h5 class="card-title">{{matchNote.section}}</h5>
 					<div class="btn-group" role="group">
@@ -62,15 +62,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <div *ngFor="let tierListSection of matchNoteSections">
 	<pre>{{tierListSection.type}}</pre>
 	<div class="card text-white bg-primary mb-3">
@@ -82,7 +73,7 @@
 				<p class="card-text">{{tierListSection.sortOrder}}</p>
 				<div class="p-grid p-justify-center">
 					<div class="p-col-6">
-						<p-card [style]="" styleClass="ui-card-shadow" pDroppable="characterSlot" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
+						<p-card [style]="" styleClass="ui-card-shadow" pDroppable="matchNote" (onDrop)="dropInFirstPositionTierListSection($event, tierListSection)">
 							<p-header>
 								Drag here to add to start section!
 							</p-header>
@@ -100,13 +91,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="p-col-6" *ngIf="tierListSection.characters.length" >
+					<!-- <div class="p-col-6" *ngIf="tierListSection.characters.length" >
 						<p-card [style]="" styleClass="ui-card-shadow" pDroppable="characterSlot" (onDrop)="dropInLastPositionTierListSection($event, tierListSection)">
 							<p-header>
 								Drag here to add to the end section!
 							</p-header>
 						</p-card>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
